@@ -1,0 +1,6 @@
+# Garmin Connect IQ build artifacts
+*.prg
+*.prg.debug.xml
+external-mir/
+internal-mir/
+gen/

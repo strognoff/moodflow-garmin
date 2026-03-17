@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string id="AppName">MoodFlow</string>
+    <string id="MoodVeryLow">Very Low</string>
+    <string id="MoodLow">Low</string>
+    <string id="MoodNeutral">Neutral</string>
+    <string id="MoodGood">Good</string>
+    <string id="MoodGreat">Great</string>
+</resources>
