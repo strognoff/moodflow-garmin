@@ -36,9 +36,8 @@ class MoodFlowApp extends Application.AppBase {
     }
 
     function getInitialView() {
-        // Create factory that defers view creation until runtime
-        // This avoids alphabetical compilation order issues
-        return [ new MoodFlowViewFactory(self) ] as [WatchUi.View];
+        var mainView = new MoodFlowView(self);
+        return [ mainView, new MoodFlowDelegate(mainView) ] as [WatchUi.View, WatchUi.InputDelegate];
     }
 
     function onStart(state) {

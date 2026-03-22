@@ -21,6 +21,12 @@ class MoodFlowView extends WatchUi.View {
     var settingsEditing as Boolean = false;
     var settingsEditHour as Boolean = true;
     
+    // Display properties
+    var isRoundDisplay as Boolean = false;
+    var displayWidth as Number = 240;
+    var displayHeight as Number = 240;
+    var bezelClearance as Number = 10;
+    
     // Colors
     const COLOR_SOFT_BLUE = 0x90CAF9;
     const COLOR_SOFT_GREEN = 0xA5D6A7;
@@ -28,7 +34,11 @@ class MoodFlowView extends WatchUi.View {
     const COLOR_WARM_GREY = 0xECEFF1;
     const COLOR_DARK_GREY = 0x37474F;
     
-    const BEZEL = 10;
+    // Mood emoji indicators (Unicode - color-blind friendly with shape + color)
+    // Using text symbols that render well on Connect IQ devices
+    const MOOD_EMOJIS = ["1", "2", "3", "4", "5"];  // Fallback when Unicode emoji not supported
+    const MOOD_LABELS = ["Very Bad", "Bad", "Neutral", "Good", "Very Good"];
+    
     const CHAR_KEY_W = 20;
     const CHAR_KEY_H = 18;
     
@@ -42,6 +52,37 @@ class MoodFlowView extends WatchUi.View {
     }
     
     function onShow() as Void {
+        // Detect display shape and set bezel clearance
+        detectDisplayShape();
+    }
+    
+    function detectDisplayShape() as Void {
+        // Use System.getDeviceSettings to detect display type
+        if (Toybox.System has :getDeviceSettings) {
+            var settings = Toybox.System.getDeviceSettings();
+            if (settings != null && settings has :screenShape) {
+                isRoundDisplay = (settings.screenShape == 1); // 1 = ROUND
+            } else if (settings != null && settings has :screenWidth && settings has :screenHeight) {
+                // Fallback: check aspect ratio
+                var w = settings.screenWidth;
+                var h = settings.screenHeight;
+                if (h > w * 1.05) {
+                    isRoundDisplay = true;
+                }
+            }
+        }
+        
+        // Set bezel clearance based on display shape
+        // Round displays need more clearance for curved edges
+        if (isRoundDisplay) {
+            bezelClearance = 18;
+        } else {
+            bezelClearance = 10;
+        }
+    }
+    
+    function getBezel() as Number {
+        return bezelClearance;
     }
     
     function onUpdate(dc as Dc) as Void {
@@ -69,10 +110,10 @@ class MoodFlowView extends WatchUi.View {
         dc.fillRectangle(0, 0, width, (height * 0.15).toNumber());
         
         dc.setColor(COLOR_DARK_GREY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, BEZEL + 15, Graphics.FONT_TINY, "MoodFlow", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, bezelClearance + 15, Graphics.FONT_TINY, "MoodFlow", Graphics.TEXT_JUSTIFY_CENTER);
         
-        var startX = BEZEL + 15;
-        var endX = width - BEZEL - 15;
+        var startX = bezelClearance + 15;
+        var endX = width - bezelClearance - 15;
         var moodY = centerY - 30;
         var spacing = (endX - startX) / 4;
         var baseDim = width < height ? width : height;
@@ -116,13 +157,13 @@ class MoodFlowView extends WatchUi.View {
             dc.drawText(centerX, moodY + circleR + 50, Graphics.FONT_TINY, "Avg: " + moodFlowApp.getMoodLabel(avg), Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        var bottomY = height - BEZEL - 25;
+        var bottomY = height - bezelClearance - 25;
         dc.setColor(0x9E9E9E, Graphics.COLOR_TRANSPARENT);
         dc.drawText(centerX, bottomY, Graphics.FONT_TINY, "ENT:Save Swipe:Nav", Graphics.TEXT_JUSTIFY_CENTER);
         
         dc.setColor(COLOR_SOFT_LAVENDER, Graphics.COLOR_TRANSPARENT);
-        dc.fillPolygon([[BEZEL, centerY], [BEZEL + 12, centerY - 8], [BEZEL + 12, centerY + 8]]);
-        dc.fillPolygon([[width - BEZEL, centerY], [width - BEZEL - 12, centerY - 8], [width - BEZEL - 12, centerY + 8]]);
+        dc.fillPolygon([[bezelClearance, centerY], [bezelClearance + 12, centerY - 8], [bezelClearance + 12, centerY + 8]]);
+        dc.fillPolygon([[width - bezelClearance, centerY], [width - bezelClearance - 12, centerY - 8], [width - bezelClearance - 12, centerY + 8]]);
     }
     
     function drawTrendScreen(dc as Dc) as Void {
@@ -134,7 +175,7 @@ class MoodFlowView extends WatchUi.View {
         dc.clear();
         
         dc.setColor(COLOR_DARK_GREY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, BEZEL + 5, Graphics.FONT_TINY, "7-Day Trend", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, bezelClearance + 5, Graphics.FONT_TINY, "7-Day Trend", Graphics.TEXT_JUSTIFY_CENTER);
         
         var chartL = 35;
         var chartR = width - 12;
@@ -209,13 +250,13 @@ class MoodFlowView extends WatchUi.View {
             dc.drawText(chartL + chartW / 2 + 10, corrY + 2, Graphics.FONT_TINY, "Steps: " + (activityData.get("steps") as Number), Graphics.TEXT_JUSTIFY_LEFT);
         }
         
-        var legY = height - BEZEL - 8;
+        var legY = height - bezelClearance - 8;
         dc.setColor(0x2196F3, Graphics.COLOR_TRANSPARENT);
         dc.fillCircle(chartL + 5, legY, 3);
         dc.setColor(COLOR_DARK_GREY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(chartL + 12, legY - 4, Graphics.FONT_TINY, "Mood", Graphics.TEXT_JUSTIFY_LEFT);
         dc.setColor(0x9E9E9E, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(width - BEZEL - 5, legY - 4, Graphics.FONT_TINY, "Swipe", Graphics.TEXT_JUSTIFY_RIGHT);
+        dc.drawText(width - bezelClearance - 5, legY - 4, Graphics.FONT_TINY, "Swipe", Graphics.TEXT_JUSTIFY_RIGHT);
     }
     
     function drawNoteScreen(dc as Dc) as Void {
@@ -227,14 +268,14 @@ class MoodFlowView extends WatchUi.View {
         dc.clear();
         
         dc.setColor(COLOR_DARK_GREY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, BEZEL, Graphics.FONT_TINY, "Add Note", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, bezelClearance, Graphics.FONT_TINY, "Add Note", Graphics.TEXT_JUSTIFY_CENTER);
         
         var boxTop = 35;
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.fillRectangle(BEZEL, boxTop, width - 2 * BEZEL, 35);
+        dc.fillRectangle(bezelClearance, boxTop, width - 2 * bezelClearance, 35);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(1);
-        dc.drawRectangle(BEZEL, boxTop, width - 2 * BEZEL, 35);
+        dc.drawRectangle(bezelClearance, boxTop, width - 2 * bezelClearance, 35);
         
         var dispText = noteText;
         if (dispText.length() > 15) {
@@ -243,7 +284,7 @@ class MoodFlowView extends WatchUi.View {
         dc.drawText(centerX, boxTop + 8, Graphics.FONT_TINY, dispText, Graphics.TEXT_JUSTIFY_CENTER);
         
         var gridTop = boxTop + 50;
-        var gridL = BEZEL + 5;
+        var gridL = bezelClearance + 5;
         var perRow = 9;
         
         var hlX = gridL + (noteCharIndex % perRow) * CHAR_KEY_W;
@@ -261,18 +302,18 @@ class MoodFlowView extends WatchUi.View {
             dc.drawText(x + CHAR_KEY_W / 2, y + 2, Graphics.FONT_TINY, chars[i], Graphics.TEXT_JUSTIFY_CENTER);
         }
         
-        var btnY = height - BEZEL - 35;
+        var btnY = height - bezelClearance - 35;
         var btnW = 60;
         var btnH = 28;
         
         dc.setColor(COLOR_SOFT_LAVENDER, COLOR_SOFT_LAVENDER);
-        dc.fillRectangle(BEZEL + 5, btnY, btnW, btnH);
+        dc.fillRectangle(bezelClearance + 5, btnY, btnW, btnH);
         dc.setColor(COLOR_DARK_GREY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(BEZEL + 5 + btnW / 2, btnY + 6, Graphics.FONT_TINY, "Back", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(bezelClearance + 5 + btnW / 2, btnY + 6, Graphics.FONT_TINY, "Back", Graphics.TEXT_JUSTIFY_CENTER);
         
         dc.setColor(COLOR_SOFT_GREEN, COLOR_SOFT_GREEN);
-        dc.fillRectangle(width - BEZEL - btnW - 5, btnY, btnW, btnH);
-        dc.drawText(width - BEZEL - btnW / 2 - 5, btnY + 6, Graphics.FONT_TINY, "Done", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.fillRectangle(width - bezelClearance - btnW - 5, btnY, btnW, btnH);
+        dc.drawText(width - bezelClearance - btnW / 2 - 5, btnY + 6, Graphics.FONT_TINY, "Done", Graphics.TEXT_JUSTIFY_CENTER);
         
         dc.setColor(0xFFCDD2, Graphics.COLOR_TRANSPARENT);
         dc.fillRectangle(centerX - 30, btnY, 60, btnH);
@@ -280,7 +321,7 @@ class MoodFlowView extends WatchUi.View {
         dc.drawText(centerX, btnY + 6, Graphics.FONT_TINY, "Del", Graphics.TEXT_JUSTIFY_CENTER);
         
         dc.setColor(0x9E9E9E, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, height - BEZEL - 5, Graphics.FONT_TINY, "UP:DOWN:Select ENT:Add", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, height - bezelClearance - 5, Graphics.FONT_TINY, "UP:DOWN:Select ENT:Add", Graphics.TEXT_JUSTIFY_CENTER);
     }
     
     function drawSettingsScreen(dc as Dc) as Void {
@@ -292,7 +333,7 @@ class MoodFlowView extends WatchUi.View {
         dc.clear();
         
         dc.setColor(COLOR_DARK_GREY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, BEZEL, Graphics.FONT_TINY, "Settings", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, bezelClearance, Graphics.FONT_TINY, "Settings", Graphics.TEXT_JUSTIFY_CENTER);
         
         var startY = 40;
         var itemH = 40;
@@ -318,7 +359,7 @@ class MoodFlowView extends WatchUi.View {
                 } else {
                     dc.setColor(COLOR_SOFT_LAVENDER, COLOR_SOFT_LAVENDER);
                 }
-                dc.fillRectangle(BEZEL, y, width - 2 * BEZEL, itemH - 5);
+                dc.fillRectangle(bezelClearance, y, width - 2 * bezelClearance, itemH - 5);
             }
             
             dc.setColor(COLOR_DARK_GREY, Graphics.COLOR_TRANSPARENT);
@@ -359,7 +400,7 @@ class MoodFlowView extends WatchUi.View {
         }
         
         dc.setColor(0x9E9E9E, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, height - BEZEL - 5, Graphics.FONT_TINY, "UP:DOWN:Select ENT:Edit", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, height - bezelClearance - 5, Graphics.FONT_TINY, "UP:DOWN:Select ENT:Edit", Graphics.TEXT_JUSTIFY_CENTER);
     }
     
     function navigateLeft() as Void {
