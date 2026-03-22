@@ -1,9 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App Name -->
     <string id="AppName">MoodFlow</string>
-    <string id="MoodVeryLow">Very Low</string>
-    <string id="MoodLow">Low</string>
+    
+    <!-- Mood Labels -->
+    <string id="MoodVeryBad">Very Bad</string>
+    <string id="MoodBad">Bad</string>
     <string id="MoodNeutral">Neutral</string>
     <string id="MoodGood">Good</string>
-    <string id="MoodGreat">Great</string>
+    <string id="MoodVeryGood">Very Good</string>
+    
+    <!-- Screen Titles -->
+    <string id="TitleCheckIn">MoodFlow</string>
+    <string id="TitleTrend">7-Day Trend</string>
+    <string id="TitleNote">Add Note</string>
+    <string id="TitleSettings">Settings</string>
+    
+    <!-- Button Labels -->
+    <string id="BtnSave">Save</string>
+    <string id="BtnCancel">Cancel</string>
+    <string id="BtnDone">Done</string>
+    <string id="BtnBack">Back</string>
+    <string id="BtnDelete">Delete</string>
+    <string id="BtnExport">Export</string>
+    
+    <!-- Settings Labels -->
+    <string id="SettingReminder">Reminder</string>
+    <string id="SettingReminderTime">Reminder Time</string>
+    <string id="SettingExportJSON">Export JSON</string>
+    <string id="SettingExportCSV">Export CSV</string>
+    <string id="SettingClearData">Clear Data</string>
+    <string id="SettingOn">ON</string>
+    <string id="SettingOff">OFF</string>
+    
+    <!-- Status Messages -->
+    <string id="StatusSaved">Mood saved!</string>
+    <string id="StatusExported">Data exported</string>
+    <string id="StatusCleared">All data cleared</string>
+    <string id="StatusNoData">No data available</string>
+    
+    <!-- Trend View Labels -->
+    <string id="TrendSleep">Sleep</string>
+    <string id="TrendActivity">Activity</string>
+    <string id="TrendMood">Mood</string>
+    <string id="TrendSteps">Steps</string>
+    
+    <!-- Days of Week -->
+    <string id="DaySun">S</string>
+    <string id="DayMon">M</string>
+    <string id="DayTue">T</string>
+    <string id="DayWed">W</string>
+    <string id="DayThu">T</string>
+    <string id="DayFri">F</string>
+    <string id="DaySat">S</string>
+    
+    <!-- Notifications -->
+    <string id="NotificationReminderTitle">MoodFlow Reminder</string>
+    <string id="NotificationReminderText">Time to log your mood!</string>
+    
+    <!-- Accessibility -->
+    <string id="AccMoodVeryBad">Very bad mood, purple diamond</string>
+    <string id="AccMoodBad">Bad mood, blue diamond</string>
+    <string id="AccMoodNeutral">Neutral mood, green circle</string>
+    <string id="AccMoodGood">Good mood, yellow triangle</string>
+    <string id="AccMoodVeryGood">Very good mood, orange star</string>
 </resources>

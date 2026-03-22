@@ -1,8 +1,8 @@
 import Toybox.Lang;
 import Toybox.Application.Storage;
 
-//! Simple storage helper for MoodFlow
-class MoodFlowStorage {
+//! Persistent storage for MoodFlow data
+class MoodFlowDataStore {
 
     function initialize() {
     }
@@ -15,5 +15,10 @@ class MoodFlowStorage {
     //! Set a value in storage
     function setValue(key as String, value as Object) as Void {
         Storage.setValue(key, value);
+    }
+    
+    //! Remove a value from storage
+    function removeValue(key as String) as Void {
+        Storage.deleteValue(key);
     }
 }

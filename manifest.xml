@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
-<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="1">
-    <iq:application entry="MoodFlowApp" id="A1B2C3D4E5F6071891A2B3C4D5E6F708" name="@Strings.AppName" type="watch-app" minSdkVersion="3.2.0" launcherIcon="@Drawables.LauncherIcon">
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+    <iq:application entry="MoodFlowApp" id="A1B2C3D4E5F6071891A2B3C4D5E6F708" name="@Strings.AppName" type="watch-app" minSdkVersion="4.2.0" launcherIcon="@Drawables.LauncherIcon">
         <iq:products>
-            <iq:product id="epix2"/>
-            <iq:product id="epix2pro42mm"/>
-            <iq:product id="epix2pro47mm"/>
-            <iq:product id="epix2pro51mm"/>
+            <!-- Forerunner Series -->
+            <iq:product id="fr255"/>
+            <iq:product id="fr265"/>
+            <iq:product id="fr955"/>
+            <iq:product id="fr965"/>
+            
+            <!-- Fenix Series -->
             <iq:product id="fenix7"/>
             <iq:product id="fenix7pro"/>
             <iq:product id="fenix7pronowifi"/>
@@ -15,8 +18,26 @@
             <iq:product id="fenix8pro47mm"/>
             <iq:product id="fenix8solar47mm"/>
             <iq:product id="fenix8solar51mm"/>
-            <iq:product id="fr255"/>
-            <iq:product id="fr965"/>
+            
+            <!-- Epix Series -->
+            <iq:product id="epix2"/>
+            <iq:product id="epix2pro42mm"/>
+            <iq:product id="epix2pro47mm"/>
+            <iq:product id="epix2pro51mm"/>
+            
+            <!-- Venu Series -->
+            <iq:product id="venu2"/>
+            <iq:product id="venu2plus"/>
+            <iq:product id="venu3"/>
+            
+            <!-- Instinct Series -->
+            <iq:product id="instinct2"/>
+            <iq:product id="instinct2s"/>
+            
+            <!-- Vivoactive Series -->
+            <iq:product id="vivoactive5"/>
+            
+            <!-- MARQ Series -->
             <iq:product id="marq2"/>
             <iq:product id="marq2aviator"/>
             <iq:product id="marqadventurer"/>
@@ -27,12 +48,9 @@
             <iq:product id="marqdriver"/>
             <iq:product id="marqexpedition"/>
             <iq:product id="marqgolfer"/>
-            <iq:product id="venu3"/>
         </iq:products>
         <iq:languages>
             <iq:language>eng</iq:language>
         </iq:languages>
-        <iq:permissions/>
-        <iq:barrels/>
     </iq:application>
 </iq:manifest>
