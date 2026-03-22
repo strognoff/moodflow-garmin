@@ -163,6 +163,12 @@ class MoodFlowView extends WatchUi.View {
         dc.setColor(COLOR_SOFT_LAVENDER, Graphics.COLOR_TRANSPARENT);
         dc.fillPolygon([[bezelClearance, centerY], [bezelClearance + 12, centerY - 8], [bezelClearance + 12, centerY + 8]]);
         dc.fillPolygon([[width - bezelClearance, centerY], [width - bezelClearance - 12, centerY - 8], [width - bezelClearance - 12, centerY + 8]]);
+        
+        // Footer with navigation hints
+        var footerY = height - bezelClearance - 5;
+        dc.setColor(0x9E9E9E, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(bezelClearance + 5, footerY, Graphics.FONT_XTINY, "< Graph", Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(width - bezelClearance - 5, footerY, Graphics.FONT_XTINY, "M=Stgs >", Graphics.TEXT_JUSTIFY_RIGHT);
     }
     
     function drawTrendScreen(dc as Dc) as Void {
