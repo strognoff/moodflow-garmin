@@ -1,0 +1,66 @@
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Application,2,14,25]; @symbol_importdef<2> = [Storage,2,26,33]; ]
+import Toybox.Application.Storage;
+//! Persistent storage for MoodFlow data
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 5; @symbol_classdef = [MoodFlowDataStore,5,6,23]; ]
+class MoodFlowDataStore {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 7; @symbol_functiondef = [initialize,7,13,23]; ]
+    function initialize() as Void {
+    }
+    //! Get a value from storage
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 11; @symbol_functiondef = [getValue,11,13,21]; @symbol_param<0> = [key,11,22,25]; @symbol_param<0>_type<0> = [String,11,29,35]; @symbol_return<0> = [Object,11,40,46]; ]
+    function getValue(key as String) as Object or Null {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowDataStore_mc_11_48_13_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc" 12 8 ]
+        symbol [ Storage %tmp.1 12 15 22 ];
+        %tmp.1 = getm $.Toybox.Application.Storage;
+        symbol [ getValue %tmp.2 12 23 31 ];
+        %tmp.2 = getv function %tmp.1 :getValue;
+        %tmp.3 = lgetv %key;
+        symbol [ key %tmp.3 12 32 35 ];
+        %tmp.4 = invoke %tmp.1 %tmp.2(%tmp.3);
+        ret %tmp.4;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowDataStore_mc_11_48_13_4_stop:
+    }
+    //! Set a value in storage
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 16; @symbol_functiondef = [setValue,16,13,21]; @symbol_param<0> = [key,16,22,25]; @symbol_param<0>_type<0> = [String,16,29,35]; @symbol_param<1> = [value,16,37,42]; @symbol_param<1>_type<0> = [Object,16,46,52]; ]
+    function setValue(key as String, value as Object) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowDataStore_mc_16_62_18_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc" 17 8 ]
+        symbol [ Storage %tmp.1 17 8 15 ];
+        %tmp.1 = getm $.Toybox.Application.Storage;
+        symbol [ setValue %tmp.2 17 16 24 ];
+        %tmp.2 = getv function %tmp.1 :setValue;
+        %tmp.3 = lgetv %key;
+        symbol [ key %tmp.3 17 25 28 ];
+        %tmp.4 = lgetv %value;
+        symbol [ value %tmp.4 17 30 35 ];
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.4);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowDataStore_mc_16_62_18_4_stop:
+    }
+    //! Remove a value from storage
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 21; @symbol_functiondef = [removeValue,21,13,24]; @symbol_param<0> = [key,21,25,28]; @symbol_param<0>_type<0> = [String,21,32,38]; ]
+    function removeValue(key as String) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowDataStore_mc_21_48_23_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc" 22 8 ]
+        symbol [ Storage %tmp.1 22 8 15 ];
+        %tmp.1 = getm $.Toybox.Application.Storage;
+        symbol [ deleteValue %tmp.2 22 16 27 ];
+        %tmp.2 = getv function %tmp.1 :deleteValue;
+        %tmp.3 = lgetv %key;
+        symbol [ key %tmp.3 22 28 31 ];
+        invoke %tmp.1 %tmp.2(%tmp.3);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowDataStore_mc_21_48_23_4_stop:
+    }
+}
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowDataStore.mc"; @line = 1; ]
+<init> {
+}

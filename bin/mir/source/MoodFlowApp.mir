@@ -1,0 +1,1752 @@
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Application,2,14,25]; ]
+import Toybox.Application;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Attention,4,14,23]; ]
+import Toybox.Attention;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [ActivityMonitor,5,14,29]; ]
+import Toybox.ActivityMonitor;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 6; @symbol_importdef<0> = [Toybox,6,7,13]; @symbol_importdef<1> = [Time,6,14,18]; ]
+import Toybox.Time;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 7; @symbol_importdef<0> = [Toybox,7,7,13]; @symbol_importdef<1> = [Time,7,14,18]; @symbol_importdef<2> = [Gregorian,7,19,28]; ]
+import Toybox.Time.Gregorian;
+//! Main application entry point for MoodFlow
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 10; @symbol_classdef = [MoodFlowApp,10,6,17]; @symbol_extends<0> = [Application,10,26,37]; @symbol_extends<1> = [AppBase,10,38,45]; ]
+class MoodFlowApp extends Application.AppBase {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 10; ]
+    <init> {
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 30 8 ]
+        %tmp.1 = newa 0;
+        putv self :moodEntries %tmp.1;
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 10; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 13; @position = 10; @symbol_constdef = [MOOD_VERY_BAD,13,10,23]; ]
+    const MOOD_VERY_BAD = 1;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 14; @position = 10; @symbol_constdef = [MOOD_BAD,14,10,18]; ]
+    const MOOD_BAD = 2;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 15; @position = 10; @symbol_constdef = [MOOD_NEUTRAL,15,10,22]; ]
+    const MOOD_NEUTRAL = 3;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 16; @position = 10; @symbol_constdef = [MOOD_GOOD,16,10,19]; ]
+    const MOOD_GOOD = 4;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 17; @position = 10; @symbol_constdef = [MOOD_VERY_GOOD,17,10,24]; ]
+    const MOOD_VERY_GOOD = 5;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 20; @position = 8; @symbol_vardef = [currentMood,20,8,19]; @symbol_type<0> = [Number,20,23,29]; ]
+    var currentMood as Number = 3;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 21; @position = 8; @symbol_vardef = [currentView,21,8,19]; @symbol_type<0> = [Number,21,23,29]; ]
+    var currentView as Number = 0;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 22; @position = 8; @symbol_vardef = [sessionStorage,22,8,22]; @symbol_type<0> = [MoodFlowDataStore,22,26,43]; ]
+    var sessionStorage as MoodFlowDataStore or Null;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 25; @position = 8; @symbol_vardef = [reminderEnabled,25,8,23]; @symbol_type<0> = [Boolean,25,27,34]; ]
+    var reminderEnabled as Boolean = true;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 26; @position = 8; @symbol_vardef = [reminderHour,26,8,20]; @symbol_type<0> = [Number,26,24,30]; ]
+    var reminderHour as Number = 20;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 27; @position = 8; @symbol_vardef = [reminderMinute,27,8,22]; @symbol_type<0> = [Number,27,26,32]; ]
+    var reminderMinute as Number = 0;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 30; @position = 8; @symbol_vardef = [moodEntries,30,8,19]; @symbol_type<0> = [Array,30,23,28]; @symbol_type<1> = [MoodEntry,30,29,38]; ]
+    var moodEntries as Array<MoodEntry>;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 31; @position = 8; @symbol_vardef = [lastReminderDate,31,8,24]; @symbol_type<0> = [String,31,28,34]; ]
+    var lastReminderDate as String = "";
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 33; @symbol_functiondef = [initialize,33,13,23]; ]
+    function initialize() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_33_26_39_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 34 8 ]
+        symbol [ AppBase %tmp.2 34 8 15 ];
+        %tmp.2 = getv ? :AppBase;
+        symbol [ initialize %tmp.3 34 16 26 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 36 8 ]
+        symbol [ MoodFlowDataStore %tmp.7 36 29 46 ];
+        %tmp.7 = getv ? :MoodFlowDataStore;
+        %tmp.4 = newc %tmp.7 ();
+        symbol [ sessionStorage ? 36 8 22 ];
+        putv self :sessionStorage %tmp.4;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 37 8 ]
+        %tmp.8 = self;
+        symbol [ loadSettings %tmp.9 37 8 20 ];
+        %tmp.9 = getv function %tmp.8 :loadSettings;
+        invoke %tmp.8 %tmp.9();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 38 8 ]
+        %tmp.10 = self;
+        symbol [ loadMoodEntries %tmp.11 38 8 23 ];
+        %tmp.11 = getv function %tmp.10 :loadMoodEntries;
+        invoke %tmp.10 %tmp.11();
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_33_26_39_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 41; @symbol_functiondef = [getInitialView,41,13,27]; ]
+    function getInitialView() {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_41_30_44_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 42 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_41_30_44_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_41_30_44_4_stop" ]
+        %mainView.1 = local;
+        symbol [ mainView %mainView.1 42 12 20 ];
+        symbol [ MoodFlowView %tmp.4 42 27 39 ];
+        %tmp.4 = getv ? :MoodFlowView;
+        %tmp.5 = self;
+        symbol [ self %tmp.5 42 40 44 ];
+        %tmp.1 = newc %tmp.4 (%tmp.5);
+        lputv %mainView.1 %tmp.1;
+        symbol [ mainView %mainView.1 42 12 20 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 43 8 ]
+        %tmp.6 = newa 2 [WatchUi.View, WatchUi.BehaviorDelegate];
+        symbol [ WatchUi %tmp.6 43 64 71 ];
+        symbol [ View %tmp.6 43 72 76 ];
+        symbol [ WatchUi %tmp.6 43 78 85 ];
+        symbol [ BehaviorDelegate %tmp.6 43 86 102 ];
+        %tmp.7 = lgetv %mainView.1;
+        symbol [ mainView %tmp.7 43 17 25 ];
+        %tmp.8 = dup %tmp.6;
+        %tmp.9 = aputv %tmp.8 0 %tmp.7;
+        symbol [ MoodFlowDelegate %tmp.13 43 31 47 ];
+        %tmp.13 = getv ? :MoodFlowDelegate;
+        %tmp.14 = lgetv %mainView.1;
+        symbol [ mainView %tmp.14 43 48 56 ];
+        %tmp.10 = newc %tmp.13 (%tmp.14);
+        %tmp.15 = dup %tmp.9;
+        %tmp.16 = aputv %tmp.15 1 %tmp.10;
+        ret %tmp.16;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_41_30_44_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 46; @symbol_functiondef = [onStart,46,13,20]; @symbol_param<0> = [state,46,21,26]; ]
+    function onStart(state) {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 49; @symbol_functiondef = [onStop,49,13,19]; @symbol_param<0> = [state,49,20,25]; ]
+    function onStop(state) {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_49_27_52_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 50 8 ]
+        %tmp.1 = self;
+        symbol [ saveMoodEntries %tmp.2 50 8 23 ];
+        %tmp.2 = getv function %tmp.1 :saveMoodEntries;
+        invoke %tmp.1 %tmp.2();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 51 8 ]
+        %tmp.3 = self;
+        symbol [ saveSettings %tmp.4 51 8 20 ];
+        %tmp.4 = getv function %tmp.3 :saveSettings;
+        invoke %tmp.3 %tmp.4();
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_49_27_52_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 57; @symbol_functiondef = [loadSettings,57,13,25]; ]
+    function loadSettings() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_57_36_65_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 58 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_57_36_65_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_57_36_65_4_stop" ]
+        %stored.1 = local;
+        symbol [ stored %stored.1 58 12 18 ];
+        symbol [ sessionStorage %tmp.2 58 21 35 ];
+        %tmp.2 = getv ? :sessionStorage;
+        symbol [ getValue %tmp.3 58 36 44 ];
+        %tmp.3 = getv function %tmp.2 :getValue;
+        %tmp.4 = "settings";
+        %tmp.5 = invoke %tmp.2 %tmp.3(%tmp.4);
+        lputv %stored.1 %tmp.5;
+        symbol [ stored %stored.1 58 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 59 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_59_8_64_8_if_stmt:
+        %tmp.6 = lgetv %stored.1;
+        symbol [ stored %tmp.6 59 12 18 ];
+        %tmp.7 = null;
+        %tmp.8 = ne %tmp.6 %tmp.7;
+        bf %tmp.8 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_59_8_64_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_59_8_64_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_59_28_64_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 60 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_59_28_64_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_59_28_64_8_stop" ]
+        %settings.2 = local;
+        symbol [ settings %settings.2 60 16 24 ];
+        %tmp.9 = lgetv %stored.1;
+        symbol [ stored %tmp.9 60 27 33 ];
+        %tmp.10 = as %tmp.9 { (!Null) };
+        %tmp.11 = as %tmp.10 Dictionary;
+        symbol [ Dictionary %tmp.11 60 37 47 ];
+        lputv %settings.2 %tmp.11;
+        symbol [ settings %settings.2 60 16 24 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 61 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_begin:
+        %tmp.12 = lgetv %settings.2;
+        symbol [ settings %tmp.12 61 30 38 ];
+        symbol [ get %tmp.13 61 39 42 ];
+        %tmp.13 = getv function %tmp.12 :get;
+        %tmp.14 = "reminderEnabled";
+        %tmp.15 = invoke %tmp.12 %tmp.13(%tmp.14);
+        %tmp.16 = 1;
+        %tmp.17 = eq %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_true:
+        %tmp.18 = true;
+        push %tmp.18;
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_else_false:
+        %tmp.19 = false;
+        push %tmp.19;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_end:
+        %tmp.20 = phi [%tmp.17 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_begin] [%tmp.18 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_true] [%tmp.19 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_else_false] [%tmp.20 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_61_30_61_76_end];
+        symbol [ reminderEnabled ? 61 12 27 ];
+        putv self :reminderEnabled %tmp.20;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 62 12 ]
+        %tmp.21 = lgetv %settings.2;
+        symbol [ settings %tmp.21 62 27 35 ];
+        symbol [ get %tmp.22 62 36 39 ];
+        %tmp.22 = getv function %tmp.21 :get;
+        %tmp.23 = "reminderHour";
+        %tmp.24 = invoke %tmp.21 %tmp.22(%tmp.23);
+        %tmp.25 = as %tmp.24 Number;
+        symbol [ Number %tmp.25 62 59 65 ];
+        symbol [ reminderHour ? 62 12 24 ];
+        putv self :reminderHour %tmp.25;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 63 12 ]
+        %tmp.26 = lgetv %settings.2;
+        symbol [ settings %tmp.26 63 29 37 ];
+        symbol [ get %tmp.27 63 38 41 ];
+        %tmp.27 = getv function %tmp.26 :get;
+        %tmp.28 = "reminderMinute";
+        %tmp.29 = invoke %tmp.26 %tmp.27(%tmp.28);
+        %tmp.30 = as %tmp.29 Number;
+        symbol [ Number %tmp.30 63 63 69 ];
+        symbol [ reminderMinute ? 63 12 26 ];
+        putv self :reminderMinute %tmp.30;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_59_28_64_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_59_8_64_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_59_8_64_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_57_36_65_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 67; @symbol_functiondef = [saveSettings,67,13,25]; ]
+    function saveSettings() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_67_36_74_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 68 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_67_36_74_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_67_36_74_4_stop" ]
+        %settings.1 = local;
+        symbol [ settings %settings.1 68 12 20 ];
+        %tmp.1 = newd 3;
+        %tmp.2 = "reminderEnabled";
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_begin:
+        symbol [ reminderEnabled %tmp.4 69 33 48 ];
+        %tmp.4 = getv ? :reminderEnabled;
+        bf %tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_true:
+        %tmp.5 = 1;
+        push %tmp.5;
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_else_false:
+        %tmp.6 = 0;
+        push %tmp.6;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_end:
+        %tmp.7 = phi [%tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_begin] [%tmp.5 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_true] [%tmp.6 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_else_false] [%tmp.7 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_69_33_69_55_end];
+        %tmp.8 = dup %tmp.1;
+        %tmp.9 = aputv %tmp.8 %tmp.2 %tmp.7;
+        %tmp.10 = "reminderHour";
+        symbol [ reminderHour %tmp.12 70 30 42 ];
+        %tmp.12 = getv ? :reminderHour;
+        %tmp.13 = dup %tmp.9;
+        %tmp.14 = aputv %tmp.13 %tmp.10 %tmp.12;
+        %tmp.15 = "reminderMinute";
+        symbol [ reminderMinute %tmp.17 71 32 46 ];
+        %tmp.17 = getv ? :reminderMinute;
+        %tmp.18 = dup %tmp.14;
+        %tmp.19 = aputv %tmp.18 %tmp.15 %tmp.17;
+        lputv %settings.1 %tmp.19;
+        symbol [ settings %settings.1 68 12 20 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 73 8 ]
+        symbol [ sessionStorage %tmp.21 73 8 22 ];
+        %tmp.21 = getv ? :sessionStorage;
+        symbol [ setValue %tmp.22 73 23 31 ];
+        %tmp.22 = getv function %tmp.21 :setValue;
+        %tmp.23 = "settings";
+        %tmp.24 = lgetv %settings.1;
+        symbol [ settings %tmp.24 73 44 52 ];
+        invoke %tmp.21 %tmp.22(%tmp.23, %tmp.24);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_67_36_74_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 79; @symbol_functiondef = [loadMoodEntries,79,13,28]; ]
+    function loadMoodEntries() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_79_39_94_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 80 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_79_39_94_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_79_39_94_4_stop" ]
+        %stored.1 = local;
+        symbol [ stored %stored.1 80 12 18 ];
+        symbol [ sessionStorage %tmp.2 80 21 35 ];
+        %tmp.2 = getv ? :sessionStorage;
+        symbol [ getValue %tmp.3 80 36 44 ];
+        %tmp.3 = getv function %tmp.2 :getValue;
+        %tmp.4 = "moodEntries";
+        %tmp.5 = invoke %tmp.2 %tmp.3(%tmp.4);
+        lputv %stored.1 %tmp.5;
+        symbol [ stored %stored.1 80 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 81 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_81_8_93_8_if_stmt:
+        %tmp.6 = lgetv %stored.1;
+        symbol [ stored %tmp.6 81 12 18 ];
+        %tmp.7 = null;
+        %tmp.8 = ne %tmp.6 %tmp.7;
+        bf %tmp.8 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_81_8_93_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_81_8_93_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_81_28_93_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 82 12 ]
+        %tmp.9 = newa 0;
+        symbol [ moodEntries ? 82 12 23 ];
+        putv self :moodEntries %tmp.9;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 83 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_81_28_93_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_81_28_93_8_stop" ]
+        %entries.2 = local;
+        symbol [ entries %entries.2 83 16 23 ];
+        %tmp.10 = lgetv %stored.1;
+        symbol [ stored %tmp.10 83 26 32 ];
+        %tmp.11 = as %tmp.10 { (!Null) };
+        %tmp.12 = as %tmp.11 Array;
+        symbol [ Array %tmp.12 83 36 41 ];
+        lputv %entries.2 %tmp.12;
+        symbol [ entries %entries.2 83 16 23 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 84 12 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_end" ]
+        %i.3 = local;
+        symbol [ i %i.3 84 21 22 ];
+        %tmp.13 = 0;
+        lputv %i.3 %tmp.13;
+        symbol [ i %i.3 84 21 22 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_test:
+        %tmp.14 = lgetv %i.3;
+        symbol [ i %tmp.14 84 28 29 ];
+        %tmp.15 = lgetv %entries.2;
+        symbol [ entries %tmp.15 84 32 39 ];
+        symbol [ size %tmp.16 84 40 44 ];
+        %tmp.16 = getv function %tmp.15 :size;
+        %tmp.17 = invoke %tmp.15 %tmp.16();
+        %tmp.18 = lt %tmp.14 %tmp.17;
+        bf %tmp.18 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_53_92_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 85 16 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_53_92_12_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_53_92_12_stop" ]
+        %entryDict.4 = local;
+        symbol [ entryDict %entryDict.4 85 20 29 ];
+        %tmp.19 = lgetv %entries.2;
+        symbol [ entries %tmp.19 85 32 39 ];
+        %tmp.20 = lgetv %i.3;
+        symbol [ i %tmp.20 85 40 41 ];
+        %tmp.21 = agetv %tmp.19 %tmp.20;
+        %tmp.22 = as %tmp.21 Dictionary;
+        symbol [ Dictionary %tmp.22 85 46 56 ];
+        lputv %entryDict.4 %tmp.22;
+        symbol [ entryDict %entryDict.4 85 20 29 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 86 16 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_53_92_12_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_53_92_12_stop" ]
+        %entry.5 = local;
+        symbol [ entry %entry.5 86 20 25 ];
+        symbol [ MoodEntry %tmp.26 86 32 41 ];
+        %tmp.26 = getv ? :MoodEntry;
+        %tmp.27 = lgetv %entryDict.4;
+        symbol [ entryDict %tmp.27 87 20 29 ];
+        symbol [ get %tmp.28 87 30 33 ];
+        %tmp.28 = getv function %tmp.27 :get;
+        %tmp.29 = "mood";
+        %tmp.30 = invoke %tmp.27 %tmp.28(%tmp.29);
+        %tmp.31 = as %tmp.30 Number;
+        symbol [ Number %tmp.31 87 45 51 ];
+        %tmp.32 = lgetv %entryDict.4;
+        symbol [ entryDict %tmp.32 88 20 29 ];
+        symbol [ get %tmp.33 88 30 33 ];
+        %tmp.33 = getv function %tmp.32 :get;
+        %tmp.34 = "timestamp";
+        %tmp.35 = invoke %tmp.32 %tmp.33(%tmp.34);
+        %tmp.36 = as %tmp.35 Number;
+        symbol [ Number %tmp.36 88 50 56 ];
+        %tmp.37 = lgetv %entryDict.4;
+        symbol [ entryDict %tmp.37 89 20 29 ];
+        symbol [ get %tmp.38 89 30 33 ];
+        %tmp.38 = getv function %tmp.37 :get;
+        %tmp.39 = "note";
+        %tmp.40 = invoke %tmp.37 %tmp.38(%tmp.39);
+        %tmp.41 = as %tmp.40 String;
+        symbol [ String %tmp.41 89 45 51 ];
+        %tmp.23 = newc %tmp.26 (%tmp.31, %tmp.36, %tmp.41);
+        lputv %entry.5 %tmp.23;
+        symbol [ entry %entry.5 86 20 25 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 91 16 ]
+        symbol [ moodEntries %tmp.43 91 16 27 ];
+        %tmp.43 = getv ? :moodEntries;
+        symbol [ add %tmp.44 91 28 31 ];
+        %tmp.44 = getv function %tmp.43 :add;
+        %tmp.45 = lgetv %entry.5;
+        symbol [ entry %tmp.45 91 32 37 ];
+        invoke %tmp.43 %tmp.44(%tmp.45);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_53_92_12_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 84 ]
+        %tmp.48 = lgetv %i.3;
+        symbol [ i %tmp.48 84 48 49 ];
+        %tmp.49 = add %tmp.48 1;
+        lputv %i.3 %tmp.49;
+        symbol [ i %i.3 84 48 49 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_84_12_92_12_for_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_81_28_93_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_81_8_93_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_81_8_93_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_79_39_94_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 96; @symbol_functiondef = [saveMoodEntries,96,13,28]; ]
+    function saveMoodEntries() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_96_39_107_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 97 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_96_39_107_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_96_39_107_4_stop" ]
+        %entriesArray.1 = local;
+        symbol [ entriesArray %entriesArray.1 97 12 24 ];
+        %tmp.1 = newa 0;
+        lputv %entriesArray.1 %tmp.1;
+        symbol [ entriesArray %entriesArray.1 97 12 24 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 98 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 98 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 98 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 98 24 25 ];
+        symbol [ moodEntries %tmp.5 98 28 39 ];
+        %tmp.5 = getv ? :moodEntries;
+        symbol [ size %tmp.6 98 40 44 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_53_105_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 99 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_53_105_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_53_105_8_stop" ]
+        %entry.3 = local;
+        symbol [ entry %entry.3 99 16 21 ];
+        symbol [ moodEntries %tmp.10 99 24 35 ];
+        %tmp.10 = getv ? :moodEntries;
+        %tmp.11 = lgetv %i.2;
+        symbol [ i %tmp.11 99 36 37 ];
+        %tmp.12 = agetv %tmp.10 %tmp.11;
+        lputv %entry.3 %tmp.12;
+        symbol [ entry %entry.3 99 16 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 100 12 ]
+        %tmp.13 = lgetv %entriesArray.1;
+        symbol [ entriesArray %tmp.13 100 12 24 ];
+        symbol [ add %tmp.14 100 25 28 ];
+        %tmp.14 = getv function %tmp.13 :add;
+        %tmp.15 = newd 3;
+        %tmp.16 = "mood";
+        %tmp.17 = lgetv %entry.3;
+        symbol [ entry %tmp.17 101 26 31 ];
+        symbol [ mood %tmp.18 101 32 36 ];
+        %tmp.18 = getv %tmp.17 :mood;
+        %tmp.19 = dup %tmp.15;
+        %tmp.20 = aputv %tmp.19 %tmp.16 %tmp.18;
+        %tmp.21 = "timestamp";
+        %tmp.22 = lgetv %entry.3;
+        symbol [ entry %tmp.22 102 31 36 ];
+        symbol [ timestamp %tmp.23 102 37 46 ];
+        %tmp.23 = getv %tmp.22 :timestamp;
+        %tmp.24 = dup %tmp.20;
+        %tmp.25 = aputv %tmp.24 %tmp.21 %tmp.23;
+        %tmp.26 = "note";
+        %tmp.27 = lgetv %entry.3;
+        symbol [ entry %tmp.27 103 26 31 ];
+        symbol [ note %tmp.28 103 32 36 ];
+        %tmp.28 = getv %tmp.27 :note;
+        %tmp.29 = dup %tmp.25;
+        %tmp.30 = aputv %tmp.29 %tmp.26 %tmp.28;
+        invoke %tmp.13 %tmp.14(%tmp.30);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_53_105_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 98 ]
+        %tmp.33 = lgetv %i.2;
+        symbol [ i %tmp.33 98 48 49 ];
+        %tmp.34 = add %tmp.33 1;
+        lputv %i.2 %tmp.34;
+        symbol [ i %i.2 98 48 49 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_98_8_105_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 106 8 ]
+        symbol [ sessionStorage %tmp.36 106 8 22 ];
+        %tmp.36 = getv ? :sessionStorage;
+        symbol [ setValue %tmp.37 106 23 31 ];
+        %tmp.37 = getv function %tmp.36 :setValue;
+        %tmp.38 = "moodEntries";
+        %tmp.39 = lgetv %entriesArray.1;
+        symbol [ entriesArray %tmp.39 106 47 59 ];
+        invoke %tmp.36 %tmp.37(%tmp.38, %tmp.39);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_96_39_107_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 109; @symbol_functiondef = [getTodayDayOfYear,109,13,30]; @symbol_return<0> = [Number,109,36,42]; ]
+    function getTodayDayOfYear() as Number {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_109_43_113_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 110 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_109_43_113_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_109_43_113_4_stop" ]
+        %now.1 = local;
+        symbol [ now %now.1 110 12 15 ];
+        symbol [ Toybox %tmp.2 110 18 24 ];
+        %tmp.2 = getv ? :Toybox;
+        symbol [ Time %tmp.3 110 25 29 ];
+        %tmp.3 = getv %tmp.2 :Time;
+        symbol [ now %tmp.4 110 30 33 ];
+        %tmp.4 = getv function %tmp.3 :now;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        lputv %now.1 %tmp.5;
+        symbol [ now %now.1 110 12 15 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 111 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_109_43_113_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_109_43_113_4_stop" ]
+        %info.2 = local;
+        symbol [ info %info.2 111 12 16 ];
+        symbol [ Toybox %tmp.7 111 19 25 ];
+        %tmp.7 = getv ? :Toybox;
+        symbol [ Time %tmp.8 111 26 30 ];
+        %tmp.8 = getv %tmp.7 :Time;
+        symbol [ Gregorian %tmp.9 111 31 40 ];
+        %tmp.9 = getv %tmp.8 :Gregorian;
+        symbol [ info %tmp.10 111 41 45 ];
+        %tmp.10 = getv function %tmp.9 :info;
+        %tmp.11 = lgetv %now.1;
+        symbol [ now %tmp.11 111 46 49 ];
+        symbol [ Toybox %tmp.13 111 51 57 ];
+        %tmp.13 = getv ? :Toybox;
+        symbol [ Time %tmp.14 111 58 62 ];
+        %tmp.14 = getv %tmp.13 :Time;
+        symbol [ FORMAT_SHORT %tmp.15 111 63 75 ];
+        %tmp.15 = getv %tmp.14 :FORMAT_SHORT;
+        %tmp.16 = invoke %tmp.9 %tmp.10(%tmp.11, %tmp.15);
+        lputv %info.2 %tmp.16;
+        symbol [ info %info.2 111 12 16 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 112 8 ]
+        %tmp.17 = lgetv %info.2;
+        symbol [ info %tmp.17 112 15 19 ];
+        symbol [ day_of_week %tmp.18 112 20 31 ];
+        %tmp.18 = getv %tmp.17 :day_of_week;
+        %tmp.19 = lgetv %info.2;
+        symbol [ info %tmp.19 112 35 39 ];
+        symbol [ day %tmp.20 112 40 43 ];
+        %tmp.20 = getv %tmp.19 :day;
+        %tmp.21 = 1000;
+        %tmp.22 = mul %tmp.20 %tmp.21;
+        %tmp.23 = add %tmp.18 %tmp.22;
+        %tmp.24 = lgetv %info.2;
+        symbol [ info %tmp.24 112 55 59 ];
+        symbol [ month %tmp.25 112 60 65 ];
+        %tmp.25 = getv %tmp.24 :month;
+        %tmp.26 = 100000;
+        %tmp.27 = mul %tmp.25 %tmp.26;
+        %tmp.28 = add %tmp.23 %tmp.27;
+        ret %tmp.28;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_109_43_113_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 115; @symbol_functiondef = [hasTodayMood,115,13,25]; @symbol_return<0> = [Boolean,115,31,38]; ]
+    function hasTodayMood() as Boolean {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_115_39_123_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 116 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_115_39_123_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_115_39_123_4_stop" ]
+        %today.1 = local;
+        symbol [ today %today.1 116 12 17 ];
+        %tmp.1 = self;
+        symbol [ getTodayDayOfYear %tmp.2 116 20 37 ];
+        %tmp.2 = getv function %tmp.1 :getTodayDayOfYear;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %today.1 %tmp.3;
+        symbol [ today %today.1 116 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 117 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 117 17 18 ];
+        symbol [ moodEntries %tmp.5 117 21 32 ];
+        %tmp.5 = getv ? :moodEntries;
+        symbol [ size %tmp.6 117 33 37 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = 1;
+        %tmp.9 = sub %tmp.7 %tmp.8;
+        lputv %i.2 %tmp.9;
+        symbol [ i %i.2 117 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_test:
+        %tmp.10 = lgetv %i.2;
+        symbol [ i %tmp.10 117 45 46 ];
+        %tmp.11 = 0;
+        %tmp.12 = gte %tmp.10 %tmp.11;
+        bf %tmp.12 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_58_121_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 118 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_118_12_120_12_if_stmt:
+        symbol [ moodEntries %tmp.14 118 16 27 ];
+        %tmp.14 = getv ? :moodEntries;
+        %tmp.15 = lgetv %i.2;
+        symbol [ i %tmp.15 118 28 29 ];
+        %tmp.16 = agetv %tmp.14 %tmp.15;
+        symbol [ timestamp %tmp.17 118 31 40 ];
+        %tmp.17 = getv %tmp.16 :timestamp;
+        %tmp.18 = lgetv %today.1;
+        symbol [ today %tmp.18 118 44 49 ];
+        %tmp.19 = eq %tmp.17 %tmp.18;
+        bf %tmp.19 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_118_12_120_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_118_12_120_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_118_51_120_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 119 16 ]
+        %tmp.20 = true;
+        ret %tmp.20;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_118_51_120_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_118_12_120_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_118_12_120_12_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_58_121_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 117 ]
+        %tmp.23 = lgetv %i.2;
+        symbol [ i %tmp.23 117 53 54 ];
+        %tmp.24 = sub %tmp.23 1;
+        lputv %i.2 %tmp.24;
+        symbol [ i %i.2 117 53 54 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_117_8_121_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 122 8 ]
+        %tmp.25 = false;
+        ret %tmp.25;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_115_39_123_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 125; @symbol_functiondef = [replaceTodayMood,125,13,29]; @symbol_param<0> = [mood,125,30,34]; @symbol_param<0>_type<0> = [Number,125,38,44]; ]
+    function replaceTodayMood(mood as Number) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_125_54_136_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 126 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_125_54_136_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_125_54_136_4_stop" ]
+        %today.1 = local;
+        symbol [ today %today.1 126 12 17 ];
+        %tmp.1 = self;
+        symbol [ getTodayDayOfYear %tmp.2 126 20 37 ];
+        %tmp.2 = getv function %tmp.1 :getTodayDayOfYear;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %today.1 %tmp.3;
+        symbol [ today %today.1 126 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 127 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 127 17 18 ];
+        symbol [ moodEntries %tmp.5 127 21 32 ];
+        %tmp.5 = getv ? :moodEntries;
+        symbol [ size %tmp.6 127 33 37 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = 1;
+        %tmp.9 = sub %tmp.7 %tmp.8;
+        lputv %i.2 %tmp.9;
+        symbol [ i %i.2 127 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_test:
+        %tmp.10 = lgetv %i.2;
+        symbol [ i %tmp.10 127 45 46 ];
+        %tmp.11 = 0;
+        %tmp.12 = gte %tmp.10 %tmp.11;
+        bf %tmp.12 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_58_133_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 128 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_128_12_132_12_if_stmt:
+        symbol [ moodEntries %tmp.14 128 16 27 ];
+        %tmp.14 = getv ? :moodEntries;
+        %tmp.15 = lgetv %i.2;
+        symbol [ i %tmp.15 128 28 29 ];
+        %tmp.16 = agetv %tmp.14 %tmp.15;
+        symbol [ timestamp %tmp.17 128 31 40 ];
+        %tmp.17 = getv %tmp.16 :timestamp;
+        %tmp.18 = lgetv %today.1;
+        symbol [ today %tmp.18 128 44 49 ];
+        %tmp.19 = eq %tmp.17 %tmp.18;
+        bf %tmp.19 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_128_12_132_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_128_12_132_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_128_51_132_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 129 16 ]
+        symbol [ moodEntries %tmp.20 129 16 27 ];
+        %tmp.20 = getv self :moodEntries;
+        %tmp.21 = lgetv %i.2;
+        symbol [ i %tmp.21 129 28 29 ];
+        %tmp.22 = agetv %tmp.20 %tmp.21;
+        %tmp.23 = lgetv %mood;
+        symbol [ mood %tmp.23 129 38 42 ];
+        symbol [ mood ? 129 31 35 ];
+        putv %tmp.22 :mood %tmp.23;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 130 16 ]
+        %tmp.24 = self;
+        symbol [ saveMoodEntries %tmp.25 130 16 31 ];
+        %tmp.25 = getv function %tmp.24 :saveMoodEntries;
+        invoke %tmp.24 %tmp.25();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 131 16 ]
+        ret ?;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_128_51_132_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_128_12_132_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_128_12_132_12_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_58_133_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 127 ]
+        %tmp.28 = lgetv %i.2;
+        symbol [ i %tmp.28 127 53 54 ];
+        %tmp.29 = sub %tmp.28 1;
+        lputv %i.2 %tmp.29;
+        symbol [ i %i.2 127 53 54 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_127_8_133_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 135 8 ]
+        %tmp.30 = self;
+        symbol [ addMoodEntry %tmp.31 135 8 20 ];
+        %tmp.31 = getv function %tmp.30 :addMoodEntry;
+        %tmp.32 = lgetv %mood;
+        symbol [ mood %tmp.32 135 21 25 ];
+        %tmp.33 = "";
+        invoke %tmp.30 %tmp.31(%tmp.32, %tmp.33);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_125_54_136_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 138; @symbol_functiondef = [addMoodEntry,138,13,25]; @symbol_param<0> = [mood,138,26,30]; @symbol_param<0>_type<0> = [Number,138,34,40]; @symbol_param<1> = [note,138,42,46]; @symbol_param<1>_type<0> = [String,138,50,56]; ]
+    function addMoodEntry(mood as Number, note as String) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_138_66_143_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 139 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_138_66_143_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_138_66_143_4_stop" ]
+        %today.1 = local;
+        symbol [ today %today.1 139 12 17 ];
+        %tmp.1 = self;
+        symbol [ getTodayDayOfYear %tmp.2 139 20 37 ];
+        %tmp.2 = getv function %tmp.1 :getTodayDayOfYear;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %today.1 %tmp.3;
+        symbol [ today %today.1 139 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 140 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_138_66_143_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_138_66_143_4_stop" ]
+        %entry.2 = local;
+        symbol [ entry %entry.2 140 12 17 ];
+        symbol [ MoodEntry %tmp.7 140 24 33 ];
+        %tmp.7 = getv ? :MoodEntry;
+        %tmp.8 = lgetv %mood;
+        symbol [ mood %tmp.8 140 34 38 ];
+        %tmp.9 = lgetv %today.1;
+        symbol [ today %tmp.9 140 40 45 ];
+        %tmp.10 = lgetv %note;
+        symbol [ note %tmp.10 140 47 51 ];
+        %tmp.4 = newc %tmp.7 (%tmp.8, %tmp.9, %tmp.10);
+        lputv %entry.2 %tmp.4;
+        symbol [ entry %entry.2 140 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 141 8 ]
+        symbol [ moodEntries %tmp.12 141 8 19 ];
+        %tmp.12 = getv ? :moodEntries;
+        symbol [ add %tmp.13 141 20 23 ];
+        %tmp.13 = getv function %tmp.12 :add;
+        %tmp.14 = lgetv %entry.2;
+        symbol [ entry %tmp.14 141 24 29 ];
+        invoke %tmp.12 %tmp.13(%tmp.14);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 142 8 ]
+        %tmp.15 = self;
+        symbol [ saveMoodEntries %tmp.16 142 8 23 ];
+        %tmp.16 = getv function %tmp.15 :saveMoodEntries;
+        invoke %tmp.15 %tmp.16();
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_138_66_143_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 145; @symbol_functiondef = [getTodayEntries,145,13,28]; @symbol_return<0> = [Array,145,34,39]; @symbol_return<1> = [MoodEntry,145,40,49]; ]
+    function getTodayEntries() as Array<MoodEntry> {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_145_51_154_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 146 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_145_51_154_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_145_51_154_4_stop" ]
+        %today.1 = local;
+        symbol [ today %today.1 146 12 17 ];
+        %tmp.1 = self;
+        symbol [ getTodayDayOfYear %tmp.2 146 20 37 ];
+        %tmp.2 = getv function %tmp.1 :getTodayDayOfYear;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %today.1 %tmp.3;
+        symbol [ today %today.1 146 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 147 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_145_51_154_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_145_51_154_4_stop" ]
+        %todayEntries.2 = local;
+        symbol [ todayEntries %todayEntries.2 147 12 24 ];
+        %tmp.4 = newa 0;
+        lputv %todayEntries.2 %tmp.4;
+        symbol [ todayEntries %todayEntries.2 147 12 24 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 148 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_end" ]
+        %i.3 = local;
+        symbol [ i %i.3 148 17 18 ];
+        %tmp.5 = 0;
+        lputv %i.3 %tmp.5;
+        symbol [ i %i.3 148 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_test:
+        %tmp.6 = lgetv %i.3;
+        symbol [ i %tmp.6 148 24 25 ];
+        symbol [ moodEntries %tmp.8 148 28 39 ];
+        %tmp.8 = getv ? :moodEntries;
+        symbol [ size %tmp.9 148 40 44 ];
+        %tmp.9 = getv function %tmp.8 :size;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        %tmp.11 = lt %tmp.6 %tmp.10;
+        bf %tmp.11 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_53_152_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 149 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_149_12_151_12_if_stmt:
+        symbol [ moodEntries %tmp.13 149 16 27 ];
+        %tmp.13 = getv ? :moodEntries;
+        %tmp.14 = lgetv %i.3;
+        symbol [ i %tmp.14 149 28 29 ];
+        %tmp.15 = agetv %tmp.13 %tmp.14;
+        symbol [ timestamp %tmp.16 149 31 40 ];
+        %tmp.16 = getv %tmp.15 :timestamp;
+        %tmp.17 = lgetv %today.1;
+        symbol [ today %tmp.17 149 44 49 ];
+        %tmp.18 = eq %tmp.16 %tmp.17;
+        bf %tmp.18 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_149_12_151_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_149_12_151_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_149_51_151_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 150 16 ]
+        %tmp.19 = lgetv %todayEntries.2;
+        symbol [ todayEntries %tmp.19 150 16 28 ];
+        symbol [ add %tmp.20 150 29 32 ];
+        %tmp.20 = getv function %tmp.19 :add;
+        symbol [ moodEntries %tmp.22 150 33 44 ];
+        %tmp.22 = getv ? :moodEntries;
+        %tmp.23 = lgetv %i.3;
+        symbol [ i %tmp.23 150 45 46 ];
+        %tmp.24 = agetv %tmp.22 %tmp.23;
+        invoke %tmp.19 %tmp.20(%tmp.24);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_149_51_151_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_149_12_151_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_149_12_151_12_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_53_152_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 148 ]
+        %tmp.27 = lgetv %i.3;
+        symbol [ i %tmp.27 148 48 49 ];
+        %tmp.28 = add %tmp.27 1;
+        lputv %i.3 %tmp.28;
+        symbol [ i %i.3 148 48 49 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_148_8_152_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 153 8 ]
+        %tmp.29 = lgetv %todayEntries.2;
+        symbol [ todayEntries %tmp.29 153 15 27 ];
+        ret %tmp.29;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_145_51_154_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 156; @symbol_functiondef = [resetAllData,156,13,25]; ]
+    function resetAllData() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_156_36_159_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 157 8 ]
+        %tmp.1 = newa 0;
+        symbol [ moodEntries ? 157 8 19 ];
+        putv self :moodEntries %tmp.1;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 158 8 ]
+        %tmp.2 = self;
+        symbol [ saveMoodEntries %tmp.3 158 8 23 ];
+        %tmp.3 = getv function %tmp.2 :saveMoodEntries;
+        invoke %tmp.2 %tmp.3();
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_156_36_159_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 161; @symbol_functiondef = [getLast7DaysEntries,161,13,32]; @symbol_return<0> = [Array,161,38,43]; @symbol_return<1> = [MoodEntry,161,44,53]; ]
+    function getLast7DaysEntries() as Array<MoodEntry> {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_161_55_168_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 162 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_161_55_168_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_161_55_168_4_stop" ]
+        %count.1 = local;
+        symbol [ count %count.1 162 12 17 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_begin:
+        symbol [ moodEntries %tmp.2 162 20 31 ];
+        %tmp.2 = getv ? :moodEntries;
+        symbol [ size %tmp.3 162 32 36 ];
+        %tmp.3 = getv function %tmp.2 :size;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        %tmp.5 = 7;
+        %tmp.6 = gt %tmp.4 %tmp.5;
+        bf %tmp.6 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_true:
+        %tmp.7 = 7;
+        push %tmp.7;
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_else_false:
+        symbol [ moodEntries %tmp.9 162 49 60 ];
+        %tmp.9 = getv ? :moodEntries;
+        symbol [ size %tmp.10 162 61 65 ];
+        %tmp.10 = getv function %tmp.9 :size;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        push %tmp.11;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_end:
+        %tmp.12 = phi [%tmp.6 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_begin] [%tmp.7 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_true] [%tmp.11 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_else_false] [%tmp.12 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_162_20_162_66_end];
+        lputv %count.1 %tmp.12;
+        symbol [ count %count.1 162 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 163 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_161_55_168_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_161_55_168_4_stop" ]
+        %entries.2 = local;
+        symbol [ entries %entries.2 163 12 19 ];
+        %tmp.13 = newa 0;
+        lputv %entries.2 %tmp.13;
+        symbol [ entries %entries.2 163 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 164 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_end" ]
+        %i.3 = local;
+        symbol [ i %i.3 164 17 18 ];
+        %tmp.14 = 0;
+        lputv %i.3 %tmp.14;
+        symbol [ i %i.3 164 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_test:
+        %tmp.15 = lgetv %i.3;
+        symbol [ i %tmp.15 164 24 25 ];
+        %tmp.16 = lgetv %count.1;
+        symbol [ count %tmp.16 164 28 33 ];
+        %tmp.17 = lt %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_40_166_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 165 12 ]
+        %tmp.18 = lgetv %entries.2;
+        symbol [ entries %tmp.18 165 12 19 ];
+        symbol [ add %tmp.19 165 20 23 ];
+        %tmp.19 = getv function %tmp.18 :add;
+        symbol [ moodEntries %tmp.21 165 24 35 ];
+        %tmp.21 = getv ? :moodEntries;
+        symbol [ moodEntries %tmp.23 165 36 47 ];
+        %tmp.23 = getv ? :moodEntries;
+        symbol [ size %tmp.24 165 48 52 ];
+        %tmp.24 = getv function %tmp.23 :size;
+        %tmp.25 = invoke %tmp.23 %tmp.24();
+        %tmp.26 = 1;
+        %tmp.27 = sub %tmp.25 %tmp.26;
+        %tmp.28 = lgetv %i.3;
+        symbol [ i %tmp.28 165 61 62 ];
+        %tmp.29 = sub %tmp.27 %tmp.28;
+        %tmp.30 = agetv %tmp.21 %tmp.29;
+        invoke %tmp.18 %tmp.19(%tmp.30);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_40_166_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 164 ]
+        %tmp.33 = lgetv %i.3;
+        symbol [ i %tmp.33 164 35 36 ];
+        %tmp.34 = add %tmp.33 1;
+        lputv %i.3 %tmp.34;
+        symbol [ i %i.3 164 35 36 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_164_8_166_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 167 8 ]
+        %tmp.35 = lgetv %entries.2;
+        symbol [ entries %tmp.35 167 15 22 ];
+        ret %tmp.35;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_161_55_168_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 170; @symbol_functiondef = [getAverageMood,170,13,27]; @symbol_param<0> = [entries,170,28,35]; @symbol_param<0>_type<0> = [Array,170,39,44]; @symbol_param<0>_type<1> = [MoodEntry,170,45,54]; @symbol_return<0> = [Number,170,60,66]; ]
+    function getAverageMood(entries as Array<MoodEntry>) as Number {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_170_67_179_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 171 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_171_8_173_8_if_stmt:
+        %tmp.1 = lgetv %entries;
+        symbol [ entries %tmp.1 171 12 19 ];
+        symbol [ size %tmp.2 171 20 24 ];
+        %tmp.2 = getv function %tmp.1 :size;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = 0;
+        %tmp.5 = eq %tmp.3 %tmp.4;
+        bf %tmp.5 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_171_8_173_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_171_8_173_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_171_33_173_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 172 12 ]
+        %tmp.6 = 3;
+        ret %tmp.6;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_171_33_173_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_171_8_173_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_171_8_173_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 174 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_170_67_179_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_170_67_179_4_stop" ]
+        %sum.1 = local;
+        symbol [ sum %sum.1 174 12 15 ];
+        %tmp.7 = 0;
+        lputv %sum.1 %tmp.7;
+        symbol [ sum %sum.1 174 12 15 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 175 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 175 17 18 ];
+        %tmp.8 = 0;
+        lputv %i.2 %tmp.8;
+        symbol [ i %i.2 175 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_test:
+        %tmp.9 = lgetv %i.2;
+        symbol [ i %tmp.9 175 24 25 ];
+        %tmp.10 = lgetv %entries;
+        symbol [ entries %tmp.10 175 28 35 ];
+        symbol [ size %tmp.11 175 36 40 ];
+        %tmp.11 = getv function %tmp.10 :size;
+        %tmp.12 = invoke %tmp.10 %tmp.11();
+        %tmp.13 = lt %tmp.9 %tmp.12;
+        bf %tmp.13 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_49_177_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 176 12 ]
+        %tmp.14 = lgetv %sum.1;
+        symbol [ sum %tmp.14 176 12 15 ];
+        %tmp.15 = lgetv %entries;
+        symbol [ entries %tmp.15 176 19 26 ];
+        %tmp.16 = lgetv %i.2;
+        symbol [ i %tmp.16 176 27 28 ];
+        %tmp.17 = agetv %tmp.15 %tmp.16;
+        symbol [ mood %tmp.18 176 30 34 ];
+        %tmp.18 = getv %tmp.17 :mood;
+        %tmp.19 = add %tmp.14 %tmp.18;
+        lputv %sum.1 %tmp.19;
+        symbol [ sum %sum.1 176 12 15 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_49_177_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 175 ]
+        %tmp.22 = lgetv %i.2;
+        symbol [ i %tmp.22 175 44 45 ];
+        %tmp.23 = add %tmp.22 1;
+        lputv %i.2 %tmp.23;
+        symbol [ i %i.2 175 44 45 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_175_8_177_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 178 8 ]
+        %tmp.24 = lgetv %sum.1;
+        symbol [ sum %tmp.24 178 15 18 ];
+        %tmp.25 = lgetv %entries;
+        symbol [ entries %tmp.25 178 21 28 ];
+        symbol [ size %tmp.26 178 29 33 ];
+        %tmp.26 = getv function %tmp.25 :size;
+        %tmp.27 = invoke %tmp.25 %tmp.26();
+        %tmp.28 = div %tmp.24 %tmp.27;
+        ret %tmp.28;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_170_67_179_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 184; @symbol_functiondef = [fireReminder,184,13,25]; ]
+    function fireReminder() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_184_36_189_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 185 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_185_8_188_8_if_stmt:
+        symbol [ Attention %tmp.1 185 12 21 ];
+        %tmp.1 = getm $.Toybox.Attention;
+        %tmp.3 = const :vibrate;
+        symbol [ vibrate %tmp.3 185 27 34 const ];
+        %tmp.4 = canhazplz %tmp.1 %tmp.3;
+        bf %tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_185_8_188_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_185_8_188_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_185_36_188_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 186 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_185_36_188_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_185_36_188_8_stop" ]
+        %vibeData.1 = local;
+        symbol [ vibeData %vibeData.1 186 16 24 ];
+        %tmp.5 = newa 1;
+        symbol [ Attention %tmp.8 186 32 41 ];
+        %tmp.8 = getm $.Toybox.Attention;
+        symbol [ VibeProfile %tmp.9 186 42 53 ];
+        %tmp.9 = getv function ? %tmp.8 :VibeProfile;
+        %tmp.10 = 100;
+        %tmp.11 = 500;
+        %tmp.6 = newc %tmp.9 (%tmp.10, %tmp.11);
+        %tmp.12 = dup %tmp.5;
+        %tmp.13 = aputv %tmp.12 0 %tmp.6;
+        lputv %vibeData.1 %tmp.13;
+        symbol [ vibeData %vibeData.1 186 16 24 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 187 12 ]
+        symbol [ Attention %tmp.14 187 12 21 ];
+        %tmp.14 = getm $.Toybox.Attention;
+        symbol [ vibrate %tmp.15 187 22 29 ];
+        %tmp.15 = getv function %tmp.14 :vibrate;
+        %tmp.16 = lgetv %vibeData.1;
+        symbol [ vibeData %tmp.16 187 30 38 ];
+        invoke %tmp.14 %tmp.15(%tmp.16);
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_185_36_188_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_185_8_188_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_185_8_188_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_184_36_189_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 191; @symbol_functiondef = [setReminderTime,191,13,28]; @symbol_param<0> = [hour,191,29,33]; @symbol_param<0>_type<0> = [Number,191,37,43]; @symbol_param<1> = [minute,191,45,51]; @symbol_param<1>_type<0> = [Number,191,55,61]; ]
+    function setReminderTime(hour as Number, minute as Number) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_191_71_195_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 192 8 ]
+        %tmp.1 = lgetv %hour;
+        symbol [ hour %tmp.1 192 23 27 ];
+        symbol [ reminderHour ? 192 8 20 ];
+        putv self :reminderHour %tmp.1;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 193 8 ]
+        %tmp.2 = lgetv %minute;
+        symbol [ minute %tmp.2 193 25 31 ];
+        symbol [ reminderMinute ? 193 8 22 ];
+        putv self :reminderMinute %tmp.2;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 194 8 ]
+        %tmp.3 = self;
+        symbol [ saveSettings %tmp.4 194 8 20 ];
+        %tmp.4 = getv function %tmp.3 :saveSettings;
+        invoke %tmp.3 %tmp.4();
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_191_71_195_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 197; @symbol_functiondef = [toggleReminder,197,13,27]; @symbol_param<0> = [enabled,197,28,35]; @symbol_param<0>_type<0> = [Boolean,197,39,46]; ]
+    function toggleReminder(enabled as Boolean) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_197_56_200_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 198 8 ]
+        %tmp.1 = lgetv %enabled;
+        symbol [ enabled %tmp.1 198 26 33 ];
+        symbol [ reminderEnabled ? 198 8 23 ];
+        putv self :reminderEnabled %tmp.1;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 199 8 ]
+        %tmp.2 = self;
+        symbol [ saveSettings %tmp.3 199 8 20 ];
+        %tmp.3 = getv function %tmp.2 :saveSettings;
+        invoke %tmp.2 %tmp.3();
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_197_56_200_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 205; @symbol_functiondef = [getMoodLabel,205,13,25]; @symbol_param<0> = [mood,205,26,30]; @symbol_param<0>_type<0> = [Number,205,34,40]; @symbol_return<0> = [String,205,45,51]; ]
+    function getMoodLabel(mood as Number) as String {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_205_52_211_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 206 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_206_8_206_44_if_stmt:
+        %tmp.1 = lgetv %mood;
+        symbol [ mood %tmp.1 206 12 16 ];
+        %tmp.2 = 1;
+        %tmp.3 = eq %tmp.1 %tmp.2;
+        bf %tmp.3 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_206_8_206_44_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_206_8_206_44_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_206_23_206_44_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 206 25 ]
+        %tmp.4 = "Very Bad";
+        ret %tmp.4;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_206_23_206_44_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_206_8_206_44_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_206_8_206_44_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 207 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_207_8_207_39_if_stmt:
+        %tmp.5 = lgetv %mood;
+        symbol [ mood %tmp.5 207 12 16 ];
+        %tmp.6 = 2;
+        %tmp.7 = eq %tmp.5 %tmp.6;
+        bf %tmp.7 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_207_8_207_39_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_207_8_207_39_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_207_23_207_39_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 207 25 ]
+        %tmp.8 = "Bad";
+        ret %tmp.8;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_207_23_207_39_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_207_8_207_39_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_207_8_207_39_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 208 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_208_8_208_43_if_stmt:
+        %tmp.9 = lgetv %mood;
+        symbol [ mood %tmp.9 208 12 16 ];
+        %tmp.10 = 3;
+        %tmp.11 = eq %tmp.9 %tmp.10;
+        bf %tmp.11 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_208_8_208_43_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_208_8_208_43_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_208_23_208_43_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 208 25 ]
+        %tmp.12 = "Neutral";
+        ret %tmp.12;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_208_23_208_43_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_208_8_208_43_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_208_8_208_43_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 209 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_209_8_209_40_if_stmt:
+        %tmp.13 = lgetv %mood;
+        symbol [ mood %tmp.13 209 12 16 ];
+        %tmp.14 = 4;
+        %tmp.15 = eq %tmp.13 %tmp.14;
+        bf %tmp.15 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_209_8_209_40_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_209_8_209_40_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_209_23_209_40_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 209 25 ]
+        %tmp.16 = "Good";
+        ret %tmp.16;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_209_23_209_40_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_209_8_209_40_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_209_8_209_40_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 210 8 ]
+        %tmp.17 = "Very Good";
+        ret %tmp.17;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_205_52_211_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 214; @symbol_functiondef = [getMoodColor,214,13,25]; @symbol_param<0> = [mood,214,26,30]; @symbol_param<0>_type<0> = [Number,214,34,40]; @symbol_return<0> = [Number,214,45,51]; ]
+    function getMoodColor(mood as Number) as Number {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_214_52_220_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 215 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_215_8_215_42_if_stmt:
+        %tmp.1 = lgetv %mood;
+        symbol [ mood %tmp.1 215 12 16 ];
+        %tmp.2 = 1;
+        %tmp.3 = eq %tmp.1 %tmp.2;
+        bf %tmp.3 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_215_8_215_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_215_8_215_42_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_215_23_215_42_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 215 25 ]
+        %tmp.4 = 0x9C27B0;
+        ret %tmp.4;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_215_23_215_42_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_215_8_215_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_215_8_215_42_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 216 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_216_8_216_42_if_stmt:
+        %tmp.5 = lgetv %mood;
+        symbol [ mood %tmp.5 216 12 16 ];
+        %tmp.6 = 2;
+        %tmp.7 = eq %tmp.5 %tmp.6;
+        bf %tmp.7 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_216_8_216_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_216_8_216_42_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_216_23_216_42_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 216 25 ]
+        %tmp.8 = 0x2196F3;
+        ret %tmp.8;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_216_23_216_42_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_216_8_216_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_216_8_216_42_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 217 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_217_8_217_42_if_stmt:
+        %tmp.9 = lgetv %mood;
+        symbol [ mood %tmp.9 217 12 16 ];
+        %tmp.10 = 3;
+        %tmp.11 = eq %tmp.9 %tmp.10;
+        bf %tmp.11 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_217_8_217_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_217_8_217_42_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_217_23_217_42_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 217 25 ]
+        %tmp.12 = 0x4CAF50;
+        ret %tmp.12;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_217_23_217_42_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_217_8_217_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_217_8_217_42_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 218 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_218_8_218_42_if_stmt:
+        %tmp.13 = lgetv %mood;
+        symbol [ mood %tmp.13 218 12 16 ];
+        %tmp.14 = 4;
+        %tmp.15 = eq %tmp.13 %tmp.14;
+        bf %tmp.15 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_218_8_218_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_218_8_218_42_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_218_23_218_42_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 218 25 ]
+        %tmp.16 = 0xFFEB3B;
+        ret %tmp.16;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_218_23_218_42_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_218_8_218_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_218_8_218_42_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 219 8 ]
+        %tmp.17 = 0xFF9800;
+        ret %tmp.17;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_214_52_220_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 225; @symbol_functiondef = [getSleepData,225,13,25]; @symbol_return<0> = [Dictionary,225,31,41]; ]
+    function getSleepData() as Dictionary {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_225_42_243_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 226 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_225_42_243_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_225_42_243_4_stop" ]
+        %hours.1 = local;
+        symbol [ hours %hours.1 226 12 17 ];
+        %tmp.1 = 0.0f;
+        lputv %hours.1 %tmp.1;
+        symbol [ hours %hours.1 226 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 227 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_225_42_243_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_225_42_243_4_stop" ]
+        %available.2 = local;
+        symbol [ available %available.2 227 12 21 ];
+        %tmp.2 = false;
+        lputv %available.2 %tmp.2;
+        symbol [ available %available.2 227 12 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 230 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_230_8_236_8_if_stmt:
+        symbol [ Toybox %tmp.4 230 12 18 ];
+        %tmp.4 = getv ? :Toybox;
+        %tmp.6 = const :ActivityMonitor;
+        symbol [ ActivityMonitor %tmp.6 230 24 39 const ];
+        %tmp.7 = canhazplz %tmp.4 %tmp.6;
+        bf %tmp.7 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_230_8_236_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_230_8_236_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_230_41_236_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 231 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_230_41_236_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_230_41_236_8_stop" ]
+        %info.3 = local;
+        symbol [ info %info.3 231 16 20 ];
+        symbol [ Toybox %tmp.9 231 23 29 ];
+        %tmp.9 = getv ? :Toybox;
+        %tmp.10 = as %tmp.9 { (interface { var ActivityMonitor; }) };
+        symbol [ ActivityMonitor %tmp.11 231 30 45 ];
+        %tmp.11 = getv %tmp.10 :ActivityMonitor;
+        symbol [ getInfo %tmp.12 231 46 53 ];
+        %tmp.12 = getv function %tmp.11 :getInfo;
+        %tmp.13 = invoke %tmp.11 %tmp.12();
+        lputv %info.3 %tmp.13;
+        symbol [ info %info.3 231 16 20 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 232 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_12_235_12_if_stmt:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_16_232_73_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_16_232_42_begin:
+        %tmp.14 = lgetv %info.3;
+        symbol [ info %tmp.14 232 16 20 ];
+        %tmp.15 = null;
+        %tmp.16 = ne %tmp.14 %tmp.15;
+        bf %tmp.16 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_12_235_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_32_232_42_true:
+        %tmp.17 = lgetv %info.3;
+        symbol [ info %tmp.17 232 32 36 ];
+        %tmp.18 = as %tmp.17 { (!Null) };
+        %tmp.20 = const :sleepTime;
+        symbol [ sleepTime %tmp.20 232 42 51 const ];
+        %tmp.21 = canhazplz %tmp.18 %tmp.20;
+        push %tmp.21;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_32_232_42_end:
+        %tmp.22 = phi [%tmp.16 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_16_232_42_begin] [%tmp.21 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_32_232_42_true] [%tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_32_232_42_end];
+        bf %tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_12_235_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_55_232_73_true:
+        %tmp.23 = lgetv %info.3;
+        symbol [ info %tmp.23 232 55 59 ];
+        %tmp.24 = as %tmp.23 { (interface { var sleepTime; }) && (!Null) };
+        symbol [ sleepTime %tmp.25 232 60 69 ];
+        %tmp.25 = getv %tmp.24 :sleepTime;
+        %tmp.26 = null;
+        %tmp.27 = ne %tmp.25 %tmp.26;
+        push %tmp.27;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_55_232_73_end:
+        %tmp.28 = phi [%tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_16_232_73_begin] [%tmp.27 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_55_232_73_true] [%tmp.28 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_55_232_73_end];
+        bf %tmp.28 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_12_235_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_12_235_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_79_235_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 233 16 ]
+        %tmp.29 = lgetv %info.3;
+        symbol [ info %tmp.29 233 24 28 ];
+        %tmp.30 = as %tmp.29 { (interface { var sleepTime; }) && (!Null) };
+        symbol [ sleepTime %tmp.31 233 29 38 ];
+        %tmp.31 = getv %tmp.30 :sleepTime;
+        %tmp.32 = 3600.0f;
+        %tmp.33 = div %tmp.31 %tmp.32;
+        lputv %hours.1 %tmp.33;
+        symbol [ hours %hours.1 233 16 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 234 16 ]
+        %tmp.34 = true;
+        lputv %available.2 %tmp.34;
+        symbol [ available %available.2 234 16 25 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_79_235_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_12_235_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_232_12_235_12_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_230_41_236_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_230_8_236_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_230_8_236_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 238 8 ]
+        %tmp.35 = newd 3;
+        %tmp.36 = "quality";
+        %tmp.37 = 0;
+        %tmp.38 = dup %tmp.35;
+        %tmp.39 = aputv %tmp.38 %tmp.36 %tmp.37;
+        %tmp.40 = "hours";
+        %tmp.41 = lgetv %hours.1;
+        symbol [ hours %tmp.41 240 23 28 ];
+        %tmp.42 = dup %tmp.39;
+        %tmp.43 = aputv %tmp.42 %tmp.40 %tmp.41;
+        %tmp.44 = "available";
+        %tmp.45 = lgetv %available.2;
+        symbol [ available %tmp.45 241 27 36 ];
+        %tmp.46 = dup %tmp.43;
+        %tmp.47 = aputv %tmp.46 %tmp.44 %tmp.45;
+        ret %tmp.47;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_225_42_243_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 245; @symbol_functiondef = [getActivityData,245,13,28]; @symbol_return<0> = [Dictionary,245,34,44]; ]
+    function getActivityData() as Dictionary {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_245_45_268_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 246 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_245_45_268_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_245_45_268_4_stop" ]
+        %steps.1 = local;
+        symbol [ steps %steps.1 246 12 17 ];
+        %tmp.1 = 0;
+        lputv %steps.1 %tmp.1;
+        symbol [ steps %steps.1 246 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 247 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_245_45_268_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_245_45_268_4_stop" ]
+        %heartRate.2 = local;
+        symbol [ heartRate %heartRate.2 247 12 21 ];
+        %tmp.2 = 0;
+        lputv %heartRate.2 %tmp.2;
+        symbol [ heartRate %heartRate.2 247 12 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 248 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_245_45_268_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_245_45_268_4_stop" ]
+        %available.3 = local;
+        symbol [ available %available.3 248 12 21 ];
+        %tmp.3 = false;
+        lputv %available.3 %tmp.3;
+        symbol [ available %available.3 248 12 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 250 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_250_8_261_8_if_stmt:
+        symbol [ Toybox %tmp.5 250 12 18 ];
+        %tmp.5 = getv ? :Toybox;
+        %tmp.7 = const :ActivityMonitor;
+        symbol [ ActivityMonitor %tmp.7 250 24 39 const ];
+        %tmp.8 = canhazplz %tmp.5 %tmp.7;
+        bf %tmp.8 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_250_8_261_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_250_8_261_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_250_41_261_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 251 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_250_41_261_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_250_41_261_8_stop" ]
+        %info.4 = local;
+        symbol [ info %info.4 251 16 20 ];
+        symbol [ Toybox %tmp.10 251 23 29 ];
+        %tmp.10 = getv ? :Toybox;
+        %tmp.11 = as %tmp.10 { (interface { var ActivityMonitor; }) };
+        symbol [ ActivityMonitor %tmp.12 251 30 45 ];
+        %tmp.12 = getv %tmp.11 :ActivityMonitor;
+        symbol [ getInfo %tmp.13 251 46 53 ];
+        %tmp.13 = getv function %tmp.12 :getInfo;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        lputv %info.4 %tmp.14;
+        symbol [ info %info.4 251 16 20 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 252 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_252_12_260_12_if_stmt:
+        %tmp.15 = lgetv %info.4;
+        symbol [ info %tmp.15 252 16 20 ];
+        %tmp.16 = null;
+        %tmp.17 = ne %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_252_12_260_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_252_12_260_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_252_30_260_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 253 16 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_16_256_16_if_stmt:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_20_253_53_begin:
+        %tmp.18 = lgetv %info.4;
+        symbol [ info %tmp.18 253 20 24 ];
+        %tmp.19 = as %tmp.18 { (!Null) };
+        %tmp.21 = const :steps;
+        symbol [ steps %tmp.21 253 30 35 const ];
+        %tmp.22 = canhazplz %tmp.19 %tmp.21;
+        bf %tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_16_256_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_39_253_53_true:
+        %tmp.23 = lgetv %info.4;
+        symbol [ info %tmp.23 253 39 43 ];
+        %tmp.24 = as %tmp.23 { (interface { var steps; }) && (!Null) };
+        symbol [ steps %tmp.25 253 44 49 ];
+        %tmp.25 = getv %tmp.24 :steps;
+        %tmp.26 = null;
+        %tmp.27 = ne %tmp.25 %tmp.26;
+        push %tmp.27;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_39_253_53_end:
+        %tmp.28 = phi [%tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_20_253_53_begin] [%tmp.27 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_39_253_53_true] [%tmp.28 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_39_253_53_end];
+        bf %tmp.28 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_16_256_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_16_256_16_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_59_256_16_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 254 20 ]
+        %tmp.29 = lgetv %info.4;
+        symbol [ info %tmp.29 254 28 32 ];
+        %tmp.30 = as %tmp.29 { (interface { var steps; }) && (!Null) };
+        symbol [ steps %tmp.31 254 33 38 ];
+        %tmp.31 = getv %tmp.30 :steps;
+        lputv %steps.1 %tmp.31;
+        symbol [ steps %steps.1 254 20 25 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 255 20 ]
+        %tmp.32 = true;
+        lputv %available.3 %tmp.32;
+        symbol [ available %available.3 255 20 29 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_59_256_16_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_16_256_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_253_16_256_16_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 257 16 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_16_259_16_if_stmt:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_20_257_61_begin:
+        %tmp.33 = lgetv %info.4;
+        symbol [ info %tmp.33 257 20 24 ];
+        %tmp.34 = as %tmp.33 { (!Null) };
+        %tmp.36 = const :heartRate;
+        symbol [ heartRate %tmp.36 257 30 39 const ];
+        %tmp.37 = canhazplz %tmp.34 %tmp.36;
+        bf %tmp.37 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_16_259_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_43_257_61_true:
+        %tmp.38 = lgetv %info.4;
+        symbol [ info %tmp.38 257 43 47 ];
+        %tmp.39 = as %tmp.38 { (interface { var heartRate; }) && (!Null) };
+        symbol [ heartRate %tmp.40 257 48 57 ];
+        %tmp.40 = getv %tmp.39 :heartRate;
+        %tmp.41 = null;
+        %tmp.42 = ne %tmp.40 %tmp.41;
+        push %tmp.42;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_43_257_61_end:
+        %tmp.43 = phi [%tmp.37 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_20_257_61_begin] [%tmp.42 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_43_257_61_true] [%tmp.43 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_43_257_61_end];
+        bf %tmp.43 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_16_259_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_16_259_16_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_67_259_16_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 258 20 ]
+        %tmp.44 = lgetv %info.4;
+        symbol [ info %tmp.44 258 32 36 ];
+        %tmp.45 = as %tmp.44 { (interface { var heartRate; }) && (!Null) };
+        symbol [ heartRate %tmp.46 258 37 46 ];
+        %tmp.46 = getv %tmp.45 :heartRate;
+        lputv %heartRate.2 %tmp.46;
+        symbol [ heartRate %heartRate.2 258 20 29 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_67_259_16_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_16_259_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_257_16_259_16_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_252_30_260_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_252_12_260_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_252_12_260_12_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_250_41_261_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_250_8_261_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_250_8_261_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 263 8 ]
+        %tmp.47 = newd 3;
+        %tmp.48 = "steps";
+        %tmp.49 = lgetv %steps.1;
+        symbol [ steps %tmp.49 264 23 28 ];
+        %tmp.50 = dup %tmp.47;
+        %tmp.51 = aputv %tmp.50 %tmp.48 %tmp.49;
+        %tmp.52 = "heartRate";
+        %tmp.53 = lgetv %heartRate.2;
+        symbol [ heartRate %tmp.53 265 27 36 ];
+        %tmp.54 = dup %tmp.51;
+        %tmp.55 = aputv %tmp.54 %tmp.52 %tmp.53;
+        %tmp.56 = "available";
+        %tmp.57 = lgetv %available.3;
+        symbol [ available %tmp.57 266 27 36 ];
+        %tmp.58 = dup %tmp.55;
+        %tmp.59 = aputv %tmp.58 %tmp.56 %tmp.57;
+        ret %tmp.59;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_245_45_268_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 273; @symbol_functiondef = [exportDataJSON,273,13,27]; @symbol_return<0> = [String,273,33,39]; ]
+    function exportDataJSON() as String {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_273_40_284_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 274 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_273_40_284_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_273_40_284_4_stop" ]
+        %json.1 = local;
+        symbol [ json %json.1 274 12 16 ];
+        %tmp.1 = "{\"app\":\"MoodFlow\",\"version\":\"1.0\",\"entries\":[";
+        lputv %json.1 %tmp.1;
+        symbol [ json %json.1 274 12 16 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 275 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 275 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 275 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 275 24 25 ];
+        symbol [ moodEntries %tmp.5 275 28 39 ];
+        %tmp.5 = getv ? :moodEntries;
+        symbol [ size %tmp.6 275 40 44 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_53_281_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 276 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_53_281_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_53_281_8_stop" ]
+        %entry.3 = local;
+        symbol [ entry %entry.3 276 16 21 ];
+        symbol [ moodEntries %tmp.10 276 24 35 ];
+        %tmp.10 = getv ? :moodEntries;
+        %tmp.11 = lgetv %i.2;
+        symbol [ i %tmp.11 276 36 37 ];
+        %tmp.12 = agetv %tmp.10 %tmp.11;
+        lputv %entry.3 %tmp.12;
+        symbol [ entry %entry.3 276 16 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 277 12 ]
+        %tmp.13 = lgetv %json.1;
+        symbol [ json %tmp.13 277 12 16 ];
+        %tmp.14 = "{\"mood\":";
+        %tmp.15 = lgetv %entry.3;
+        symbol [ entry %tmp.15 277 35 40 ];
+        symbol [ mood %tmp.16 277 41 45 ];
+        %tmp.16 = getv %tmp.15 :mood;
+        %tmp.17 = add %tmp.14 %tmp.16;
+        %tmp.18 = ",\"note\":\"";
+        %tmp.19 = add %tmp.17 %tmp.18;
+        %tmp.20 = lgetv %entry.3;
+        symbol [ entry %tmp.20 277 65 70 ];
+        symbol [ note %tmp.21 277 71 75 ];
+        %tmp.21 = getv %tmp.20 :note;
+        %tmp.22 = add %tmp.19 %tmp.21;
+        %tmp.23 = "\"}";
+        %tmp.24 = add %tmp.22 %tmp.23;
+        %tmp.25 = add %tmp.13 %tmp.24;
+        lputv %json.1 %tmp.25;
+        symbol [ json %json.1 277 12 16 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 278 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_278_12_280_12_if_stmt:
+        %tmp.26 = lgetv %i.2;
+        symbol [ i %tmp.26 278 16 17 ];
+        symbol [ moodEntries %tmp.28 278 20 31 ];
+        %tmp.28 = getv ? :moodEntries;
+        symbol [ size %tmp.29 278 32 36 ];
+        %tmp.29 = getv function %tmp.28 :size;
+        %tmp.30 = invoke %tmp.28 %tmp.29();
+        %tmp.31 = 1;
+        %tmp.32 = sub %tmp.30 %tmp.31;
+        %tmp.33 = lt %tmp.26 %tmp.32;
+        bf %tmp.33 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_278_12_280_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_278_12_280_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_278_44_280_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 279 16 ]
+        %tmp.34 = lgetv %json.1;
+        symbol [ json %tmp.34 279 16 20 ];
+        %tmp.35 = ",";
+        %tmp.36 = add %tmp.34 %tmp.35;
+        lputv %json.1 %tmp.36;
+        symbol [ json %json.1 279 16 20 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_278_44_280_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_278_12_280_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_278_12_280_12_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_53_281_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 275 ]
+        %tmp.39 = lgetv %i.2;
+        symbol [ i %tmp.39 275 48 49 ];
+        %tmp.40 = add %tmp.39 1;
+        lputv %i.2 %tmp.40;
+        symbol [ i %i.2 275 48 49 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_275_8_281_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 282 8 ]
+        %tmp.41 = lgetv %json.1;
+        symbol [ json %tmp.41 282 8 12 ];
+        %tmp.42 = "]}";
+        %tmp.43 = add %tmp.41 %tmp.42;
+        lputv %json.1 %tmp.43;
+        symbol [ json %json.1 282 8 12 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 283 8 ]
+        %tmp.44 = lgetv %json.1;
+        symbol [ json %tmp.44 283 15 19 ];
+        ret %tmp.44;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_273_40_284_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 286; @symbol_functiondef = [exportDataCSV,286,13,26]; @symbol_return<0> = [String,286,32,38]; ]
+    function exportDataCSV() as String {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_286_39_293_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 287 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_286_39_293_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_286_39_293_4_stop" ]
+        %csv.1 = local;
+        symbol [ csv %csv.1 287 12 15 ];
+        %tmp.1 = "mood,label,note\n";
+        lputv %csv.1 %tmp.1;
+        symbol [ csv %csv.1 287 12 15 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 288 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 288 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 288 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 288 24 25 ];
+        symbol [ moodEntries %tmp.5 288 28 39 ];
+        %tmp.5 = getv ? :moodEntries;
+        symbol [ size %tmp.6 288 40 44 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_53_291_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 289 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_53_291_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_53_291_8_stop" ]
+        %entry.3 = local;
+        symbol [ entry %entry.3 289 16 21 ];
+        symbol [ moodEntries %tmp.10 289 24 35 ];
+        %tmp.10 = getv ? :moodEntries;
+        %tmp.11 = lgetv %i.2;
+        symbol [ i %tmp.11 289 36 37 ];
+        %tmp.12 = agetv %tmp.10 %tmp.11;
+        lputv %entry.3 %tmp.12;
+        symbol [ entry %entry.3 289 16 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 290 12 ]
+        %tmp.13 = lgetv %csv.1;
+        symbol [ csv %tmp.13 290 12 15 ];
+        %tmp.14 = lgetv %entry.3;
+        symbol [ entry %tmp.14 290 19 24 ];
+        symbol [ mood %tmp.15 290 25 29 ];
+        %tmp.15 = getv %tmp.14 :mood;
+        %tmp.16 = ",";
+        %tmp.17 = add %tmp.15 %tmp.16;
+        %tmp.18 = self;
+        symbol [ getMoodLabel %tmp.19 290 38 50 ];
+        %tmp.19 = getv function %tmp.18 :getMoodLabel;
+        %tmp.20 = lgetv %entry.3;
+        symbol [ entry %tmp.20 290 51 56 ];
+        symbol [ mood %tmp.21 290 57 61 ];
+        %tmp.21 = getv %tmp.20 :mood;
+        %tmp.22 = invoke %tmp.18 %tmp.19(%tmp.21);
+        %tmp.23 = add %tmp.17 %tmp.22;
+        %tmp.24 = ",";
+        %tmp.25 = add %tmp.23 %tmp.24;
+        %tmp.26 = lgetv %entry.3;
+        symbol [ entry %tmp.26 290 71 76 ];
+        symbol [ note %tmp.27 290 77 81 ];
+        %tmp.27 = getv %tmp.26 :note;
+        %tmp.28 = add %tmp.25 %tmp.27;
+        %tmp.29 = "\n";
+        %tmp.30 = add %tmp.28 %tmp.29;
+        %tmp.31 = add %tmp.13 %tmp.30;
+        lputv %csv.1 %tmp.31;
+        symbol [ csv %csv.1 290 12 15 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_53_291_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 288 ]
+        %tmp.34 = lgetv %i.2;
+        symbol [ i %tmp.34 288 48 49 ];
+        %tmp.35 = add %tmp.34 1;
+        lputv %i.2 %tmp.35;
+        symbol [ i %i.2 288 48 49 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_288_8_291_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 292 8 ]
+        %tmp.36 = lgetv %csv.1;
+        symbol [ csv %tmp.36 292 15 18 ];
+        ret %tmp.36;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_286_39_293_4_stop:
+    }
+}
+//! Mood Entry class
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 297; @symbol_classdef = [MoodEntry,297,6,15]; ]
+class MoodEntry {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 297; ]
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 297; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 298; @position = 8; @symbol_vardef = [mood,298,8,12]; @symbol_type<0> = [Number,298,16,22]; ]
+    var mood as Number;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 299; @position = 8; @symbol_vardef = [timestamp,299,8,17]; @symbol_type<0> = [Number,299,21,27]; ]
+    var timestamp as Number;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 300; @position = 8; @symbol_vardef = [note,300,8,12]; @symbol_type<0> = [String,300,16,22]; ]
+    var note as String;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 302; @symbol_functiondef = [initialize,302,13,23]; @symbol_param<0> = [mood,302,24,28]; @symbol_param<0>_type<0> = [Number,302,32,38]; @symbol_param<1> = [timestamp,302,40,49]; @symbol_param<1>_type<0> = [Number,302,53,59]; @symbol_param<2> = [note,302,61,65]; @symbol_param<2>_type<0> = [String,302,69,75]; ]
+    function initialize(mood as Number, timestamp as Number, note as String) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_302_77_306_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 303 8 ]
+        symbol [ self %self 303 8 12 ];
+        %tmp.1 = lgetv %mood;
+        symbol [ mood %tmp.1 303 20 24 ];
+        symbol [ mood ? 303 13 17 ];
+        putv self :mood %tmp.1;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 304 8 ]
+        symbol [ self %self 304 8 12 ];
+        %tmp.2 = lgetv %timestamp;
+        symbol [ timestamp %tmp.2 304 25 34 ];
+        symbol [ timestamp ? 304 13 22 ];
+        putv self :timestamp %tmp.2;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc" 305 8 ]
+        symbol [ self %self 305 8 12 ];
+        %tmp.3 = lgetv %note;
+        symbol [ note %tmp.3 305 20 24 ];
+        symbol [ note ? 305 13 17 ];
+        putv self :note %tmp.3;
+_Users_jeffcechinel_Github_moodflow_garmin_source_MoodFlowApp_mc_302_77_306_4_stop:
+    }
+}
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/MoodFlowApp.mc"; @line = 1; ]
+<init> {
+}
