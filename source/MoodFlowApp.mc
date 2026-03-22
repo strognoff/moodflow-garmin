@@ -2,6 +2,9 @@ import Toybox.Lang;
 import Toybox.Application;
 import Toybox.WatchUi;
 import Toybox.Attention;
+import Toybox.ActivityMonitor;
+import Toybox.Time;
+import Toybox.Time.Gregorian;
 
 //! Main application entry point for MoodFlow
 class MoodFlowApp extends Application.AppBase {
@@ -37,7 +40,7 @@ class MoodFlowApp extends Application.AppBase {
 
     function getInitialView() {
         var mainView = new MoodFlowView(self);
-        return [ mainView, new MoodFlowDelegate(mainView) ] as [WatchUi.View, WatchUi.InputDelegate];
+        return [ mainView, new MoodFlowDelegate(mainView) ] as [WatchUi.View, WatchUi.BehaviorDelegate];
     }
 
     function onStart(state) {
@@ -103,22 +106,56 @@ class MoodFlowApp extends Application.AppBase {
         sessionStorage.setValue("moodEntries", entriesArray);
     }
     
+    function getTodayDayOfYear() as Number {
+        var now = Toybox.Time.now();
+        var info = Toybox.Time.Gregorian.info(now, Toybox.Time.FORMAT_SHORT);
+        return info.day_of_week + (info.day * 1000) + (info.month * 100000);
+    }
+    
+    function hasTodayMood() as Boolean {
+        var today = getTodayDayOfYear();
+        for (var i = moodEntries.size() - 1; i >= 0; i--) {
+            if (moodEntries[i].timestamp == today) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    function replaceTodayMood(mood as Number) as Void {
+        var today = getTodayDayOfYear();
+        for (var i = moodEntries.size() - 1; i >= 0; i--) {
+            if (moodEntries[i].timestamp == today) {
+                moodEntries[i].mood = mood;
+                saveMoodEntries();
+                return;
+            }
+        }
+        // If not found, add new entry
+        addMoodEntry(mood, "");
+    }
+    
     function addMoodEntry(mood as Number, note as String) as Void {
-        var entry = new MoodEntry(mood, moodEntries.size(), note);
+        var today = getTodayDayOfYear();
+        var entry = new MoodEntry(mood, today, note);
         moodEntries.add(entry);
         saveMoodEntries();
     }
     
     function getTodayEntries() as Array<MoodEntry> {
-        var todayIndex = moodEntries.size();
+        var today = getTodayDayOfYear();
         var todayEntries = [];
-        if (todayIndex > 0) {
-            for (var i = todayIndex - 1; i >= 0; i--) {
+        for (var i = 0; i < moodEntries.size(); i++) {
+            if (moodEntries[i].timestamp == today) {
                 todayEntries.add(moodEntries[i]);
-                if (i == 0) { break; }
             }
         }
         return todayEntries;
+    }
+    
+    function resetAllData() as Void {
+        moodEntries = [];
+        saveMoodEntries();
     }
     
     function getLast7DaysEntries() as Array<MoodEntry> {
@@ -183,21 +220,50 @@ class MoodFlowApp extends Application.AppBase {
     }
     
     // ============================================
-    // Garmin Data (simulated)
+    // Garmin Data (from watch)
     // ============================================
     function getSleepData() as Dictionary {
+        var hours = 0.0f;
+        var available = false;
+        
+        // Try to get sleep data from ActivityMonitor
+        if (Toybox has :ActivityMonitor) {
+            var info = Toybox.ActivityMonitor.getInfo();
+            if (info != null && info has :sleepTime && info.sleepTime != null) {
+                hours = info.sleepTime / 3600.0f; // Convert seconds to hours
+                available = true;
+            }
+        }
+        
         return {
-            "quality" => 75,
-            "hours" => 7.5f,
-            "available" => true
+            "quality" => 0,
+            "hours" => hours,
+            "available" => available
         };
     }
     
     function getActivityData() as Dictionary {
+        var steps = 0;
+        var heartRate = 0;
+        var available = false;
+        
+        if (Toybox has :ActivityMonitor) {
+            var info = Toybox.ActivityMonitor.getInfo();
+            if (info != null) {
+                if (info has :steps && info.steps != null) {
+                    steps = info.steps;
+                    available = true;
+                }
+                if (info has :heartRate && info.heartRate != null) {
+                    heartRate = info.heartRate;
+                }
+            }
+        }
+        
         return {
-            "steps" => 8500,
-            "heartRate" => 68,
-            "available" => true
+            "steps" => steps,
+            "heartRate" => heartRate,
+            "available" => available
         };
     }
     

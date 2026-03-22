@@ -5,27 +5,34 @@ A daily mood and emotion tracker for Garmin Connect IQ watches with 7-day trend 
 ## Features
 
 ### Core Features
-- **5-Point Mood Scale**: Check-in with 1=Very Bad to 5=Very Good
-- **Optional Notes**: Add context to your mood entries
-- **7-Day Trend View**: Visual chart showing mood patterns
-- **Sleep Correlation**: View sleep quality alongside mood
-- **Activity Correlation**: See steps/heart rate with mood data
+- **5-Point Mood Scale**: Check-in with 1=Very Bad to 5=Very Good (replaces if checking in on the same day)
+- **7-Day Trend View**: Visual chart showing mood patterns over the past week
+- **Sleep Correlation**: View sleep hours alongside mood trends
+- **Activity Correlation**: See step count with mood data
 - **Local Storage**: All data stored securely on device
-- **Data Export**: JSON and CSV export for personal records
-- **Daily Reminder**: Configurable vibration notification
+- **Data Management**: Reset all mood data via Settings
 
 ### Navigation
-- **Swipe Left/Right**: Navigate between Check-in, Trend, Note, and Settings screens
-- **Hold Tap**: Quick access to add notes
-- **Back Button**: Return to previous screen
+- **Swipe Left/Right**: Navigate between Check-in and Trend screens
+- **UP/DOWN Buttons**: Select mood level (1-5) on Check-in screen
+- **ENTER Button**: Save mood entry (with confirmation if replacing today's mood)
+- **MENU Button (M)**: Open Settings from Check-in screen
+- **BACK Button**: Exit Settings and return to Check-in screen
 
-### Accessibility
-- **Color-Blind Friendly**: Different shapes + colors for mood levels
-  - Purple Diamond (◆) = Very Bad
-  - Blue Diamond (◇) = Bad  
-  - Green Circle (○) = Neutral
-  - Yellow Triangle (△) = Good
-  - Orange Star (☆) = Very Good
+### Settings
+- **Access**: Press MENU button (M) from the main Check-in screen
+- **Reset All Data**: Delete all mood entries with confirmation dialog
+- **Clean UI**: Minimal, focused interface matching the app's design
+
+### Visual Design
+- **Color-Blind Friendly**: Different colors for mood levels
+  - Purple (1) = Very Bad
+  - Blue (2) = Bad  
+  - Green (3) = Neutral
+  - Yellow (4) = Good
+  - Orange (5) = Very Good
+- **Modern Interface**: Clean layout with soft colors and clear typography
+- **Responsive**: Works on both round and rectangular watch displays
 
 ## Color Scheme
 
@@ -65,22 +72,43 @@ Calming wellness palette:
 ## Technical Details
 
 - **Minimum API Level**: 4.2.0
-- **Storage**: Device-local with optional export
+- **Storage**: Device-local storage for mood entries
 - **Sync**: None required - works fully offline
-- **Permissions**: Activity data, Sleep data, Notifications, Vibrate
+- **Permissions**: Activity data, Sleep data, Vibrate
 
 ## Building
 
+Build and test using Visual Studio Code with the Garmin Connect IQ extension:
+
+1. Open the project in VS Code
+2. Press F5 or use the Run configuration in `.vscode/launch.json`
+3. Select your target device (default: fenix8solar51mm)
+
+Alternatively, use the Garmin Monkey C compiler:
 ```bash
-# Using Garmin Monkey C compiler
-monkeyc -f project.jungle -y private-key.der -o output.prg -w
+monkeyc -f monkey.jungle -o output.prg -w
 ```
 
-## Data Export
+## Changelog
 
-Export your mood data as:
-- **JSON**: Full structured data with timestamps
-- **CSV**: Spreadsheet-compatible format
+### Recent Updates (March 2026)
+
+#### Settings Redesign
+- **MENU button access**: Settings now only accessible via MENU button (M) from Check-in screen
+- **Simplified interface**: Settings screen now features only essential Reset Data option
+- **Improved navigation**: BACK button properly exits settings
+- **Visual consistency**: Settings header matches MoodFlow check-in screen styling
+
+#### Navigation Improvements
+- **Streamlined swipe navigation**: Left/Right swipes now only cycle between Check-in and Trend screens
+- **Removed Settings from swipe**: Prevents accidental access to destructive data operations
+- **Better button handling**: Migrated to BehaviorDelegate for proper BACK button support
+
+#### UI/UX Enhancements
+- **Consistent color scheme**: All screens use the same calming wellness palette
+- **Clear visual hierarchy**: Headers and buttons with improved styling
+- **Warning indicators**: Red/pink colors for destructive actions (Reset Data)
+- **Confirmation dialogs**: Multi-step confirmation prevents accidental data loss
 
 ## License
 
