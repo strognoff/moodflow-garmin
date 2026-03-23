@@ -1,0 +1,997 @@
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Graphics,2,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
+import Toybox.Lang;
+//! Check-in screen for mood selection
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 6; @symbol_moduledef = [CheckInScreen,6,7,20]; ]
+module CheckInScreen {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 8; @position = 10; @symbol_constdef = [COLOR_SOFT_BLUE,8,10,25]; ]
+    const COLOR_SOFT_BLUE = 0x90CAF9;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 9; @position = 10; @symbol_constdef = [COLOR_WARM_GREY,9,10,25]; ]
+    const COLOR_WARM_GREY = 0xECEFF1;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 10; @position = 10; @symbol_constdef = [COLOR_DARK_GREY,10,10,25]; ]
+    const COLOR_DARK_GREY = 0x37474F;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 11; @position = 10; @symbol_constdef = [COLOR_SOFT_LAVENDER,11,10,29]; ]
+    const COLOR_SOFT_LAVENDER = 0xCE93D8;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 13; @symbol_functiondef = [draw,13,13,17]; @symbol_param<0> = [dc,13,18,20]; @symbol_param<0>_type<0> = [Dc,13,24,26]; @symbol_param<1> = [app,13,28,31]; @symbol_param<1>_type<0> = [MoodFlowApp,13,35,46]; @symbol_param<2> = [selectedMoodIndex,13,48,65]; @symbol_param<2>_type<0> = [Number,13,69,75]; @symbol_param<3> = [bezelClearance,13,77,91]; @symbol_param<3>_type<0> = [Number,13,95,101]; @symbol_param<4> = [showingConfirmDialog,13,103,123]; @symbol_param<4>_type<0> = [Boolean,13,127,134]; ]
+    function draw(dc as Dc, app as MoodFlowApp, selectedMoodIndex as Number, bezelClearance as Number, showingConfirmDialog as Boolean) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 14 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %width.1 = local;
+        symbol [ width %width.1 14 12 17 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 14 20 22 ];
+        symbol [ getWidth %tmp.2 14 23 31 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %width.1 %tmp.3;
+        symbol [ width %width.1 14 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 15 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %height.2 = local;
+        symbol [ height %height.2 15 12 18 ];
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 15 21 23 ];
+        symbol [ getHeight %tmp.5 15 24 33 ];
+        %tmp.5 = getv function %tmp.4 :getHeight;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %height.2 %tmp.6;
+        symbol [ height %height.2 15 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 16 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %centerX.3 = local;
+        symbol [ centerX %centerX.3 16 12 19 ];
+        %tmp.7 = lgetv %width.1;
+        symbol [ width %tmp.7 16 22 27 ];
+        %tmp.8 = 2;
+        %tmp.9 = div %tmp.7 %tmp.8;
+        lputv %centerX.3 %tmp.9;
+        symbol [ centerX %centerX.3 16 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 17 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %centerY.4 = local;
+        symbol [ centerY %centerY.4 17 12 19 ];
+        %tmp.10 = lgetv %height.2;
+        symbol [ height %tmp.10 17 22 28 ];
+        %tmp.11 = 2;
+        %tmp.12 = div %tmp.10 %tmp.11;
+        lputv %centerY.4 %tmp.12;
+        symbol [ centerY %centerY.4 17 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 19 8 ]
+        %tmp.13 = lgetv %dc;
+        symbol [ dc %tmp.13 19 8 10 ];
+        symbol [ setColor %tmp.14 19 11 19 ];
+        %tmp.14 = getv function %tmp.13 :setColor;
+        symbol [ COLOR_WARM_GREY %tmp.16 19 20 35 ];
+        %tmp.16 = getv ? :COLOR_WARM_GREY;
+        symbol [ COLOR_WARM_GREY %tmp.18 19 37 52 ];
+        %tmp.18 = getv ? :COLOR_WARM_GREY;
+        invoke %tmp.13 %tmp.14(%tmp.16, %tmp.18);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 20 8 ]
+        %tmp.19 = lgetv %dc;
+        symbol [ dc %tmp.19 20 8 10 ];
+        symbol [ clear %tmp.20 20 11 16 ];
+        %tmp.20 = getv function %tmp.19 :clear;
+        invoke %tmp.19 %tmp.20();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 23 8 ]
+        %tmp.21 = lgetv %dc;
+        symbol [ dc %tmp.21 23 8 10 ];
+        symbol [ setColor %tmp.22 23 11 19 ];
+        %tmp.22 = getv function %tmp.21 :setColor;
+        symbol [ COLOR_SOFT_BLUE %tmp.24 23 20 35 ];
+        %tmp.24 = getv ? :COLOR_SOFT_BLUE;
+        symbol [ COLOR_SOFT_BLUE %tmp.26 23 37 52 ];
+        %tmp.26 = getv ? :COLOR_SOFT_BLUE;
+        invoke %tmp.21 %tmp.22(%tmp.24, %tmp.26);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 24 8 ]
+        %tmp.27 = lgetv %dc;
+        symbol [ dc %tmp.27 24 8 10 ];
+        symbol [ fillRectangle %tmp.28 24 11 24 ];
+        %tmp.28 = getv function %tmp.27 :fillRectangle;
+        %tmp.29 = 0;
+        %tmp.30 = 0;
+        %tmp.31 = lgetv %width.1;
+        symbol [ width %tmp.31 24 31 36 ];
+        %tmp.32 = lgetv %height.2;
+        symbol [ height %tmp.32 24 39 45 ];
+        %tmp.33 = 0.15;
+        %tmp.34 = mul %tmp.32 %tmp.33;
+        symbol [ toNumber %tmp.35 24 54 62 ];
+        %tmp.35 = getv function %tmp.34 :toNumber;
+        %tmp.36 = invoke %tmp.34 %tmp.35();
+        invoke %tmp.27 %tmp.28(%tmp.29, %tmp.30, %tmp.31, %tmp.36);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 26 8 ]
+        %tmp.37 = lgetv %dc;
+        symbol [ dc %tmp.37 26 8 10 ];
+        symbol [ setColor %tmp.38 26 11 19 ];
+        %tmp.38 = getv function %tmp.37 :setColor;
+        symbol [ COLOR_DARK_GREY %tmp.40 26 20 35 ];
+        %tmp.40 = getv ? :COLOR_DARK_GREY;
+        symbol [ Graphics %tmp.41 26 37 45 ];
+        %tmp.41 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.42 26 46 63 ];
+        %tmp.42 = getv %tmp.41 :COLOR_TRANSPARENT;
+        invoke %tmp.37 %tmp.38(%tmp.40, %tmp.42);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 27 8 ]
+        %tmp.43 = lgetv %dc;
+        symbol [ dc %tmp.43 27 8 10 ];
+        symbol [ drawText %tmp.44 27 11 19 ];
+        %tmp.44 = getv function %tmp.43 :drawText;
+        %tmp.45 = lgetv %centerX.3;
+        symbol [ centerX %tmp.45 27 20 27 ];
+        %tmp.46 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.46 27 29 43 ];
+        %tmp.47 = 15;
+        %tmp.48 = add %tmp.46 %tmp.47;
+        symbol [ Graphics %tmp.49 27 50 58 ];
+        %tmp.49 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.50 27 59 68 ];
+        %tmp.50 = getv %tmp.49 :FONT_TINY;
+        %tmp.51 = "MoodFlow";
+        symbol [ Graphics %tmp.52 27 82 90 ];
+        %tmp.52 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.53 27 91 110 ];
+        %tmp.53 = getv %tmp.52 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.43 %tmp.44(%tmp.45, %tmp.48, %tmp.50, %tmp.51, %tmp.53);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 30 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %startX.5 = local;
+        symbol [ startX %startX.5 30 12 18 ];
+        %tmp.54 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.54 30 21 35 ];
+        %tmp.55 = 15;
+        %tmp.56 = add %tmp.54 %tmp.55;
+        lputv %startX.5 %tmp.56;
+        symbol [ startX %startX.5 30 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 31 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %endX.6 = local;
+        symbol [ endX %endX.6 31 12 16 ];
+        %tmp.57 = lgetv %width.1;
+        symbol [ width %tmp.57 31 19 24 ];
+        %tmp.58 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.58 31 27 41 ];
+        %tmp.59 = sub %tmp.57 %tmp.58;
+        %tmp.60 = 15;
+        %tmp.61 = sub %tmp.59 %tmp.60;
+        lputv %endX.6 %tmp.61;
+        symbol [ endX %endX.6 31 12 16 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 32 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %moodY.7 = local;
+        symbol [ moodY %moodY.7 32 12 17 ];
+        %tmp.62 = lgetv %centerY.4;
+        symbol [ centerY %tmp.62 32 20 27 ];
+        %tmp.63 = 20;
+        %tmp.64 = sub %tmp.62 %tmp.63;
+        lputv %moodY.7 %tmp.64;
+        symbol [ moodY %moodY.7 32 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 33 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %spacing.8 = local;
+        symbol [ spacing %spacing.8 33 12 19 ];
+        %tmp.65 = lgetv %endX.6;
+        symbol [ endX %tmp.65 33 23 27 ];
+        %tmp.66 = lgetv %startX.5;
+        symbol [ startX %tmp.66 33 30 36 ];
+        %tmp.67 = sub %tmp.65 %tmp.66;
+        %tmp.68 = 4;
+        %tmp.69 = div %tmp.67 %tmp.68;
+        lputv %spacing.8 %tmp.69;
+        symbol [ spacing %spacing.8 33 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 34 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %baseDim.9 = local;
+        symbol [ baseDim %baseDim.9 34 12 19 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_begin:
+        %tmp.70 = lgetv %width.1;
+        symbol [ width %tmp.70 34 22 27 ];
+        %tmp.71 = lgetv %height.2;
+        symbol [ height %tmp.71 34 30 36 ];
+        %tmp.72 = lt %tmp.70 %tmp.71;
+        bf %tmp.72 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_true:
+        %tmp.73 = lgetv %width.1;
+        symbol [ width %tmp.73 34 39 44 ];
+        push %tmp.73;
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_else_false:
+        %tmp.74 = lgetv %height.2;
+        symbol [ height %tmp.74 34 47 53 ];
+        push %tmp.74;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_end:
+        %tmp.75 = phi [%tmp.72 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_begin] [%tmp.73 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_true] [%tmp.74 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_else_false] [%tmp.75 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_34_22_34_47_end];
+        lputv %baseDim.9 %tmp.75;
+        symbol [ baseDim %baseDim.9 34 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 35 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %circleR.10 = local;
+        symbol [ circleR %circleR.10 35 12 19 ];
+        %tmp.76 = lgetv %baseDim.9;
+        symbol [ baseDim %tmp.76 35 23 30 ];
+        %tmp.77 = 0.09;
+        %tmp.78 = mul %tmp.76 %tmp.77;
+        symbol [ toNumber %tmp.79 35 39 47 ];
+        %tmp.79 = getv function %tmp.78 :toNumber;
+        %tmp.80 = invoke %tmp.78 %tmp.79();
+        lputv %circleR.10 %tmp.80;
+        symbol [ circleR %circleR.10 35 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 36 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_36_8_36_42_if_stmt:
+        %tmp.81 = lgetv %circleR.10;
+        symbol [ circleR %tmp.81 36 12 19 ];
+        %tmp.82 = 20;
+        %tmp.83 = lt %tmp.81 %tmp.82;
+        bf %tmp.83 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_36_8_36_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_36_8_36_42_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_36_26_36_42_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 36 28 ]
+        %tmp.84 = 20;
+        lputv %circleR.10 %tmp.84;
+        symbol [ circleR %circleR.10 36 28 35 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_36_26_36_42_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_36_8_36_42_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_36_8_36_42_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 38 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %moodColors.11 = local;
+        symbol [ moodColors %moodColors.11 38 12 22 ];
+        %tmp.85 = newa 5;
+        %tmp.86 = 0x9C27B0;
+        %tmp.87 = dup %tmp.85;
+        %tmp.88 = aputv %tmp.87 0 %tmp.86;
+        %tmp.89 = 0x2196F3;
+        %tmp.90 = dup %tmp.88;
+        %tmp.91 = aputv %tmp.90 1 %tmp.89;
+        %tmp.92 = 0x4CAF50;
+        %tmp.93 = dup %tmp.91;
+        %tmp.94 = aputv %tmp.93 2 %tmp.92;
+        %tmp.95 = 0xFFEB3B;
+        %tmp.96 = dup %tmp.94;
+        %tmp.97 = aputv %tmp.96 3 %tmp.95;
+        %tmp.98 = 0xFF9800;
+        %tmp.99 = dup %tmp.97;
+        %tmp.100 = aputv %tmp.99 4 %tmp.98;
+        lputv %moodColors.11 %tmp.100;
+        symbol [ moodColors %moodColors.11 38 12 22 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 40 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_end" ]
+        %i.12 = local;
+        symbol [ i %i.12 40 17 18 ];
+        %tmp.101 = 0;
+        lputv %i.12 %tmp.101;
+        symbol [ i %i.12 40 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_test:
+        %tmp.102 = lgetv %i.12;
+        symbol [ i %tmp.102 40 24 25 ];
+        %tmp.103 = 5;
+        %tmp.104 = lt %tmp.102 %tmp.103;
+        bf %tmp.104 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_36_59_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 41 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_36_59_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_36_59_8_stop" ]
+        %x.13 = local;
+        symbol [ x %x.13 41 16 17 ];
+        %tmp.105 = lgetv %startX.5;
+        symbol [ startX %tmp.105 41 20 26 ];
+        %tmp.106 = lgetv %i.12;
+        symbol [ i %tmp.106 41 30 31 ];
+        %tmp.107 = lgetv %spacing.8;
+        symbol [ spacing %tmp.107 41 34 41 ];
+        %tmp.108 = mul %tmp.106 %tmp.107;
+        %tmp.109 = add %tmp.105 %tmp.108;
+        lputv %x.13 %tmp.109;
+        symbol [ x %x.13 41 16 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 42 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_36_59_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_36_59_8_stop" ]
+        %sel.14 = local;
+        symbol [ sel %sel.14 42 16 19 ];
+        %tmp.110 = lgetv %i.12;
+        symbol [ i %tmp.110 42 23 24 ];
+        %tmp.111 = lgetv %selectedMoodIndex;
+        symbol [ selectedMoodIndex %tmp.111 42 28 45 ];
+        %tmp.112 = eq %tmp.110 %tmp.111;
+        lputv %sel.14 %tmp.112;
+        symbol [ sel %sel.14 42 16 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 44 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_44_12_55_12_if_stmt:
+        %tmp.113 = lgetv %sel.14;
+        symbol [ sel %tmp.113 44 16 19 ];
+        bf %tmp.113 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_44_12_55_12_if_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_44_12_55_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_44_21_52_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 45 16 ]
+        %tmp.114 = lgetv %dc;
+        symbol [ dc %tmp.114 45 16 18 ];
+        symbol [ setColor %tmp.115 45 19 27 ];
+        %tmp.115 = getv function %tmp.114 :setColor;
+        symbol [ Graphics %tmp.116 45 28 36 ];
+        %tmp.116 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.117 45 37 48 ];
+        %tmp.117 = getv %tmp.116 :COLOR_WHITE;
+        symbol [ Graphics %tmp.118 45 50 58 ];
+        %tmp.118 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.119 45 59 70 ];
+        %tmp.119 = getv %tmp.118 :COLOR_WHITE;
+        invoke %tmp.114 %tmp.115(%tmp.117, %tmp.119);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 46 16 ]
+        %tmp.120 = lgetv %dc;
+        symbol [ dc %tmp.120 46 16 18 ];
+        symbol [ fillCircle %tmp.121 46 19 29 ];
+        %tmp.121 = getv function %tmp.120 :fillCircle;
+        %tmp.122 = lgetv %x.13;
+        symbol [ x %tmp.122 46 30 31 ];
+        %tmp.123 = lgetv %moodY.7;
+        symbol [ moodY %tmp.123 46 33 38 ];
+        %tmp.124 = lgetv %circleR.10;
+        symbol [ circleR %tmp.124 46 40 47 ];
+        invoke %tmp.120 %tmp.121(%tmp.122, %tmp.123, %tmp.124);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 48 16 ]
+        %tmp.125 = lgetv %dc;
+        symbol [ dc %tmp.125 48 16 18 ];
+        symbol [ setColor %tmp.126 48 19 27 ];
+        %tmp.126 = getv function %tmp.125 :setColor;
+        %tmp.127 = lgetv %moodColors.11;
+        symbol [ moodColors %tmp.127 48 28 38 ];
+        %tmp.128 = lgetv %i.12;
+        symbol [ i %tmp.128 48 39 40 ];
+        %tmp.129 = agetv %tmp.127 %tmp.128;
+        symbol [ Graphics %tmp.130 48 43 51 ];
+        %tmp.130 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.131 48 52 69 ];
+        %tmp.131 = getv %tmp.130 :COLOR_TRANSPARENT;
+        invoke %tmp.125 %tmp.126(%tmp.129, %tmp.131);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 49 16 ]
+        %tmp.132 = lgetv %dc;
+        symbol [ dc %tmp.132 49 16 18 ];
+        symbol [ setPenWidth %tmp.133 49 19 30 ];
+        %tmp.133 = getv function %tmp.132 :setPenWidth;
+        %tmp.134 = 4;
+        invoke %tmp.132 %tmp.133(%tmp.134);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 50 16 ]
+        %tmp.135 = lgetv %dc;
+        symbol [ dc %tmp.135 50 16 18 ];
+        symbol [ drawCircle %tmp.136 50 19 29 ];
+        %tmp.136 = getv function %tmp.135 :drawCircle;
+        %tmp.137 = lgetv %x.13;
+        symbol [ x %tmp.137 50 30 31 ];
+        %tmp.138 = lgetv %moodY.7;
+        symbol [ moodY %tmp.138 50 33 38 ];
+        %tmp.139 = lgetv %circleR.10;
+        symbol [ circleR %tmp.139 50 40 47 ];
+        %tmp.140 = 3;
+        %tmp.141 = add %tmp.139 %tmp.140;
+        invoke %tmp.135 %tmp.136(%tmp.137, %tmp.138, %tmp.141);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 51 16 ]
+        %tmp.142 = lgetv %dc;
+        symbol [ dc %tmp.142 51 16 18 ];
+        symbol [ setPenWidth %tmp.143 51 19 30 ];
+        %tmp.143 = getv function %tmp.142 :setPenWidth;
+        %tmp.144 = 1;
+        invoke %tmp.142 %tmp.143(%tmp.144);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_44_21_52_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_44_12_55_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_44_12_55_12_if_else_false:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_52_19_55_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 53 16 ]
+        %tmp.145 = lgetv %dc;
+        symbol [ dc %tmp.145 53 16 18 ];
+        symbol [ setColor %tmp.146 53 19 27 ];
+        %tmp.146 = getv function %tmp.145 :setColor;
+        %tmp.147 = lgetv %moodColors.11;
+        symbol [ moodColors %tmp.147 53 28 38 ];
+        %tmp.148 = lgetv %i.12;
+        symbol [ i %tmp.148 53 39 40 ];
+        %tmp.149 = agetv %tmp.147 %tmp.148;
+        %tmp.150 = lgetv %moodColors.11;
+        symbol [ moodColors %tmp.150 53 43 53 ];
+        %tmp.151 = lgetv %i.12;
+        symbol [ i %tmp.151 53 54 55 ];
+        %tmp.152 = agetv %tmp.150 %tmp.151;
+        invoke %tmp.145 %tmp.146(%tmp.149, %tmp.152);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 54 16 ]
+        %tmp.153 = lgetv %dc;
+        symbol [ dc %tmp.153 54 16 18 ];
+        symbol [ fillCircle %tmp.154 54 19 29 ];
+        %tmp.154 = getv function %tmp.153 :fillCircle;
+        %tmp.155 = lgetv %x.13;
+        symbol [ x %tmp.155 54 30 31 ];
+        %tmp.156 = lgetv %moodY.7;
+        symbol [ moodY %tmp.156 54 33 38 ];
+        %tmp.157 = lgetv %circleR.10;
+        symbol [ circleR %tmp.157 54 40 47 ];
+        invoke %tmp.153 %tmp.154(%tmp.155, %tmp.156, %tmp.157);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_52_19_55_12_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_44_12_55_12_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 57 12 ]
+        %tmp.158 = lgetv %dc;
+        symbol [ dc %tmp.158 57 12 14 ];
+        symbol [ setColor %tmp.159 57 15 23 ];
+        %tmp.159 = getv function %tmp.158 :setColor;
+        symbol [ COLOR_DARK_GREY %tmp.161 57 24 39 ];
+        %tmp.161 = getv ? :COLOR_DARK_GREY;
+        symbol [ Graphics %tmp.162 57 41 49 ];
+        %tmp.162 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.163 57 50 67 ];
+        %tmp.163 = getv %tmp.162 :COLOR_TRANSPARENT;
+        invoke %tmp.158 %tmp.159(%tmp.161, %tmp.163);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 58 12 ]
+        %tmp.164 = lgetv %dc;
+        symbol [ dc %tmp.164 58 12 14 ];
+        symbol [ drawText %tmp.165 58 15 23 ];
+        %tmp.165 = getv function %tmp.164 :drawText;
+        %tmp.166 = lgetv %x.13;
+        symbol [ x %tmp.166 58 24 25 ];
+        %tmp.167 = lgetv %moodY.7;
+        symbol [ moodY %tmp.167 58 27 32 ];
+        %tmp.168 = lgetv %circleR.10;
+        symbol [ circleR %tmp.168 58 35 42 ];
+        %tmp.169 = add %tmp.167 %tmp.168;
+        %tmp.170 = 4;
+        %tmp.171 = add %tmp.169 %tmp.170;
+        symbol [ Graphics %tmp.172 58 48 56 ];
+        %tmp.172 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.173 58 57 67 ];
+        %tmp.173 = getv %tmp.172 :FONT_XTINY;
+        %tmp.174 = lgetv %i.12;
+        symbol [ i %tmp.174 58 70 71 ];
+        %tmp.175 = 1;
+        %tmp.176 = add %tmp.174 %tmp.175;
+        symbol [ toString %tmp.177 58 77 85 ];
+        %tmp.177 = getv function %tmp.176 :toString;
+        %tmp.178 = invoke %tmp.176 %tmp.177();
+        symbol [ Graphics %tmp.179 58 89 97 ];
+        %tmp.179 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.180 58 98 117 ];
+        %tmp.180 = getv %tmp.179 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.164 %tmp.165(%tmp.166, %tmp.171, %tmp.173, %tmp.178, %tmp.180);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_36_59_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 40 ]
+        %tmp.183 = lgetv %i.12;
+        symbol [ i %tmp.183 40 31 32 ];
+        %tmp.184 = add %tmp.183 1;
+        lputv %i.12 %tmp.184;
+        symbol [ i %i.12 40 31 32 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_40_8_59_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 62 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %mood.15 = local;
+        symbol [ mood %mood.15 62 12 16 ];
+        %tmp.185 = lgetv %selectedMoodIndex;
+        symbol [ selectedMoodIndex %tmp.185 62 19 36 ];
+        %tmp.186 = 1;
+        %tmp.187 = add %tmp.185 %tmp.186;
+        lputv %mood.15 %tmp.187;
+        symbol [ mood %mood.15 62 12 16 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 63 8 ]
+        %tmp.188 = lgetv %dc;
+        symbol [ dc %tmp.188 63 8 10 ];
+        symbol [ setColor %tmp.189 63 11 19 ];
+        %tmp.189 = getv function %tmp.188 :setColor;
+        symbol [ COLOR_DARK_GREY %tmp.191 63 20 35 ];
+        %tmp.191 = getv ? :COLOR_DARK_GREY;
+        symbol [ Graphics %tmp.192 63 37 45 ];
+        %tmp.192 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.193 63 46 63 ];
+        %tmp.193 = getv %tmp.192 :COLOR_TRANSPARENT;
+        invoke %tmp.188 %tmp.189(%tmp.191, %tmp.193);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 64 8 ]
+        %tmp.194 = lgetv %dc;
+        symbol [ dc %tmp.194 64 8 10 ];
+        symbol [ drawText %tmp.195 64 11 19 ];
+        %tmp.195 = getv function %tmp.194 :drawText;
+        %tmp.196 = lgetv %centerX.3;
+        symbol [ centerX %tmp.196 64 20 27 ];
+        %tmp.197 = lgetv %moodY.7;
+        symbol [ moodY %tmp.197 64 29 34 ];
+        %tmp.198 = lgetv %circleR.10;
+        symbol [ circleR %tmp.198 64 37 44 ];
+        %tmp.199 = add %tmp.197 %tmp.198;
+        %tmp.200 = 22;
+        %tmp.201 = add %tmp.199 %tmp.200;
+        symbol [ Graphics %tmp.202 64 51 59 ];
+        %tmp.202 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.203 64 60 71 ];
+        %tmp.203 = getv %tmp.202 :FONT_MEDIUM;
+        %tmp.204 = lgetv %app;
+        symbol [ app %tmp.204 64 73 76 ];
+        symbol [ getMoodLabel %tmp.205 64 77 89 ];
+        %tmp.205 = getv function %tmp.204 :getMoodLabel;
+        %tmp.206 = lgetv %mood.15;
+        symbol [ mood %tmp.206 64 90 94 ];
+        %tmp.207 = invoke %tmp.204 %tmp.205(%tmp.206);
+        symbol [ Graphics %tmp.208 64 97 105 ];
+        %tmp.208 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.209 64 106 125 ];
+        %tmp.209 = getv %tmp.208 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.194 %tmp.195(%tmp.196, %tmp.201, %tmp.203, %tmp.207, %tmp.209);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 67 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop" ]
+        %todayEntries.16 = local;
+        symbol [ todayEntries %todayEntries.16 67 12 24 ];
+        %tmp.210 = lgetv %app;
+        symbol [ app %tmp.210 67 27 30 ];
+        symbol [ getTodayEntries %tmp.211 67 31 46 ];
+        %tmp.211 = getv function %tmp.210 :getTodayEntries;
+        %tmp.212 = invoke %tmp.210 %tmp.211();
+        lputv %todayEntries.16 %tmp.212;
+        symbol [ todayEntries %todayEntries.16 67 12 24 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 68 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_68_8_72_8_if_stmt:
+        %tmp.213 = lgetv %todayEntries.16;
+        symbol [ todayEntries %tmp.213 68 12 24 ];
+        symbol [ size %tmp.214 68 25 29 ];
+        %tmp.214 = getv function %tmp.213 :size;
+        %tmp.215 = invoke %tmp.213 %tmp.214();
+        %tmp.216 = 0;
+        %tmp.217 = gt %tmp.215 %tmp.216;
+        bf %tmp.217 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_68_8_72_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_68_8_72_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_68_37_72_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 69 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_68_37_72_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_68_37_72_8_stop" ]
+        %avg.17 = local;
+        symbol [ avg %avg.17 69 16 19 ];
+        %tmp.218 = lgetv %app;
+        symbol [ app %tmp.218 69 22 25 ];
+        symbol [ getAverageMood %tmp.219 69 26 40 ];
+        %tmp.219 = getv function %tmp.218 :getAverageMood;
+        %tmp.220 = lgetv %todayEntries.16;
+        symbol [ todayEntries %tmp.220 69 41 53 ];
+        %tmp.221 = invoke %tmp.218 %tmp.219(%tmp.220);
+        lputv %avg.17 %tmp.221;
+        symbol [ avg %avg.17 69 16 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 70 12 ]
+        %tmp.222 = lgetv %dc;
+        symbol [ dc %tmp.222 70 12 14 ];
+        symbol [ setColor %tmp.223 70 15 23 ];
+        %tmp.223 = getv function %tmp.222 :setColor;
+        %tmp.224 = 0x757575;
+        symbol [ Graphics %tmp.225 70 34 42 ];
+        %tmp.225 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.226 70 43 60 ];
+        %tmp.226 = getv %tmp.225 :COLOR_TRANSPARENT;
+        invoke %tmp.222 %tmp.223(%tmp.224, %tmp.226);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 71 12 ]
+        %tmp.227 = lgetv %dc;
+        symbol [ dc %tmp.227 71 12 14 ];
+        symbol [ drawText %tmp.228 71 15 23 ];
+        %tmp.228 = getv function %tmp.227 :drawText;
+        %tmp.229 = lgetv %centerX.3;
+        symbol [ centerX %tmp.229 71 24 31 ];
+        %tmp.230 = lgetv %moodY.7;
+        symbol [ moodY %tmp.230 71 33 38 ];
+        %tmp.231 = lgetv %circleR.10;
+        symbol [ circleR %tmp.231 71 41 48 ];
+        %tmp.232 = add %tmp.230 %tmp.231;
+        %tmp.233 = 55;
+        %tmp.234 = add %tmp.232 %tmp.233;
+        symbol [ Graphics %tmp.235 71 55 63 ];
+        %tmp.235 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.236 71 64 74 ];
+        %tmp.236 = getv %tmp.235 :FONT_XTINY;
+        %tmp.237 = "Today avg: ";
+        %tmp.238 = lgetv %app;
+        symbol [ app %tmp.238 71 92 95 ];
+        symbol [ getMoodLabel %tmp.239 71 96 108 ];
+        %tmp.239 = getv function %tmp.238 :getMoodLabel;
+        %tmp.240 = lgetv %avg.17;
+        symbol [ avg %tmp.240 71 109 112 ];
+        %tmp.241 = invoke %tmp.238 %tmp.239(%tmp.240);
+        %tmp.242 = add %tmp.237 %tmp.241;
+        symbol [ Graphics %tmp.243 71 115 123 ];
+        %tmp.243 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.244 71 124 143 ];
+        %tmp.244 = getv %tmp.243 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.227 %tmp.228(%tmp.229, %tmp.234, %tmp.236, %tmp.242, %tmp.244);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_68_37_72_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_68_8_72_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_68_8_72_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 75 8 ]
+        %tmp.245 = lgetv %dc;
+        symbol [ dc %tmp.245 75 8 10 ];
+        symbol [ setColor %tmp.246 75 11 19 ];
+        %tmp.246 = getv function %tmp.245 :setColor;
+        symbol [ COLOR_SOFT_LAVENDER %tmp.248 75 20 39 ];
+        %tmp.248 = getv ? :COLOR_SOFT_LAVENDER;
+        symbol [ Graphics %tmp.249 75 41 49 ];
+        %tmp.249 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.250 75 50 67 ];
+        %tmp.250 = getv %tmp.249 :COLOR_TRANSPARENT;
+        invoke %tmp.245 %tmp.246(%tmp.248, %tmp.250);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 76 8 ]
+        %tmp.251 = lgetv %dc;
+        symbol [ dc %tmp.251 76 8 10 ];
+        symbol [ fillPolygon %tmp.252 76 11 22 ];
+        %tmp.252 = getv function %tmp.251 :fillPolygon;
+        %tmp.253 = newa 3;
+        %tmp.254 = newa 2;
+        %tmp.255 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.255 76 25 39 ];
+        %tmp.256 = dup %tmp.254;
+        %tmp.257 = aputv %tmp.256 0 %tmp.255;
+        %tmp.258 = lgetv %centerY.4;
+        symbol [ centerY %tmp.258 76 41 48 ];
+        %tmp.259 = dup %tmp.257;
+        %tmp.260 = aputv %tmp.259 1 %tmp.258;
+        %tmp.261 = dup %tmp.253;
+        %tmp.262 = aputv %tmp.261 0 %tmp.260;
+        %tmp.263 = newa 2;
+        %tmp.264 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.264 76 52 66 ];
+        %tmp.265 = 12;
+        %tmp.266 = add %tmp.264 %tmp.265;
+        %tmp.267 = dup %tmp.263;
+        %tmp.268 = aputv %tmp.267 0 %tmp.266;
+        %tmp.269 = lgetv %centerY.4;
+        symbol [ centerY %tmp.269 76 73 80 ];
+        %tmp.270 = 8;
+        %tmp.271 = sub %tmp.269 %tmp.270;
+        %tmp.272 = dup %tmp.268;
+        %tmp.273 = aputv %tmp.272 1 %tmp.271;
+        %tmp.274 = dup %tmp.262;
+        %tmp.275 = aputv %tmp.274 1 %tmp.273;
+        %tmp.276 = newa 2;
+        %tmp.277 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.277 76 88 102 ];
+        %tmp.278 = 12;
+        %tmp.279 = add %tmp.277 %tmp.278;
+        %tmp.280 = dup %tmp.276;
+        %tmp.281 = aputv %tmp.280 0 %tmp.279;
+        %tmp.282 = lgetv %centerY.4;
+        symbol [ centerY %tmp.282 76 109 116 ];
+        %tmp.283 = 8;
+        %tmp.284 = add %tmp.282 %tmp.283;
+        %tmp.285 = dup %tmp.281;
+        %tmp.286 = aputv %tmp.285 1 %tmp.284;
+        %tmp.287 = dup %tmp.275;
+        %tmp.288 = aputv %tmp.287 2 %tmp.286;
+        invoke %tmp.251 %tmp.252(%tmp.288);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 77 8 ]
+        %tmp.289 = lgetv %dc;
+        symbol [ dc %tmp.289 77 8 10 ];
+        symbol [ fillPolygon %tmp.290 77 11 22 ];
+        %tmp.290 = getv function %tmp.289 :fillPolygon;
+        %tmp.291 = newa 3;
+        %tmp.292 = newa 2;
+        %tmp.293 = lgetv %width.1;
+        symbol [ width %tmp.293 77 25 30 ];
+        %tmp.294 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.294 77 33 47 ];
+        %tmp.295 = sub %tmp.293 %tmp.294;
+        %tmp.296 = dup %tmp.292;
+        %tmp.297 = aputv %tmp.296 0 %tmp.295;
+        %tmp.298 = lgetv %centerY.4;
+        symbol [ centerY %tmp.298 77 49 56 ];
+        %tmp.299 = dup %tmp.297;
+        %tmp.300 = aputv %tmp.299 1 %tmp.298;
+        %tmp.301 = dup %tmp.291;
+        %tmp.302 = aputv %tmp.301 0 %tmp.300;
+        %tmp.303 = newa 2;
+        %tmp.304 = lgetv %width.1;
+        symbol [ width %tmp.304 77 60 65 ];
+        %tmp.305 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.305 77 68 82 ];
+        %tmp.306 = sub %tmp.304 %tmp.305;
+        %tmp.307 = 12;
+        %tmp.308 = sub %tmp.306 %tmp.307;
+        %tmp.309 = dup %tmp.303;
+        %tmp.310 = aputv %tmp.309 0 %tmp.308;
+        %tmp.311 = lgetv %centerY.4;
+        symbol [ centerY %tmp.311 77 89 96 ];
+        %tmp.312 = 8;
+        %tmp.313 = sub %tmp.311 %tmp.312;
+        %tmp.314 = dup %tmp.310;
+        %tmp.315 = aputv %tmp.314 1 %tmp.313;
+        %tmp.316 = dup %tmp.302;
+        %tmp.317 = aputv %tmp.316 1 %tmp.315;
+        %tmp.318 = newa 2;
+        %tmp.319 = lgetv %width.1;
+        symbol [ width %tmp.319 77 104 109 ];
+        %tmp.320 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.320 77 112 126 ];
+        %tmp.321 = sub %tmp.319 %tmp.320;
+        %tmp.322 = 12;
+        %tmp.323 = sub %tmp.321 %tmp.322;
+        %tmp.324 = dup %tmp.318;
+        %tmp.325 = aputv %tmp.324 0 %tmp.323;
+        %tmp.326 = lgetv %centerY.4;
+        symbol [ centerY %tmp.326 77 133 140 ];
+        %tmp.327 = 8;
+        %tmp.328 = add %tmp.326 %tmp.327;
+        %tmp.329 = dup %tmp.325;
+        %tmp.330 = aputv %tmp.329 1 %tmp.328;
+        %tmp.331 = dup %tmp.317;
+        %tmp.332 = aputv %tmp.331 2 %tmp.330;
+        invoke %tmp.289 %tmp.290(%tmp.332);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 80 8 ]
+        %tmp.333 = lgetv %dc;
+        symbol [ dc %tmp.333 80 8 10 ];
+        symbol [ setColor %tmp.334 80 11 19 ];
+        %tmp.334 = getv function %tmp.333 :setColor;
+        %tmp.335 = 0x9E9E9E;
+        symbol [ Graphics %tmp.336 80 30 38 ];
+        %tmp.336 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.337 80 39 56 ];
+        %tmp.337 = getv %tmp.336 :COLOR_TRANSPARENT;
+        invoke %tmp.333 %tmp.334(%tmp.335, %tmp.337);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 81 8 ]
+        %tmp.338 = lgetv %dc;
+        symbol [ dc %tmp.338 81 8 10 ];
+        symbol [ drawText %tmp.339 81 11 19 ];
+        %tmp.339 = getv function %tmp.338 :drawText;
+        %tmp.340 = lgetv %centerX.3;
+        symbol [ centerX %tmp.340 81 20 27 ];
+        %tmp.341 = lgetv %height.2;
+        symbol [ height %tmp.341 81 29 35 ];
+        %tmp.342 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.342 81 38 52 ];
+        %tmp.343 = sub %tmp.341 %tmp.342;
+        %tmp.344 = 2;
+        %tmp.345 = sub %tmp.343 %tmp.344;
+        symbol [ Graphics %tmp.346 81 58 66 ];
+        %tmp.346 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.347 81 67 77 ];
+        %tmp.347 = getv %tmp.346 :FONT_XTINY;
+        %tmp.348 = "< Graph  Stgs >";
+        symbol [ Graphics %tmp.349 81 98 106 ];
+        %tmp.349 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.350 81 107 126 ];
+        %tmp.350 = getv %tmp.349 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.338 %tmp.339(%tmp.340, %tmp.345, %tmp.347, %tmp.348, %tmp.350);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 83 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_83_8_85_8_if_stmt:
+        %tmp.351 = lgetv %showingConfirmDialog;
+        symbol [ showingConfirmDialog %tmp.351 83 12 32 ];
+        bf %tmp.351 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_83_8_85_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_83_8_85_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_83_34_85_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 84 12 ]
+        %tmp.352 = self;
+        symbol [ drawConfirmMoodDialog %tmp.353 84 12 33 ];
+        %tmp.353 = getv function %tmp.352 :drawConfirmMoodDialog;
+        %tmp.354 = lgetv %dc;
+        symbol [ dc %tmp.354 84 34 36 ];
+        %tmp.355 = lgetv %centerX.3;
+        symbol [ centerX %tmp.355 84 38 45 ];
+        %tmp.356 = lgetv %centerY.4;
+        symbol [ centerY %tmp.356 84 47 54 ];
+        %tmp.357 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.357 84 56 70 ];
+        invoke %tmp.352 %tmp.353(%tmp.354, %tmp.355, %tmp.356, %tmp.357);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_83_34_85_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_83_8_85_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_83_8_85_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_13_144_86_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 88; @symbol_functiondef = [drawConfirmMoodDialog,88,13,34]; @symbol_param<0> = [dc,88,35,37]; @symbol_param<0>_type<0> = [Dc,88,41,43]; @symbol_param<1> = [centerX,88,45,52]; @symbol_param<1>_type<0> = [Number,88,56,62]; @symbol_param<2> = [centerY,88,64,71]; @symbol_param<2>_type<0> = [Number,88,75,81]; @symbol_param<3> = [bezelClearance,88,83,97]; @symbol_param<3>_type<0> = [Number,88,101,107]; ]
+    function drawConfirmMoodDialog(dc as Dc, centerX as Number, centerY as Number, bezelClearance as Number) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_88_117_107_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 89 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_88_117_107_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_88_117_107_4_stop" ]
+        %width.1 = local;
+        symbol [ width %width.1 89 12 17 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 89 20 22 ];
+        symbol [ getWidth %tmp.2 89 23 31 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %width.1 %tmp.3;
+        symbol [ width %width.1 89 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 91 8 ]
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 91 8 10 ];
+        symbol [ setColor %tmp.5 91 11 19 ];
+        %tmp.5 = getv function %tmp.4 :setColor;
+        %tmp.6 = 0x000000;
+        symbol [ Graphics %tmp.7 91 30 38 ];
+        %tmp.7 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.8 91 39 56 ];
+        %tmp.8 = getv %tmp.7 :COLOR_TRANSPARENT;
+        invoke %tmp.4 %tmp.5(%tmp.6, %tmp.8);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 92 8 ]
+        %tmp.9 = lgetv %dc;
+        symbol [ dc %tmp.9 92 8 10 ];
+        symbol [ fillRectangle %tmp.10 92 11 24 ];
+        %tmp.10 = getv function %tmp.9 :fillRectangle;
+        %tmp.11 = 0;
+        %tmp.12 = 0;
+        %tmp.13 = lgetv %width.1;
+        symbol [ width %tmp.13 92 31 36 ];
+        %tmp.14 = lgetv %dc;
+        symbol [ dc %tmp.14 92 38 40 ];
+        symbol [ getHeight %tmp.15 92 41 50 ];
+        %tmp.15 = getv function %tmp.14 :getHeight;
+        %tmp.16 = invoke %tmp.14 %tmp.15();
+        invoke %tmp.9 %tmp.10(%tmp.11, %tmp.12, %tmp.13, %tmp.16);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 94 8 ]
+        %tmp.17 = lgetv %dc;
+        symbol [ dc %tmp.17 94 8 10 ];
+        symbol [ setColor %tmp.18 94 11 19 ];
+        %tmp.18 = getv function %tmp.17 :setColor;
+        symbol [ Graphics %tmp.19 94 20 28 ];
+        %tmp.19 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.20 94 29 40 ];
+        %tmp.20 = getv %tmp.19 :COLOR_WHITE;
+        symbol [ Graphics %tmp.21 94 42 50 ];
+        %tmp.21 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.22 94 51 62 ];
+        %tmp.22 = getv %tmp.21 :COLOR_WHITE;
+        invoke %tmp.17 %tmp.18(%tmp.20, %tmp.22);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 95 8 ]
+        %tmp.23 = lgetv %dc;
+        symbol [ dc %tmp.23 95 8 10 ];
+        symbol [ fillRectangle %tmp.24 95 11 24 ];
+        %tmp.24 = getv function %tmp.23 :fillRectangle;
+        %tmp.25 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.25 95 25 39 ];
+        %tmp.26 = 10;
+        %tmp.27 = add %tmp.25 %tmp.26;
+        %tmp.28 = lgetv %centerY;
+        symbol [ centerY %tmp.28 95 46 53 ];
+        %tmp.29 = 40;
+        %tmp.30 = sub %tmp.28 %tmp.29;
+        %tmp.31 = lgetv %width.1;
+        symbol [ width %tmp.31 95 60 65 ];
+        %tmp.32 = 2;
+        %tmp.33 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.33 95 73 87 ];
+        %tmp.34 = 10;
+        %tmp.35 = add %tmp.33 %tmp.34;
+        %tmp.36 = mul %tmp.32 %tmp.35;
+        %tmp.37 = sub %tmp.31 %tmp.36;
+        %tmp.38 = 80;
+        invoke %tmp.23 %tmp.24(%tmp.27, %tmp.30, %tmp.37, %tmp.38);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 96 8 ]
+        %tmp.39 = lgetv %dc;
+        symbol [ dc %tmp.39 96 8 10 ];
+        symbol [ setColor %tmp.40 96 11 19 ];
+        %tmp.40 = getv function %tmp.39 :setColor;
+        symbol [ COLOR_DARK_GREY %tmp.42 96 20 35 ];
+        %tmp.42 = getv ? :COLOR_DARK_GREY;
+        symbol [ Graphics %tmp.43 96 37 45 ];
+        %tmp.43 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.44 96 46 63 ];
+        %tmp.44 = getv %tmp.43 :COLOR_TRANSPARENT;
+        invoke %tmp.39 %tmp.40(%tmp.42, %tmp.44);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 97 8 ]
+        %tmp.45 = lgetv %dc;
+        symbol [ dc %tmp.45 97 8 10 ];
+        symbol [ setPenWidth %tmp.46 97 11 22 ];
+        %tmp.46 = getv function %tmp.45 :setPenWidth;
+        %tmp.47 = 2;
+        invoke %tmp.45 %tmp.46(%tmp.47);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 98 8 ]
+        %tmp.48 = lgetv %dc;
+        symbol [ dc %tmp.48 98 8 10 ];
+        symbol [ drawRectangle %tmp.49 98 11 24 ];
+        %tmp.49 = getv function %tmp.48 :drawRectangle;
+        %tmp.50 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.50 98 25 39 ];
+        %tmp.51 = 10;
+        %tmp.52 = add %tmp.50 %tmp.51;
+        %tmp.53 = lgetv %centerY;
+        symbol [ centerY %tmp.53 98 46 53 ];
+        %tmp.54 = 40;
+        %tmp.55 = sub %tmp.53 %tmp.54;
+        %tmp.56 = lgetv %width.1;
+        symbol [ width %tmp.56 98 60 65 ];
+        %tmp.57 = 2;
+        %tmp.58 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.58 98 73 87 ];
+        %tmp.59 = 10;
+        %tmp.60 = add %tmp.58 %tmp.59;
+        %tmp.61 = mul %tmp.57 %tmp.60;
+        %tmp.62 = sub %tmp.56 %tmp.61;
+        %tmp.63 = 80;
+        invoke %tmp.48 %tmp.49(%tmp.52, %tmp.55, %tmp.62, %tmp.63);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 99 8 ]
+        %tmp.64 = lgetv %dc;
+        symbol [ dc %tmp.64 99 8 10 ];
+        symbol [ setPenWidth %tmp.65 99 11 22 ];
+        %tmp.65 = getv function %tmp.64 :setPenWidth;
+        %tmp.66 = 1;
+        invoke %tmp.64 %tmp.65(%tmp.66);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 101 8 ]
+        %tmp.67 = lgetv %dc;
+        symbol [ dc %tmp.67 101 8 10 ];
+        symbol [ setColor %tmp.68 101 11 19 ];
+        %tmp.68 = getv function %tmp.67 :setColor;
+        symbol [ COLOR_DARK_GREY %tmp.70 101 20 35 ];
+        %tmp.70 = getv ? :COLOR_DARK_GREY;
+        symbol [ Graphics %tmp.71 101 37 45 ];
+        %tmp.71 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.72 101 46 63 ];
+        %tmp.72 = getv %tmp.71 :COLOR_TRANSPARENT;
+        invoke %tmp.67 %tmp.68(%tmp.70, %tmp.72);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 102 8 ]
+        %tmp.73 = lgetv %dc;
+        symbol [ dc %tmp.73 102 8 10 ];
+        symbol [ drawText %tmp.74 102 11 19 ];
+        %tmp.74 = getv function %tmp.73 :drawText;
+        %tmp.75 = lgetv %centerX;
+        symbol [ centerX %tmp.75 102 20 27 ];
+        %tmp.76 = lgetv %centerY;
+        symbol [ centerY %tmp.76 102 29 36 ];
+        %tmp.77 = 25;
+        %tmp.78 = sub %tmp.76 %tmp.77;
+        symbol [ Graphics %tmp.79 102 43 51 ];
+        %tmp.79 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.80 102 52 62 ];
+        %tmp.80 = getv %tmp.79 :FONT_XTINY;
+        %tmp.81 = "Replace today's";
+        symbol [ Graphics %tmp.82 102 83 91 ];
+        %tmp.82 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.83 102 92 111 ];
+        %tmp.83 = getv %tmp.82 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.73 %tmp.74(%tmp.75, %tmp.78, %tmp.80, %tmp.81, %tmp.83);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 103 8 ]
+        %tmp.84 = lgetv %dc;
+        symbol [ dc %tmp.84 103 8 10 ];
+        symbol [ drawText %tmp.85 103 11 19 ];
+        %tmp.85 = getv function %tmp.84 :drawText;
+        %tmp.86 = lgetv %centerX;
+        symbol [ centerX %tmp.86 103 20 27 ];
+        %tmp.87 = lgetv %centerY;
+        symbol [ centerY %tmp.87 103 29 36 ];
+        %tmp.88 = 10;
+        %tmp.89 = sub %tmp.87 %tmp.88;
+        symbol [ Graphics %tmp.90 103 43 51 ];
+        %tmp.90 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.91 103 52 62 ];
+        %tmp.91 = getv %tmp.90 :FONT_XTINY;
+        %tmp.92 = "mood?";
+        symbol [ Graphics %tmp.93 103 73 81 ];
+        %tmp.93 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.94 103 82 101 ];
+        %tmp.94 = getv %tmp.93 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.84 %tmp.85(%tmp.86, %tmp.89, %tmp.91, %tmp.92, %tmp.94);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 105 8 ]
+        %tmp.95 = lgetv %dc;
+        symbol [ dc %tmp.95 105 8 10 ];
+        symbol [ setColor %tmp.96 105 11 19 ];
+        %tmp.96 = getv function %tmp.95 :setColor;
+        %tmp.97 = 0x9E9E9E;
+        symbol [ Graphics %tmp.98 105 30 38 ];
+        %tmp.98 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.99 105 39 56 ];
+        %tmp.99 = getv %tmp.98 :COLOR_TRANSPARENT;
+        invoke %tmp.95 %tmp.96(%tmp.97, %tmp.99);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc" 106 8 ]
+        %tmp.100 = lgetv %dc;
+        symbol [ dc %tmp.100 106 8 10 ];
+        symbol [ drawText %tmp.101 106 11 19 ];
+        %tmp.101 = getv function %tmp.100 :drawText;
+        %tmp.102 = lgetv %centerX;
+        symbol [ centerX %tmp.102 106 20 27 ];
+        %tmp.103 = lgetv %centerY;
+        symbol [ centerY %tmp.103 106 29 36 ];
+        %tmp.104 = 15;
+        %tmp.105 = add %tmp.103 %tmp.104;
+        symbol [ Graphics %tmp.106 106 43 51 ];
+        %tmp.106 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.107 106 52 62 ];
+        %tmp.107 = getv %tmp.106 :FONT_XTINY;
+        %tmp.108 = "UP:No DOWN:Yes";
+        symbol [ Graphics %tmp.109 106 82 90 ];
+        %tmp.109 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.110 106 91 110 ];
+        %tmp.110 = getv %tmp.109 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.100 %tmp.101(%tmp.102, %tmp.105, %tmp.107, %tmp.108, %tmp.110);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_CheckInScreen_mc_88_117_107_4_stop:
+    }
+}
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/CheckInScreen.mc"; @line = 1; ]
+<init> {
+}

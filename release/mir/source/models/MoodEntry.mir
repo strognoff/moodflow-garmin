@@ -1,0 +1,45 @@
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+//! Mood Entry class
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc"; @line = 4; @symbol_classdef = [MoodEntry,4,6,15]; ]
+class MoodEntry {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc"; @line = 4; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc"; @line = 5; @position = 8; @symbol_vardef = [mood,5,8,12]; @symbol_type<0> = [Number,5,16,22]; ]
+    var mood as Number;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc"; @line = 6; @position = 8; @symbol_vardef = [timestamp,6,8,17]; @symbol_type<0> = [Number,6,21,27]; ]
+    var timestamp as Number;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc"; @line = 7; @position = 8; @symbol_vardef = [note,7,8,12]; @symbol_type<0> = [String,7,16,22]; ]
+    var note as String;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; @symbol_param<0> = [mood,9,24,28]; @symbol_param<0>_type<0> = [Number,9,32,38]; @symbol_param<1> = [timestamp,9,40,49]; @symbol_param<1>_type<0> = [Number,9,53,59]; @symbol_param<2> = [note,9,61,65]; @symbol_param<2>_type<0> = [String,9,69,75]; ]
+    function initialize(mood as Number, timestamp as Number, note as String) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_models_MoodEntry_mc_9_77_13_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc" 10 8 ]
+        symbol [ self %self 10 8 12 ];
+        %tmp.1 = lgetv %mood;
+        symbol [ mood %tmp.1 10 20 24 ];
+        symbol [ mood ? 10 13 17 ];
+        putv self :mood %tmp.1;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc" 11 8 ]
+        symbol [ self %self 11 8 12 ];
+        %tmp.2 = lgetv %timestamp;
+        symbol [ timestamp %tmp.2 11 25 34 ];
+        symbol [ timestamp ? 11 13 22 ];
+        putv self :timestamp %tmp.2;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc" 12 8 ]
+        symbol [ self %self 12 8 12 ];
+        %tmp.3 = lgetv %note;
+        symbol [ note %tmp.3 12 20 24 ];
+        symbol [ note ? 12 13 17 ];
+        putv self :note %tmp.3;
+_Users_jeffcechinel_Github_moodflow_garmin_source_models_MoodEntry_mc_9_77_13_4_stop:
+    }
+}
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/models/MoodEntry.mc"; @line = 1; ]
+<init> {
+}

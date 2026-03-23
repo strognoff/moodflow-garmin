@@ -1,0 +1,1157 @@
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Graphics,2,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
+import Toybox.Lang;
+//! Trend screen showing 7-day mood graph
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 6; @symbol_moduledef = [TrendScreen,6,7,18]; ]
+module TrendScreen {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 8; @position = 10; @symbol_constdef = [COLOR_WARM_GREY,8,10,25]; ]
+    const COLOR_WARM_GREY = 0xECEFF1;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 9; @position = 10; @symbol_constdef = [COLOR_DARK_GREY,9,10,25]; ]
+    const COLOR_DARK_GREY = 0x37474F;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 11; @symbol_functiondef = [draw,11,13,17]; @symbol_param<0> = [dc,11,18,20]; @symbol_param<0>_type<0> = [Dc,11,24,26]; @symbol_param<1> = [app,11,28,31]; @symbol_param<1>_type<0> = [MoodFlowApp,11,35,46]; @symbol_param<2> = [bezelClearance,11,48,62]; @symbol_param<2>_type<0> = [Number,11,66,72]; @symbol_param<3> = [isRoundDisplay,11,74,88]; @symbol_param<3>_type<0> = [Boolean,11,92,99]; ]
+    function draw(dc as Dc, app as MoodFlowApp, bezelClearance as Number, isRoundDisplay as Boolean) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_11_109_24_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 12 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_11_109_24_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_11_109_24_4_stop" ]
+        %width.1 = local;
+        symbol [ width %width.1 12 12 17 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 12 20 22 ];
+        symbol [ getWidth %tmp.2 12 23 31 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %width.1 %tmp.3;
+        symbol [ width %width.1 12 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 13 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_11_109_24_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_11_109_24_4_stop" ]
+        %height.2 = local;
+        symbol [ height %height.2 13 12 18 ];
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 13 21 23 ];
+        symbol [ getHeight %tmp.5 13 24 33 ];
+        %tmp.5 = getv function %tmp.4 :getHeight;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %height.2 %tmp.6;
+        symbol [ height %height.2 13 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 14 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_11_109_24_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_11_109_24_4_stop" ]
+        %centerX.3 = local;
+        symbol [ centerX %centerX.3 14 12 19 ];
+        %tmp.7 = lgetv %width.1;
+        symbol [ width %tmp.7 14 22 27 ];
+        %tmp.8 = 2;
+        %tmp.9 = div %tmp.7 %tmp.8;
+        lputv %centerX.3 %tmp.9;
+        symbol [ centerX %centerX.3 14 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 16 8 ]
+        %tmp.10 = lgetv %dc;
+        symbol [ dc %tmp.10 16 8 10 ];
+        symbol [ setColor %tmp.11 16 11 19 ];
+        %tmp.11 = getv function %tmp.10 :setColor;
+        symbol [ COLOR_WARM_GREY %tmp.13 16 20 35 ];
+        %tmp.13 = getv ? :COLOR_WARM_GREY;
+        symbol [ COLOR_WARM_GREY %tmp.15 16 37 52 ];
+        %tmp.15 = getv ? :COLOR_WARM_GREY;
+        invoke %tmp.10 %tmp.11(%tmp.13, %tmp.15);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 17 8 ]
+        %tmp.16 = lgetv %dc;
+        symbol [ dc %tmp.16 17 8 10 ];
+        symbol [ clear %tmp.17 17 11 16 ];
+        %tmp.17 = getv function %tmp.16 :clear;
+        invoke %tmp.16 %tmp.17();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 19 8 ]
+        %tmp.18 = lgetv %dc;
+        symbol [ dc %tmp.18 19 8 10 ];
+        symbol [ setColor %tmp.19 19 11 19 ];
+        %tmp.19 = getv function %tmp.18 :setColor;
+        symbol [ COLOR_DARK_GREY %tmp.21 19 20 35 ];
+        %tmp.21 = getv ? :COLOR_DARK_GREY;
+        symbol [ Graphics %tmp.22 19 37 45 ];
+        %tmp.22 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.23 19 46 63 ];
+        %tmp.23 = getv %tmp.22 :COLOR_TRANSPARENT;
+        invoke %tmp.18 %tmp.19(%tmp.21, %tmp.23);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 20 8 ]
+        %tmp.24 = lgetv %dc;
+        symbol [ dc %tmp.24 20 8 10 ];
+        symbol [ drawText %tmp.25 20 11 19 ];
+        %tmp.25 = getv function %tmp.24 :drawText;
+        %tmp.26 = lgetv %centerX.3;
+        symbol [ centerX %tmp.26 20 20 27 ];
+        %tmp.27 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.27 20 29 43 ];
+        %tmp.28 = 2;
+        %tmp.29 = add %tmp.27 %tmp.28;
+        symbol [ Graphics %tmp.30 20 49 57 ];
+        %tmp.30 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.31 20 58 68 ];
+        %tmp.31 = getv %tmp.30 :FONT_XTINY;
+        %tmp.32 = "7-Day Trend";
+        symbol [ Graphics %tmp.33 20 85 93 ];
+        %tmp.33 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.34 20 94 113 ];
+        %tmp.34 = getv %tmp.33 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.24 %tmp.25(%tmp.26, %tmp.29, %tmp.31, %tmp.32, %tmp.34);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 22 8 ]
+        %tmp.35 = self;
+        symbol [ drawChart %tmp.36 22 8 17 ];
+        %tmp.36 = getv function %tmp.35 :drawChart;
+        %tmp.37 = lgetv %dc;
+        symbol [ dc %tmp.37 22 18 20 ];
+        %tmp.38 = lgetv %app;
+        symbol [ app %tmp.38 22 22 25 ];
+        %tmp.39 = lgetv %width.1;
+        symbol [ width %tmp.39 22 27 32 ];
+        %tmp.40 = lgetv %height.2;
+        symbol [ height %tmp.40 22 34 40 ];
+        %tmp.41 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.41 22 42 56 ];
+        %tmp.42 = lgetv %isRoundDisplay;
+        symbol [ isRoundDisplay %tmp.42 22 58 72 ];
+        invoke %tmp.35 %tmp.36(%tmp.37, %tmp.38, %tmp.39, %tmp.40, %tmp.41, %tmp.42);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 23 8 ]
+        %tmp.43 = self;
+        symbol [ drawActivityData %tmp.44 23 8 24 ];
+        %tmp.44 = getv function %tmp.43 :drawActivityData;
+        %tmp.45 = lgetv %dc;
+        symbol [ dc %tmp.45 23 25 27 ];
+        %tmp.46 = lgetv %app;
+        symbol [ app %tmp.46 23 29 32 ];
+        %tmp.47 = lgetv %width.1;
+        symbol [ width %tmp.47 23 34 39 ];
+        %tmp.48 = lgetv %height.2;
+        symbol [ height %tmp.48 23 41 47 ];
+        %tmp.49 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.49 23 49 63 ];
+        %tmp.50 = lgetv %isRoundDisplay;
+        symbol [ isRoundDisplay %tmp.50 23 65 79 ];
+        %tmp.51 = lgetv %centerX.3;
+        symbol [ centerX %tmp.51 23 81 88 ];
+        invoke %tmp.43 %tmp.44(%tmp.45, %tmp.46, %tmp.47, %tmp.48, %tmp.49, %tmp.50, %tmp.51);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_11_109_24_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 26; @symbol_functiondef = [drawChart,26,13,22]; @symbol_param<0> = [dc,26,23,25]; @symbol_param<0>_type<0> = [Dc,26,29,31]; @symbol_param<1> = [app,26,33,36]; @symbol_param<1>_type<0> = [MoodFlowApp,26,40,51]; @symbol_param<2> = [width,26,53,58]; @symbol_param<2>_type<0> = [Number,26,62,68]; @symbol_param<3> = [height,26,70,76]; @symbol_param<3>_type<0> = [Number,26,80,86]; @symbol_param<4> = [bezelClearance,26,88,102]; @symbol_param<4>_type<0> = [Number,26,106,112]; @symbol_param<5> = [isRoundDisplay,26,114,128]; @symbol_param<5>_type<0> = [Boolean,26,132,139]; ]
+    function drawChart(dc as Dc, app as MoodFlowApp, width as Number, height as Number, bezelClearance as Number, isRoundDisplay as Boolean) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 27 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %effectiveBezel.1 = local;
+        symbol [ effectiveBezel %effectiveBezel.1 27 12 26 ];
+        %tmp.1 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.1 27 29 43 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_begin:
+        %tmp.2 = lgetv %isRoundDisplay;
+        symbol [ isRoundDisplay %tmp.2 27 47 61 ];
+        bf %tmp.2 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_true:
+        %tmp.3 = 8;
+        push %tmp.3;
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_else_false:
+        %tmp.4 = 0;
+        push %tmp.4;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_end:
+        %tmp.5 = phi [%tmp.2 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_begin] [%tmp.3 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_true] [%tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_else_false] [%tmp.5 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_27_47_27_68_end];
+        %tmp.6 = add %tmp.1 %tmp.5;
+        lputv %effectiveBezel.1 %tmp.6;
+        symbol [ effectiveBezel %effectiveBezel.1 27 12 26 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 28 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %chartL.2 = local;
+        symbol [ chartL %chartL.2 28 12 18 ];
+        %tmp.7 = lgetv %effectiveBezel.1;
+        symbol [ effectiveBezel %tmp.7 28 21 35 ];
+        %tmp.8 = 20;
+        %tmp.9 = add %tmp.7 %tmp.8;
+        lputv %chartL.2 %tmp.9;
+        symbol [ chartL %chartL.2 28 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 29 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %chartR.3 = local;
+        symbol [ chartR %chartR.3 29 12 18 ];
+        %tmp.10 = lgetv %width;
+        symbol [ width %tmp.10 29 21 26 ];
+        %tmp.11 = lgetv %effectiveBezel.1;
+        symbol [ effectiveBezel %tmp.11 29 29 43 ];
+        %tmp.12 = sub %tmp.10 %tmp.11;
+        %tmp.13 = 8;
+        %tmp.14 = sub %tmp.12 %tmp.13;
+        lputv %chartR.3 %tmp.14;
+        symbol [ chartR %chartR.3 29 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 30 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %chartH.4 = local;
+        symbol [ chartH %chartH.4 30 12 18 ];
+        %tmp.15 = lgetv %height;
+        symbol [ height %tmp.15 30 22 28 ];
+        %tmp.16 = 0.30;
+        %tmp.17 = mul %tmp.15 %tmp.16;
+        symbol [ toNumber %tmp.18 30 37 45 ];
+        %tmp.18 = getv function %tmp.17 :toNumber;
+        %tmp.19 = invoke %tmp.17 %tmp.18();
+        lputv %chartH.4 %tmp.19;
+        symbol [ chartH %chartH.4 30 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 31 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %centerY.5 = local;
+        symbol [ centerY %centerY.5 31 12 19 ];
+        %tmp.20 = lgetv %height;
+        symbol [ height %tmp.20 31 22 28 ];
+        %tmp.21 = 2;
+        %tmp.22 = div %tmp.20 %tmp.21;
+        lputv %centerY.5 %tmp.22;
+        symbol [ centerY %centerY.5 31 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 32 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %chartT.6 = local;
+        symbol [ chartT %chartT.6 32 12 18 ];
+        %tmp.23 = lgetv %centerY.5;
+        symbol [ centerY %tmp.23 32 21 28 ];
+        %tmp.24 = lgetv %chartH.4;
+        symbol [ chartH %tmp.24 32 32 38 ];
+        %tmp.25 = 2;
+        %tmp.26 = div %tmp.24 %tmp.25;
+        %tmp.27 = sub %tmp.23 %tmp.26;
+        %tmp.28 = 15;
+        %tmp.29 = sub %tmp.27 %tmp.28;
+        lputv %chartT.6 %tmp.29;
+        symbol [ chartT %chartT.6 32 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 33 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %chartB.7 = local;
+        symbol [ chartB %chartB.7 33 12 18 ];
+        %tmp.30 = lgetv %chartT.6;
+        symbol [ chartT %tmp.30 33 21 27 ];
+        %tmp.31 = lgetv %chartH.4;
+        symbol [ chartH %tmp.31 33 30 36 ];
+        %tmp.32 = add %tmp.30 %tmp.31;
+        lputv %chartB.7 %tmp.32;
+        symbol [ chartB %chartB.7 33 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 34 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %chartW.8 = local;
+        symbol [ chartW %chartW.8 34 12 18 ];
+        %tmp.33 = lgetv %chartR.3;
+        symbol [ chartR %tmp.33 34 21 27 ];
+        %tmp.34 = lgetv %chartL.2;
+        symbol [ chartL %tmp.34 34 30 36 ];
+        %tmp.35 = sub %tmp.33 %tmp.34;
+        lputv %chartW.8 %tmp.35;
+        symbol [ chartW %chartW.8 34 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 37 8 ]
+        %tmp.36 = lgetv %dc;
+        symbol [ dc %tmp.36 37 8 10 ];
+        symbol [ setColor %tmp.37 37 11 19 ];
+        %tmp.37 = getv function %tmp.36 :setColor;
+        %tmp.38 = 0xBDBDBD;
+        symbol [ Graphics %tmp.39 37 30 38 ];
+        %tmp.39 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.40 37 39 56 ];
+        %tmp.40 = getv %tmp.39 :COLOR_TRANSPARENT;
+        invoke %tmp.36 %tmp.37(%tmp.38, %tmp.40);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 38 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_end" ]
+        %level.9 = local;
+        symbol [ level %level.9 38 17 22 ];
+        %tmp.41 = 1;
+        lputv %level.9 %tmp.41;
+        symbol [ level %level.9 38 17 22 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_test:
+        %tmp.42 = lgetv %level.9;
+        symbol [ level %tmp.42 38 28 33 ];
+        %tmp.43 = 5;
+        %tmp.44 = lte %tmp.42 %tmp.43;
+        bf %tmp.44 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_49_42_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 39 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_49_42_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_49_42_8_stop" ]
+        %y.10 = local;
+        symbol [ y %y.10 39 16 17 ];
+        %tmp.45 = lgetv %chartB.7;
+        symbol [ chartB %tmp.45 39 20 26 ];
+        %tmp.46 = lgetv %level.9;
+        symbol [ level %tmp.46 39 31 36 ];
+        %tmp.47 = 1;
+        %tmp.48 = sub %tmp.46 %tmp.47;
+        %tmp.49 = lgetv %chartH.4;
+        symbol [ chartH %tmp.49 39 44 50 ];
+        %tmp.50 = mul %tmp.48 %tmp.49;
+        %tmp.51 = 4;
+        %tmp.52 = div %tmp.50 %tmp.51;
+        %tmp.53 = sub %tmp.45 %tmp.52;
+        lputv %y.10 %tmp.53;
+        symbol [ y %y.10 39 16 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 40 12 ]
+        %tmp.54 = lgetv %dc;
+        symbol [ dc %tmp.54 40 12 14 ];
+        symbol [ drawLine %tmp.55 40 15 23 ];
+        %tmp.55 = getv function %tmp.54 :drawLine;
+        %tmp.56 = lgetv %chartL.2;
+        symbol [ chartL %tmp.56 40 24 30 ];
+        %tmp.57 = lgetv %y.10;
+        symbol [ y %tmp.57 40 32 33 ];
+        %tmp.58 = lgetv %chartR.3;
+        symbol [ chartR %tmp.58 40 35 41 ];
+        %tmp.59 = lgetv %y.10;
+        symbol [ y %tmp.59 40 43 44 ];
+        invoke %tmp.54 %tmp.55(%tmp.56, %tmp.57, %tmp.58, %tmp.59);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 41 12 ]
+        %tmp.60 = lgetv %dc;
+        symbol [ dc %tmp.60 41 12 14 ];
+        symbol [ drawText %tmp.61 41 15 23 ];
+        %tmp.61 = getv function %tmp.60 :drawText;
+        %tmp.62 = lgetv %chartL.2;
+        symbol [ chartL %tmp.62 41 24 30 ];
+        %tmp.63 = 3;
+        %tmp.64 = sub %tmp.62 %tmp.63;
+        %tmp.65 = lgetv %y.10;
+        symbol [ y %tmp.65 41 36 37 ];
+        %tmp.66 = 3;
+        %tmp.67 = sub %tmp.65 %tmp.66;
+        symbol [ Graphics %tmp.68 41 43 51 ];
+        %tmp.68 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.69 41 52 62 ];
+        %tmp.69 = getv %tmp.68 :FONT_XTINY;
+        %tmp.70 = lgetv %level.9;
+        symbol [ level %tmp.70 41 64 69 ];
+        symbol [ toString %tmp.71 41 70 78 ];
+        %tmp.71 = getv function %tmp.70 :toString;
+        %tmp.72 = invoke %tmp.70 %tmp.71();
+        symbol [ Graphics %tmp.73 41 82 90 ];
+        %tmp.73 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.74 41 91 109 ];
+        %tmp.74 = getv %tmp.73 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.60 %tmp.61(%tmp.64, %tmp.67, %tmp.69, %tmp.72, %tmp.74);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_49_42_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 38 ]
+        %tmp.77 = lgetv %level.9;
+        symbol [ level %tmp.77 38 40 45 ];
+        %tmp.78 = add %tmp.77 1;
+        lputv %level.9 %tmp.78;
+        symbol [ level %level.9 38 40 45 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_38_8_42_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 45 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %entries.11 = local;
+        symbol [ entries %entries.11 45 12 19 ];
+        %tmp.79 = lgetv %app;
+        symbol [ app %tmp.79 45 22 25 ];
+        symbol [ getLast7DaysEntries %tmp.80 45 26 45 ];
+        %tmp.80 = getv function %tmp.79 :getLast7DaysEntries;
+        %tmp.81 = invoke %tmp.79 %tmp.80();
+        lputv %entries.11 %tmp.81;
+        symbol [ entries %entries.11 45 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 46 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %points.12 = local;
+        symbol [ points %points.12 46 12 18 ];
+        %tmp.82 = newa 0;
+        lputv %points.12 %tmp.82;
+        symbol [ points %points.12 46 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 47 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %labels.13 = local;
+        symbol [ labels %labels.13 47 12 18 ];
+        %tmp.83 = newa 0;
+        lputv %labels.13 %tmp.83;
+        symbol [ labels %labels.13 47 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 48 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %dayLabels.14 = local;
+        symbol [ dayLabels %dayLabels.14 48 12 21 ];
+        %tmp.84 = newa 7;
+        %tmp.85 = "S";
+        %tmp.86 = dup %tmp.84;
+        %tmp.87 = aputv %tmp.86 0 %tmp.85;
+        %tmp.88 = "M";
+        %tmp.89 = dup %tmp.87;
+        %tmp.90 = aputv %tmp.89 1 %tmp.88;
+        %tmp.91 = "T";
+        %tmp.92 = dup %tmp.90;
+        %tmp.93 = aputv %tmp.92 2 %tmp.91;
+        %tmp.94 = "W";
+        %tmp.95 = dup %tmp.93;
+        %tmp.96 = aputv %tmp.95 3 %tmp.94;
+        %tmp.97 = "T";
+        %tmp.98 = dup %tmp.96;
+        %tmp.99 = aputv %tmp.98 4 %tmp.97;
+        %tmp.100 = "F";
+        %tmp.101 = dup %tmp.99;
+        %tmp.102 = aputv %tmp.101 5 %tmp.100;
+        %tmp.103 = "S";
+        %tmp.104 = dup %tmp.102;
+        %tmp.105 = aputv %tmp.104 6 %tmp.103;
+        lputv %dayLabels.14 %tmp.105;
+        symbol [ dayLabels %dayLabels.14 48 12 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 51 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop" ]
+        %now.15 = local;
+        symbol [ now %now.15 51 12 15 ];
+        symbol [ Toybox %tmp.107 51 18 24 ];
+        %tmp.107 = getv ? :Toybox;
+        symbol [ Time %tmp.108 51 25 29 ];
+        %tmp.108 = getv %tmp.107 :Time;
+        symbol [ now %tmp.109 51 30 33 ];
+        %tmp.109 = getv function %tmp.108 :now;
+        %tmp.110 = invoke %tmp.108 %tmp.109();
+        lputv %now.15 %tmp.110;
+        symbol [ now %now.15 51 12 15 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 52 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_end" ]
+        %i.16 = local;
+        symbol [ i %i.16 52 17 18 ];
+        %tmp.111 = 6;
+        lputv %i.16 %tmp.111;
+        symbol [ i %i.16 52 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_test:
+        %tmp.112 = lgetv %i.16;
+        symbol [ i %tmp.112 52 24 25 ];
+        %tmp.113 = 0;
+        %tmp.114 = gte %tmp.112 %tmp.113;
+        bf %tmp.114 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 53 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_stop" ]
+        %dayMoment.17 = local;
+        symbol [ dayMoment %dayMoment.17 53 16 25 ];
+        %tmp.115 = lgetv %now.15;
+        symbol [ now %tmp.115 53 28 31 ];
+        symbol [ subtract %tmp.116 53 32 40 ];
+        %tmp.116 = getv function %tmp.115 :subtract;
+        symbol [ Toybox %tmp.120 53 45 51 ];
+        %tmp.120 = getv ? :Toybox;
+        symbol [ Time %tmp.121 53 52 56 ];
+        %tmp.121 = getv %tmp.120 :Time;
+        symbol [ Duration %tmp.122 53 57 65 ];
+        %tmp.122 = getv %tmp.121 :Duration;
+        %tmp.123 = lgetv %i.16;
+        symbol [ i %tmp.123 53 66 67 ];
+        %tmp.124 = 86400;
+        %tmp.125 = mul %tmp.123 %tmp.124;
+        %tmp.117 = newc %tmp.122 (%tmp.125);
+        %tmp.126 = invoke %tmp.115 %tmp.116(%tmp.117);
+        lputv %dayMoment.17 %tmp.126;
+        symbol [ dayMoment %dayMoment.17 53 16 25 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 54 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_stop" ]
+        %dayInfo.18 = local;
+        symbol [ dayInfo %dayInfo.18 54 16 23 ];
+        symbol [ Toybox %tmp.128 54 26 32 ];
+        %tmp.128 = getv ? :Toybox;
+        symbol [ Time %tmp.129 54 33 37 ];
+        %tmp.129 = getv %tmp.128 :Time;
+        symbol [ Gregorian %tmp.130 54 38 47 ];
+        %tmp.130 = getv %tmp.129 :Gregorian;
+        symbol [ info %tmp.131 54 48 52 ];
+        %tmp.131 = getv function %tmp.130 :info;
+        %tmp.132 = lgetv %dayMoment.17;
+        symbol [ dayMoment %tmp.132 54 53 62 ];
+        symbol [ Toybox %tmp.134 54 64 70 ];
+        %tmp.134 = getv ? :Toybox;
+        symbol [ Time %tmp.135 54 71 75 ];
+        %tmp.135 = getv %tmp.134 :Time;
+        symbol [ FORMAT_SHORT %tmp.136 54 76 88 ];
+        %tmp.136 = getv %tmp.135 :FORMAT_SHORT;
+        %tmp.137 = invoke %tmp.130 %tmp.131(%tmp.132, %tmp.136);
+        lputv %dayInfo.18 %tmp.137;
+        symbol [ dayInfo %dayInfo.18 54 16 23 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 55 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_stop" ]
+        %dayOfWeek.19 = local;
+        symbol [ dayOfWeek %dayOfWeek.19 55 16 25 ];
+        %tmp.138 = lgetv %dayInfo.18;
+        symbol [ dayInfo %tmp.138 55 28 35 ];
+        symbol [ day_of_week %tmp.139 55 36 47 ];
+        %tmp.139 = getv %tmp.138 :day_of_week;
+        lputv %dayOfWeek.19 %tmp.139;
+        symbol [ dayOfWeek %dayOfWeek.19 55 16 25 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 56 12 ]
+        %tmp.140 = lgetv %labels.13;
+        symbol [ labels %tmp.140 56 12 18 ];
+        symbol [ add %tmp.141 56 19 22 ];
+        %tmp.141 = getv function %tmp.140 :add;
+        %tmp.142 = lgetv %dayLabels.14;
+        symbol [ dayLabels %tmp.142 56 23 32 ];
+        %tmp.143 = lgetv %dayOfWeek.19;
+        symbol [ dayOfWeek %tmp.143 56 33 42 ];
+        %tmp.144 = 1;
+        %tmp.145 = sub %tmp.143 %tmp.144;
+        %tmp.146 = agetv %tmp.142 %tmp.145;
+        invoke %tmp.140 %tmp.141(%tmp.146);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 59 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_stop" ]
+        %entry.20 = local;
+        symbol [ entry %entry.20 59 16 21 ];
+        %tmp.147 = lgetv %entries.11;
+        symbol [ entries %tmp.147 59 24 31 ];
+        %tmp.148 = 6;
+        %tmp.149 = lgetv %i.16;
+        symbol [ i %tmp.149 59 36 37 ];
+        %tmp.150 = sub %tmp.148 %tmp.149;
+        %tmp.151 = agetv %tmp.147 %tmp.150;
+        lputv %entry.20 %tmp.151;
+        symbol [ entry %entry.20 59 16 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 60 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_60_12_64_12_if_stmt:
+        %tmp.152 = lgetv %entry.20;
+        symbol [ entry %tmp.152 60 16 21 ];
+        %tmp.153 = null;
+        %tmp.154 = ne %tmp.152 %tmp.153;
+        bf %tmp.154 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_60_12_64_12_if_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_60_12_64_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_60_31_62_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 61 16 ]
+        %tmp.155 = lgetv %points.12;
+        symbol [ points %tmp.155 61 16 22 ];
+        symbol [ add %tmp.156 61 23 26 ];
+        %tmp.156 = getv function %tmp.155 :add;
+        %tmp.157 = lgetv %entry.20;
+        symbol [ entry %tmp.157 61 27 32 ];
+        %tmp.158 = as %tmp.157 { (!Null) };
+        symbol [ mood %tmp.159 61 33 37 ];
+        %tmp.159 = getv %tmp.158 :mood;
+        invoke %tmp.155 %tmp.156(%tmp.159);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_60_31_62_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_60_12_64_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_60_12_64_12_if_else_false:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_62_19_64_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 63 16 ]
+        %tmp.160 = lgetv %points.12;
+        symbol [ points %tmp.160 63 16 22 ];
+        symbol [ add %tmp.161 63 23 26 ];
+        %tmp.161 = getv function %tmp.160 :add;
+        %tmp.162 = 3;
+        invoke %tmp.160 %tmp.161(%tmp.162);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_62_19_64_12_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_60_12_64_12_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_37_65_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 52 ]
+        %tmp.165 = lgetv %i.16;
+        symbol [ i %tmp.165 52 32 33 ];
+        %tmp.166 = sub %tmp.165 1;
+        lputv %i.16 %tmp.166;
+        symbol [ i %i.16 52 32 33 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_52_8_65_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 68 8 ]
+        %tmp.167 = lgetv %dc;
+        symbol [ dc %tmp.167 68 8 10 ];
+        symbol [ setColor %tmp.168 68 11 19 ];
+        %tmp.168 = getv function %tmp.167 :setColor;
+        %tmp.169 = 0x2196F3;
+        symbol [ Graphics %tmp.170 68 30 38 ];
+        %tmp.170 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.171 68 39 56 ];
+        %tmp.171 = getv %tmp.170 :COLOR_TRANSPARENT;
+        invoke %tmp.167 %tmp.168(%tmp.169, %tmp.171);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 69 8 ]
+        %tmp.172 = lgetv %dc;
+        symbol [ dc %tmp.172 69 8 10 ];
+        symbol [ setPenWidth %tmp.173 69 11 22 ];
+        %tmp.173 = getv function %tmp.172 :setPenWidth;
+        %tmp.174 = 2;
+        invoke %tmp.172 %tmp.173(%tmp.174);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 70 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_end" ]
+        %i.21 = local;
+        symbol [ i %i.21 70 17 18 ];
+        %tmp.175 = 0;
+        lputv %i.21 %tmp.175;
+        symbol [ i %i.21 70 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_test:
+        %tmp.176 = lgetv %i.21;
+        symbol [ i %tmp.176 70 24 25 ];
+        %tmp.177 = lgetv %points.12;
+        symbol [ points %tmp.177 70 28 34 ];
+        symbol [ size %tmp.178 70 35 39 ];
+        %tmp.178 = getv function %tmp.177 :size;
+        %tmp.179 = invoke %tmp.177 %tmp.178();
+        %tmp.180 = 1;
+        %tmp.181 = sub %tmp.179 %tmp.180;
+        %tmp.182 = lt %tmp.176 %tmp.181;
+        bf %tmp.182 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 71 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_stop" ]
+        %x1.22 = local;
+        symbol [ x1 %x1.22 71 16 18 ];
+        %tmp.183 = lgetv %chartL.2;
+        symbol [ chartL %tmp.183 71 21 27 ];
+        %tmp.184 = lgetv %i.21;
+        symbol [ i %tmp.184 71 31 32 ];
+        %tmp.185 = lgetv %chartW.8;
+        symbol [ chartW %tmp.185 71 35 41 ];
+        %tmp.186 = mul %tmp.184 %tmp.185;
+        %tmp.187 = 6;
+        %tmp.188 = div %tmp.186 %tmp.187;
+        %tmp.189 = add %tmp.183 %tmp.188;
+        lputv %x1.22 %tmp.189;
+        symbol [ x1 %x1.22 71 16 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 72 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_stop" ]
+        %y1.23 = local;
+        symbol [ y1 %y1.23 72 16 18 ];
+        %tmp.190 = lgetv %chartB.7;
+        symbol [ chartB %tmp.190 72 21 27 ];
+        %tmp.191 = lgetv %points.12;
+        symbol [ points %tmp.191 72 32 38 ];
+        %tmp.192 = lgetv %i.21;
+        symbol [ i %tmp.192 72 39 40 ];
+        %tmp.193 = agetv %tmp.191 %tmp.192;
+        %tmp.194 = 1;
+        %tmp.195 = sub %tmp.193 %tmp.194;
+        %tmp.196 = lgetv %chartH.4;
+        symbol [ chartH %tmp.196 72 49 55 ];
+        %tmp.197 = mul %tmp.195 %tmp.196;
+        %tmp.198 = 4;
+        %tmp.199 = div %tmp.197 %tmp.198;
+        %tmp.200 = sub %tmp.190 %tmp.199;
+        lputv %y1.23 %tmp.200;
+        symbol [ y1 %y1.23 72 16 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 73 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_stop" ]
+        %x2.24 = local;
+        symbol [ x2 %x2.24 73 16 18 ];
+        %tmp.201 = lgetv %chartL.2;
+        symbol [ chartL %tmp.201 73 21 27 ];
+        %tmp.202 = lgetv %i.21;
+        symbol [ i %tmp.202 73 32 33 ];
+        %tmp.203 = 1;
+        %tmp.204 = add %tmp.202 %tmp.203;
+        %tmp.205 = lgetv %chartW.8;
+        symbol [ chartW %tmp.205 73 41 47 ];
+        %tmp.206 = mul %tmp.204 %tmp.205;
+        %tmp.207 = 6;
+        %tmp.208 = div %tmp.206 %tmp.207;
+        %tmp.209 = add %tmp.201 %tmp.208;
+        lputv %x2.24 %tmp.209;
+        symbol [ x2 %x2.24 73 16 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 74 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_stop" ]
+        %y2.25 = local;
+        symbol [ y2 %y2.25 74 16 18 ];
+        %tmp.210 = lgetv %chartB.7;
+        symbol [ chartB %tmp.210 74 21 27 ];
+        %tmp.211 = lgetv %points.12;
+        symbol [ points %tmp.211 74 32 38 ];
+        %tmp.212 = lgetv %i.21;
+        symbol [ i %tmp.212 74 39 40 ];
+        %tmp.213 = 1;
+        %tmp.214 = add %tmp.212 %tmp.213;
+        %tmp.215 = agetv %tmp.211 %tmp.214;
+        %tmp.216 = 1;
+        %tmp.217 = sub %tmp.215 %tmp.216;
+        %tmp.218 = lgetv %chartH.4;
+        symbol [ chartH %tmp.218 74 53 59 ];
+        %tmp.219 = mul %tmp.217 %tmp.218;
+        %tmp.220 = 4;
+        %tmp.221 = div %tmp.219 %tmp.220;
+        %tmp.222 = sub %tmp.210 %tmp.221;
+        lputv %y2.25 %tmp.222;
+        symbol [ y2 %y2.25 74 16 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 75 12 ]
+        %tmp.223 = lgetv %dc;
+        symbol [ dc %tmp.223 75 12 14 ];
+        symbol [ drawLine %tmp.224 75 15 23 ];
+        %tmp.224 = getv function %tmp.223 :drawLine;
+        %tmp.225 = lgetv %x1.22;
+        symbol [ x1 %tmp.225 75 24 26 ];
+        %tmp.226 = lgetv %y1.23;
+        symbol [ y1 %tmp.226 75 28 30 ];
+        %tmp.227 = lgetv %x2.24;
+        symbol [ x2 %tmp.227 75 32 34 ];
+        %tmp.228 = lgetv %y2.25;
+        symbol [ y2 %tmp.228 75 36 38 ];
+        invoke %tmp.223 %tmp.224(%tmp.225, %tmp.226, %tmp.227, %tmp.228);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_52_76_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 70 ]
+        %tmp.231 = lgetv %i.21;
+        symbol [ i %tmp.231 70 47 48 ];
+        %tmp.232 = add %tmp.231 1;
+        lputv %i.21 %tmp.232;
+        symbol [ i %i.21 70 47 48 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_70_8_76_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 77 8 ]
+        %tmp.233 = lgetv %dc;
+        symbol [ dc %tmp.233 77 8 10 ];
+        symbol [ setPenWidth %tmp.234 77 11 22 ];
+        %tmp.234 = getv function %tmp.233 :setPenWidth;
+        %tmp.235 = 1;
+        invoke %tmp.233 %tmp.234(%tmp.235);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 80 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_end" ]
+        %i.26 = local;
+        symbol [ i %i.26 80 17 18 ];
+        %tmp.236 = 0;
+        lputv %i.26 %tmp.236;
+        symbol [ i %i.26 80 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_test:
+        %tmp.237 = lgetv %i.26;
+        symbol [ i %tmp.237 80 24 25 ];
+        %tmp.238 = lgetv %points.12;
+        symbol [ points %tmp.238 80 28 34 ];
+        symbol [ size %tmp.239 80 35 39 ];
+        %tmp.239 = getv function %tmp.238 :size;
+        %tmp.240 = invoke %tmp.238 %tmp.239();
+        %tmp.241 = lt %tmp.237 %tmp.240;
+        bf %tmp.241 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_48_87_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 81 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_48_87_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_48_87_8_stop" ]
+        %x.27 = local;
+        symbol [ x %x.27 81 16 17 ];
+        %tmp.242 = lgetv %chartL.2;
+        symbol [ chartL %tmp.242 81 20 26 ];
+        %tmp.243 = lgetv %i.26;
+        symbol [ i %tmp.243 81 30 31 ];
+        %tmp.244 = lgetv %chartW.8;
+        symbol [ chartW %tmp.244 81 34 40 ];
+        %tmp.245 = mul %tmp.243 %tmp.244;
+        %tmp.246 = 6;
+        %tmp.247 = div %tmp.245 %tmp.246;
+        %tmp.248 = add %tmp.242 %tmp.247;
+        lputv %x.27 %tmp.248;
+        symbol [ x %x.27 81 16 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 82 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_48_87_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_48_87_8_stop" ]
+        %y.28 = local;
+        symbol [ y %y.28 82 16 17 ];
+        %tmp.249 = lgetv %chartB.7;
+        symbol [ chartB %tmp.249 82 20 26 ];
+        %tmp.250 = lgetv %points.12;
+        symbol [ points %tmp.250 82 31 37 ];
+        %tmp.251 = lgetv %i.26;
+        symbol [ i %tmp.251 82 38 39 ];
+        %tmp.252 = agetv %tmp.250 %tmp.251;
+        %tmp.253 = 1;
+        %tmp.254 = sub %tmp.252 %tmp.253;
+        %tmp.255 = lgetv %chartH.4;
+        symbol [ chartH %tmp.255 82 48 54 ];
+        %tmp.256 = mul %tmp.254 %tmp.255;
+        %tmp.257 = 4;
+        %tmp.258 = div %tmp.256 %tmp.257;
+        %tmp.259 = sub %tmp.249 %tmp.258;
+        lputv %y.28 %tmp.259;
+        symbol [ y %y.28 82 16 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 83 12 ]
+        %tmp.260 = lgetv %dc;
+        symbol [ dc %tmp.260 83 12 14 ];
+        symbol [ setColor %tmp.261 83 15 23 ];
+        %tmp.261 = getv function %tmp.260 :setColor;
+        %tmp.262 = 0x2196F3;
+        symbol [ Graphics %tmp.263 83 34 42 ];
+        %tmp.263 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.264 83 43 60 ];
+        %tmp.264 = getv %tmp.263 :COLOR_TRANSPARENT;
+        invoke %tmp.260 %tmp.261(%tmp.262, %tmp.264);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 84 12 ]
+        %tmp.265 = lgetv %dc;
+        symbol [ dc %tmp.265 84 12 14 ];
+        symbol [ fillCircle %tmp.266 84 15 25 ];
+        %tmp.266 = getv function %tmp.265 :fillCircle;
+        %tmp.267 = lgetv %x.27;
+        symbol [ x %tmp.267 84 26 27 ];
+        %tmp.268 = lgetv %y.28;
+        symbol [ y %tmp.268 84 29 30 ];
+        %tmp.269 = 5;
+        invoke %tmp.265 %tmp.266(%tmp.267, %tmp.268, %tmp.269);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 85 12 ]
+        %tmp.270 = lgetv %dc;
+        symbol [ dc %tmp.270 85 12 14 ];
+        symbol [ setColor %tmp.271 85 15 23 ];
+        %tmp.271 = getv function %tmp.270 :setColor;
+        symbol [ COLOR_WARM_GREY %tmp.273 85 24 39 ];
+        %tmp.273 = getv ? :COLOR_WARM_GREY;
+        symbol [ Graphics %tmp.274 85 41 49 ];
+        %tmp.274 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.275 85 50 67 ];
+        %tmp.275 = getv %tmp.274 :COLOR_TRANSPARENT;
+        invoke %tmp.270 %tmp.271(%tmp.273, %tmp.275);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 86 12 ]
+        %tmp.276 = lgetv %dc;
+        symbol [ dc %tmp.276 86 12 14 ];
+        symbol [ fillCircle %tmp.277 86 15 25 ];
+        %tmp.277 = getv function %tmp.276 :fillCircle;
+        %tmp.278 = lgetv %x.27;
+        symbol [ x %tmp.278 86 26 27 ];
+        %tmp.279 = lgetv %y.28;
+        symbol [ y %tmp.279 86 29 30 ];
+        %tmp.280 = 2;
+        invoke %tmp.276 %tmp.277(%tmp.278, %tmp.279, %tmp.280);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_48_87_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 80 ]
+        %tmp.283 = lgetv %i.26;
+        symbol [ i %tmp.283 80 43 44 ];
+        %tmp.284 = add %tmp.283 1;
+        lputv %i.26 %tmp.284;
+        symbol [ i %i.26 80 43 44 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_80_8_87_8_for_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 90 8 ]
+        for @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_test @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_incr @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_init:
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_begin" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_end" ]
+        %i.29 = local;
+        symbol [ i %i.29 90 17 18 ];
+        %tmp.285 = 0;
+        lputv %i.29 %tmp.285;
+        symbol [ i %i.29 90 17 18 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_test:
+        %tmp.286 = lgetv %i.29;
+        symbol [ i %tmp.286 90 24 25 ];
+        %tmp.287 = 7;
+        %tmp.288 = lt %tmp.286 %tmp.287;
+        bf %tmp.288 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_36_96_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 91 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_36_96_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_36_96_8_stop" ]
+        %x.30 = local;
+        symbol [ x %x.30 91 16 17 ];
+        %tmp.289 = lgetv %chartL.2;
+        symbol [ chartL %tmp.289 91 20 26 ];
+        %tmp.290 = lgetv %i.29;
+        symbol [ i %tmp.290 91 30 31 ];
+        %tmp.291 = lgetv %chartW.8;
+        symbol [ chartW %tmp.291 91 34 40 ];
+        %tmp.292 = mul %tmp.290 %tmp.291;
+        %tmp.293 = 6;
+        %tmp.294 = div %tmp.292 %tmp.293;
+        %tmp.295 = add %tmp.289 %tmp.294;
+        lputv %x.30 %tmp.295;
+        symbol [ x %x.30 91 16 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 92 12 ]
+        %tmp.296 = lgetv %dc;
+        symbol [ dc %tmp.296 92 12 14 ];
+        symbol [ setColor %tmp.297 92 15 23 ];
+        %tmp.297 = getv function %tmp.296 :setColor;
+        %tmp.298 = 0xE0E0E0;
+        symbol [ Graphics %tmp.299 92 34 42 ];
+        %tmp.299 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.300 92 43 60 ];
+        %tmp.300 = getv %tmp.299 :COLOR_TRANSPARENT;
+        invoke %tmp.296 %tmp.297(%tmp.298, %tmp.300);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 93 12 ]
+        %tmp.301 = lgetv %dc;
+        symbol [ dc %tmp.301 93 12 14 ];
+        symbol [ drawLine %tmp.302 93 15 23 ];
+        %tmp.302 = getv function %tmp.301 :drawLine;
+        %tmp.303 = lgetv %x.30;
+        symbol [ x %tmp.303 93 24 25 ];
+        %tmp.304 = lgetv %chartT.6;
+        symbol [ chartT %tmp.304 93 27 33 ];
+        %tmp.305 = lgetv %x.30;
+        symbol [ x %tmp.305 93 35 36 ];
+        %tmp.306 = lgetv %chartB.7;
+        symbol [ chartB %tmp.306 93 38 44 ];
+        invoke %tmp.301 %tmp.302(%tmp.303, %tmp.304, %tmp.305, %tmp.306);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 94 12 ]
+        %tmp.307 = lgetv %dc;
+        symbol [ dc %tmp.307 94 12 14 ];
+        symbol [ setColor %tmp.308 94 15 23 ];
+        %tmp.308 = getv function %tmp.307 :setColor;
+        symbol [ COLOR_DARK_GREY %tmp.310 94 24 39 ];
+        %tmp.310 = getv ? :COLOR_DARK_GREY;
+        symbol [ Graphics %tmp.311 94 41 49 ];
+        %tmp.311 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.312 94 50 67 ];
+        %tmp.312 = getv %tmp.311 :COLOR_TRANSPARENT;
+        invoke %tmp.307 %tmp.308(%tmp.310, %tmp.312);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 95 12 ]
+        %tmp.313 = lgetv %dc;
+        symbol [ dc %tmp.313 95 12 14 ];
+        symbol [ drawText %tmp.314 95 15 23 ];
+        %tmp.314 = getv function %tmp.313 :drawText;
+        %tmp.315 = lgetv %x.30;
+        symbol [ x %tmp.315 95 24 25 ];
+        %tmp.316 = lgetv %chartB.7;
+        symbol [ chartB %tmp.316 95 27 33 ];
+        %tmp.317 = 1;
+        %tmp.318 = add %tmp.316 %tmp.317;
+        symbol [ Graphics %tmp.319 95 39 47 ];
+        %tmp.319 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.320 95 48 58 ];
+        %tmp.320 = getv %tmp.319 :FONT_XTINY;
+        %tmp.321 = lgetv %labels.13;
+        symbol [ labels %tmp.321 95 60 66 ];
+        %tmp.322 = lgetv %i.29;
+        symbol [ i %tmp.322 95 67 68 ];
+        %tmp.323 = agetv %tmp.321 %tmp.322;
+        symbol [ Graphics %tmp.324 95 71 79 ];
+        %tmp.324 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.325 95 80 99 ];
+        %tmp.325 = getv %tmp.324 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.313 %tmp.314(%tmp.315, %tmp.318, %tmp.320, %tmp.323, %tmp.325);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_36_96_8_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_incr:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 90 ]
+        %tmp.328 = lgetv %i.29;
+        symbol [ i %tmp.328 90 31 32 ];
+        %tmp.329 = add %tmp.328 1;
+        lputv %i.29 %tmp.329;
+        symbol [ i %i.29 90 31 32 ];
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_test;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_90_8_96_8_for_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_26_149_97_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 99; @symbol_functiondef = [drawActivityData,99,13,29]; @symbol_param<0> = [dc,99,30,32]; @symbol_param<0>_type<0> = [Dc,99,36,38]; @symbol_param<1> = [app,99,40,43]; @symbol_param<1>_type<0> = [MoodFlowApp,99,47,58]; @symbol_param<2> = [width,99,60,65]; @symbol_param<2>_type<0> = [Number,99,69,75]; @symbol_param<3> = [height,99,77,83]; @symbol_param<3>_type<0> = [Number,99,87,93]; @symbol_param<4> = [bezelClearance,99,95,109]; @symbol_param<4>_type<0> = [Number,99,113,119]; @symbol_param<5> = [isRoundDisplay,99,121,135]; @symbol_param<5>_type<0> = [Boolean,99,139,146]; @symbol_param<6> = [centerX,99,148,155]; @symbol_param<6>_type<0> = [Number,99,159,165]; ]
+    function drawActivityData(dc as Dc, app as MoodFlowApp, width as Number, height as Number, bezelClearance as Number, isRoundDisplay as Boolean, centerX as Number) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 100 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_stop" ]
+        %effectiveBezel.1 = local;
+        symbol [ effectiveBezel %effectiveBezel.1 100 12 26 ];
+        %tmp.1 = lgetv %bezelClearance;
+        symbol [ bezelClearance %tmp.1 100 29 43 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_begin:
+        %tmp.2 = lgetv %isRoundDisplay;
+        symbol [ isRoundDisplay %tmp.2 100 47 61 ];
+        bf %tmp.2 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_true:
+        %tmp.3 = 8;
+        push %tmp.3;
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_else_false:
+        %tmp.4 = 0;
+        push %tmp.4;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_end:
+        %tmp.5 = phi [%tmp.2 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_begin] [%tmp.3 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_true] [%tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_else_false] [%tmp.5 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_100_47_100_68_end];
+        %tmp.6 = add %tmp.1 %tmp.5;
+        lputv %effectiveBezel.1 %tmp.6;
+        symbol [ effectiveBezel %effectiveBezel.1 100 12 26 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 101 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_stop" ]
+        %chartH.2 = local;
+        symbol [ chartH %chartH.2 101 12 18 ];
+        %tmp.7 = lgetv %height;
+        symbol [ height %tmp.7 101 22 28 ];
+        %tmp.8 = 0.30;
+        %tmp.9 = mul %tmp.7 %tmp.8;
+        symbol [ toNumber %tmp.10 101 37 45 ];
+        %tmp.10 = getv function %tmp.9 :toNumber;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        lputv %chartH.2 %tmp.11;
+        symbol [ chartH %chartH.2 101 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 102 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_stop" ]
+        %centerY.3 = local;
+        symbol [ centerY %centerY.3 102 12 19 ];
+        %tmp.12 = lgetv %height;
+        symbol [ height %tmp.12 102 22 28 ];
+        %tmp.13 = 2;
+        %tmp.14 = div %tmp.12 %tmp.13;
+        lputv %centerY.3 %tmp.14;
+        symbol [ centerY %centerY.3 102 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 103 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_stop" ]
+        %chartT.4 = local;
+        symbol [ chartT %chartT.4 103 12 18 ];
+        %tmp.15 = lgetv %centerY.3;
+        symbol [ centerY %tmp.15 103 21 28 ];
+        %tmp.16 = lgetv %chartH.2;
+        symbol [ chartH %tmp.16 103 32 38 ];
+        %tmp.17 = 2;
+        %tmp.18 = div %tmp.16 %tmp.17;
+        %tmp.19 = sub %tmp.15 %tmp.18;
+        %tmp.20 = 15;
+        %tmp.21 = sub %tmp.19 %tmp.20;
+        lputv %chartT.4 %tmp.21;
+        symbol [ chartT %chartT.4 103 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 104 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_stop" ]
+        %chartB.5 = local;
+        symbol [ chartB %chartB.5 104 12 18 ];
+        %tmp.22 = lgetv %chartT.4;
+        symbol [ chartT %tmp.22 104 21 27 ];
+        %tmp.23 = lgetv %chartH.2;
+        symbol [ chartH %tmp.23 104 30 36 ];
+        %tmp.24 = add %tmp.22 %tmp.23;
+        lputv %chartB.5 %tmp.24;
+        symbol [ chartB %chartB.5 104 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 105 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_stop" ]
+        %dataY.6 = local;
+        symbol [ dataY %dataY.6 105 12 17 ];
+        %tmp.25 = lgetv %chartB.5;
+        symbol [ chartB %tmp.25 105 20 26 ];
+        %tmp.26 = 35;
+        %tmp.27 = add %tmp.25 %tmp.26;
+        lputv %dataY.6 %tmp.27;
+        symbol [ dataY %dataY.6 105 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 107 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_stop" ]
+        %sleepData.7 = local;
+        symbol [ sleepData %sleepData.7 107 12 21 ];
+        %tmp.28 = lgetv %app;
+        symbol [ app %tmp.28 107 24 27 ];
+        symbol [ getSleepData %tmp.29 107 28 40 ];
+        %tmp.29 = getv function %tmp.28 :getSleepData;
+        %tmp.30 = invoke %tmp.28 %tmp.29();
+        lputv %sleepData.7 %tmp.30;
+        symbol [ sleepData %sleepData.7 107 12 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 108 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_stop" ]
+        %activityData.8 = local;
+        symbol [ activityData %activityData.8 108 12 24 ];
+        %tmp.31 = lgetv %app;
+        symbol [ app %tmp.31 108 27 30 ];
+        symbol [ getActivityData %tmp.32 108 31 46 ];
+        %tmp.32 = getv function %tmp.31 :getActivityData;
+        %tmp.33 = invoke %tmp.31 %tmp.32();
+        lputv %activityData.8 %tmp.33;
+        symbol [ activityData %activityData.8 108 12 24 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 110 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_110_8_114_8_if_stmt:
+        %tmp.34 = lgetv %sleepData.7;
+        symbol [ sleepData %tmp.34 110 12 21 ];
+        symbol [ get %tmp.35 110 22 25 ];
+        %tmp.35 = getv function %tmp.34 :get;
+        %tmp.36 = "available";
+        %tmp.37 = invoke %tmp.34 %tmp.35(%tmp.36);
+        %tmp.38 = as %tmp.37 Boolean;
+        symbol [ Boolean %tmp.38 110 42 49 ];
+        bf %tmp.38 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_110_8_114_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_110_8_114_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_110_51_114_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 111 12 ]
+        %tmp.39 = lgetv %dc;
+        symbol [ dc %tmp.39 111 12 14 ];
+        symbol [ setColor %tmp.40 111 15 23 ];
+        %tmp.40 = getv function %tmp.39 :setColor;
+        symbol [ COLOR_DARK_GREY %tmp.42 111 24 39 ];
+        %tmp.42 = getv ? :COLOR_DARK_GREY;
+        symbol [ Graphics %tmp.43 111 41 49 ];
+        %tmp.43 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.44 111 50 67 ];
+        %tmp.44 = getv %tmp.43 :COLOR_TRANSPARENT;
+        invoke %tmp.39 %tmp.40(%tmp.42, %tmp.44);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 112 12 ]
+        %tmp.45 = lgetv %dc;
+        symbol [ dc %tmp.45 112 12 14 ];
+        symbol [ drawText %tmp.46 112 15 23 ];
+        %tmp.46 = getv function %tmp.45 :drawText;
+        %tmp.47 = lgetv %centerX;
+        symbol [ centerX %tmp.47 112 24 31 ];
+        %tmp.48 = lgetv %dataY.6;
+        symbol [ dataY %tmp.48 112 33 38 ];
+        symbol [ Graphics %tmp.49 112 40 48 ];
+        %tmp.49 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.50 112 49 59 ];
+        %tmp.50 = getv %tmp.49 :FONT_XTINY;
+        %tmp.51 = "Sleep: ";
+        %tmp.52 = lgetv %sleepData.7;
+        symbol [ sleepData %tmp.52 112 74 83 ];
+        symbol [ get %tmp.53 112 84 87 ];
+        %tmp.53 = getv function %tmp.52 :get;
+        %tmp.54 = "hours";
+        %tmp.55 = invoke %tmp.52 %tmp.53(%tmp.54);
+        %tmp.56 = as %tmp.55 Float;
+        symbol [ Float %tmp.56 112 100 105 ];
+        symbol [ format %tmp.57 112 107 113 ];
+        %tmp.57 = getv function %tmp.56 :format;
+        %tmp.58 = "%.1f";
+        %tmp.59 = invoke %tmp.56 %tmp.57(%tmp.58);
+        %tmp.60 = add %tmp.51 %tmp.59;
+        %tmp.61 = "h";
+        %tmp.62 = add %tmp.60 %tmp.61;
+        symbol [ Graphics %tmp.63 112 129 137 ];
+        %tmp.63 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.64 112 138 157 ];
+        %tmp.64 = getv %tmp.63 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.45 %tmp.46(%tmp.47, %tmp.48, %tmp.50, %tmp.62, %tmp.64);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 113 12 ]
+        %tmp.65 = lgetv %dataY.6;
+        symbol [ dataY %tmp.65 113 20 25 ];
+        %tmp.66 = 12;
+        %tmp.67 = add %tmp.65 %tmp.66;
+        lputv %dataY.6 %tmp.67;
+        symbol [ dataY %dataY.6 113 12 17 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_110_51_114_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_110_8_114_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_110_8_114_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 116 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_116_8_119_8_if_stmt:
+        %tmp.68 = lgetv %activityData.8;
+        symbol [ activityData %tmp.68 116 12 24 ];
+        symbol [ get %tmp.69 116 25 28 ];
+        %tmp.69 = getv function %tmp.68 :get;
+        %tmp.70 = "available";
+        %tmp.71 = invoke %tmp.68 %tmp.69(%tmp.70);
+        %tmp.72 = as %tmp.71 Boolean;
+        symbol [ Boolean %tmp.72 116 45 52 ];
+        bf %tmp.72 @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_116_8_119_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_116_8_119_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_116_54_119_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 117 12 ]
+        %tmp.73 = lgetv %dc;
+        symbol [ dc %tmp.73 117 12 14 ];
+        symbol [ setColor %tmp.74 117 15 23 ];
+        %tmp.74 = getv function %tmp.73 :setColor;
+        symbol [ COLOR_DARK_GREY %tmp.76 117 24 39 ];
+        %tmp.76 = getv ? :COLOR_DARK_GREY;
+        symbol [ Graphics %tmp.77 117 41 49 ];
+        %tmp.77 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.78 117 50 67 ];
+        %tmp.78 = getv %tmp.77 :COLOR_TRANSPARENT;
+        invoke %tmp.73 %tmp.74(%tmp.76, %tmp.78);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc" 118 12 ]
+        %tmp.79 = lgetv %dc;
+        symbol [ dc %tmp.79 118 12 14 ];
+        symbol [ drawText %tmp.80 118 15 23 ];
+        %tmp.80 = getv function %tmp.79 :drawText;
+        %tmp.81 = lgetv %centerX;
+        symbol [ centerX %tmp.81 118 24 31 ];
+        %tmp.82 = lgetv %dataY.6;
+        symbol [ dataY %tmp.82 118 33 38 ];
+        symbol [ Graphics %tmp.83 118 40 48 ];
+        %tmp.83 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.84 118 49 59 ];
+        %tmp.84 = getv %tmp.83 :FONT_XTINY;
+        %tmp.85 = "Steps: ";
+        %tmp.86 = lgetv %activityData.8;
+        symbol [ activityData %tmp.86 118 74 86 ];
+        symbol [ get %tmp.87 118 87 90 ];
+        %tmp.87 = getv function %tmp.86 :get;
+        %tmp.88 = "steps";
+        %tmp.89 = invoke %tmp.86 %tmp.87(%tmp.88);
+        %tmp.90 = as %tmp.89 Number;
+        symbol [ Number %tmp.90 118 103 109 ];
+        %tmp.91 = add %tmp.85 %tmp.90;
+        symbol [ Graphics %tmp.92 118 112 120 ];
+        %tmp.92 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.93 118 121 140 ];
+        %tmp.93 = getv %tmp.92 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.79 %tmp.80(%tmp.81, %tmp.82, %tmp.84, %tmp.91, %tmp.93);
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_116_54_119_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_116_8_119_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_116_8_119_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_screens_TrendScreen_mc_99_175_120_4_stop:
+    }
+}
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/screens/TrendScreen.mc"; @line = 1; ]
+<init> {
+}

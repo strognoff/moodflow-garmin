@@ -1,0 +1,207 @@
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+//! Manages application settings
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 4; @symbol_classdef = [SettingsManager,4,6,21]; ]
+class SettingsManager {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 4; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 5; @position = 16; @symbol_vardef = [dataStore,5,16,25]; @symbol_type<0> = [MoodFlowDataStore,5,29,46]; ]
+    private
+    var dataStore as MoodFlowDataStore;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 8; @position = 8; @symbol_vardef = [reminderEnabled,8,8,23]; @symbol_type<0> = [Boolean,8,27,34]; ]
+    var reminderEnabled as Boolean = true;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 9; @position = 8; @symbol_vardef = [reminderHour,9,8,20]; @symbol_type<0> = [Number,9,24,30]; ]
+    var reminderHour as Number = 20;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 10; @position = 8; @symbol_vardef = [reminderMinute,10,8,22]; @symbol_type<0> = [Number,10,26,32]; ]
+    var reminderMinute as Number = 0;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 12; @symbol_functiondef = [initialize,12,13,23]; @symbol_param<0> = [dataStore,12,24,33]; @symbol_param<0>_type<0> = [MoodFlowDataStore,12,37,54]; ]
+    function initialize(dataStore as MoodFlowDataStore) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_12_56_15_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 13 8 ]
+        symbol [ self %self 13 8 12 ];
+        %tmp.1 = lgetv %dataStore;
+        symbol [ dataStore %tmp.1 13 25 34 ];
+        symbol [ dataStore ? 13 13 22 ];
+        putv self :dataStore %tmp.1;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 14 8 ]
+        %tmp.2 = self;
+        symbol [ load %tmp.3 14 8 12 ];
+        %tmp.3 = getv function %tmp.2 :load;
+        invoke %tmp.2 %tmp.3();
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_12_56_15_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 17; @symbol_functiondef = [load,17,13,17]; ]
+    function load() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_17_28_25_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 18 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_17_28_25_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_17_28_25_4_stop" ]
+        %stored.1 = local;
+        symbol [ stored %stored.1 18 12 18 ];
+        symbol [ dataStore %tmp.2 18 21 30 ];
+        %tmp.2 = getv ? :dataStore;
+        symbol [ getValue %tmp.3 18 31 39 ];
+        %tmp.3 = getv function %tmp.2 :getValue;
+        %tmp.4 = "settings";
+        %tmp.5 = invoke %tmp.2 %tmp.3(%tmp.4);
+        lputv %stored.1 %tmp.5;
+        symbol [ stored %stored.1 18 12 18 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 19 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_19_8_24_8_if_stmt:
+        %tmp.6 = lgetv %stored.1;
+        symbol [ stored %tmp.6 19 12 18 ];
+        %tmp.7 = null;
+        %tmp.8 = ne %tmp.6 %tmp.7;
+        bf %tmp.8 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_19_8_24_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_19_8_24_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_19_28_24_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 20 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_19_28_24_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_19_28_24_8_stop" ]
+        %settings.2 = local;
+        symbol [ settings %settings.2 20 16 24 ];
+        %tmp.9 = lgetv %stored.1;
+        symbol [ stored %tmp.9 20 27 33 ];
+        %tmp.10 = as %tmp.9 { (!Null) };
+        %tmp.11 = as %tmp.10 Dictionary;
+        symbol [ Dictionary %tmp.11 20 37 47 ];
+        lputv %settings.2 %tmp.11;
+        symbol [ settings %settings.2 20 16 24 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 21 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_begin:
+        %tmp.12 = lgetv %settings.2;
+        symbol [ settings %tmp.12 21 30 38 ];
+        symbol [ get %tmp.13 21 39 42 ];
+        %tmp.13 = getv function %tmp.12 :get;
+        %tmp.14 = "reminderEnabled";
+        %tmp.15 = invoke %tmp.12 %tmp.13(%tmp.14);
+        %tmp.16 = 1;
+        %tmp.17 = eq %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_true:
+        %tmp.18 = true;
+        push %tmp.18;
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_else_false:
+        %tmp.19 = false;
+        push %tmp.19;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_end:
+        %tmp.20 = phi [%tmp.17 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_begin] [%tmp.18 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_true] [%tmp.19 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_else_false] [%tmp.20 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_21_30_21_76_end];
+        symbol [ reminderEnabled ? 21 12 27 ];
+        putv self :reminderEnabled %tmp.20;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 22 12 ]
+        %tmp.21 = lgetv %settings.2;
+        symbol [ settings %tmp.21 22 27 35 ];
+        symbol [ get %tmp.22 22 36 39 ];
+        %tmp.22 = getv function %tmp.21 :get;
+        %tmp.23 = "reminderHour";
+        %tmp.24 = invoke %tmp.21 %tmp.22(%tmp.23);
+        %tmp.25 = as %tmp.24 Number;
+        symbol [ Number %tmp.25 22 59 65 ];
+        symbol [ reminderHour ? 22 12 24 ];
+        putv self :reminderHour %tmp.25;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 23 12 ]
+        %tmp.26 = lgetv %settings.2;
+        symbol [ settings %tmp.26 23 29 37 ];
+        symbol [ get %tmp.27 23 38 41 ];
+        %tmp.27 = getv function %tmp.26 :get;
+        %tmp.28 = "reminderMinute";
+        %tmp.29 = invoke %tmp.26 %tmp.27(%tmp.28);
+        %tmp.30 = as %tmp.29 Number;
+        symbol [ Number %tmp.30 23 63 69 ];
+        symbol [ reminderMinute ? 23 12 26 ];
+        putv self :reminderMinute %tmp.30;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_19_28_24_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_19_8_24_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_19_8_24_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_17_28_25_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 27; @symbol_functiondef = [save,27,13,17]; ]
+    function save() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_27_28_34_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 28 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_27_28_34_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_27_28_34_4_stop" ]
+        %settings.1 = local;
+        symbol [ settings %settings.1 28 12 20 ];
+        %tmp.1 = newd 3;
+        %tmp.2 = "reminderEnabled";
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_begin:
+        symbol [ reminderEnabled %tmp.4 29 33 48 ];
+        %tmp.4 = getv ? :reminderEnabled;
+        bf %tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_true:
+        %tmp.5 = 1;
+        push %tmp.5;
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_else_false:
+        %tmp.6 = 0;
+        push %tmp.6;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_end:
+        %tmp.7 = phi [%tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_begin] [%tmp.5 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_true] [%tmp.6 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_else_false] [%tmp.7 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_29_33_29_55_end];
+        %tmp.8 = dup %tmp.1;
+        %tmp.9 = aputv %tmp.8 %tmp.2 %tmp.7;
+        %tmp.10 = "reminderHour";
+        symbol [ reminderHour %tmp.12 30 30 42 ];
+        %tmp.12 = getv ? :reminderHour;
+        %tmp.13 = dup %tmp.9;
+        %tmp.14 = aputv %tmp.13 %tmp.10 %tmp.12;
+        %tmp.15 = "reminderMinute";
+        symbol [ reminderMinute %tmp.17 31 32 46 ];
+        %tmp.17 = getv ? :reminderMinute;
+        %tmp.18 = dup %tmp.14;
+        %tmp.19 = aputv %tmp.18 %tmp.15 %tmp.17;
+        lputv %settings.1 %tmp.19;
+        symbol [ settings %settings.1 28 12 20 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 33 8 ]
+        symbol [ dataStore %tmp.21 33 8 17 ];
+        %tmp.21 = getv ? :dataStore;
+        symbol [ setValue %tmp.22 33 18 26 ];
+        %tmp.22 = getv function %tmp.21 :setValue;
+        %tmp.23 = "settings";
+        %tmp.24 = lgetv %settings.1;
+        symbol [ settings %tmp.24 33 39 47 ];
+        invoke %tmp.21 %tmp.22(%tmp.23, %tmp.24);
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_27_28_34_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 36; @symbol_functiondef = [setReminderTime,36,13,28]; @symbol_param<0> = [hour,36,29,33]; @symbol_param<0>_type<0> = [Number,36,37,43]; @symbol_param<1> = [minute,36,45,51]; @symbol_param<1>_type<0> = [Number,36,55,61]; ]
+    function setReminderTime(hour as Number, minute as Number) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_36_71_40_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 37 8 ]
+        %tmp.1 = lgetv %hour;
+        symbol [ hour %tmp.1 37 23 27 ];
+        symbol [ reminderHour ? 37 8 20 ];
+        putv self :reminderHour %tmp.1;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 38 8 ]
+        %tmp.2 = lgetv %minute;
+        symbol [ minute %tmp.2 38 25 31 ];
+        symbol [ reminderMinute ? 38 8 22 ];
+        putv self :reminderMinute %tmp.2;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 39 8 ]
+        %tmp.3 = self;
+        symbol [ save %tmp.4 39 8 12 ];
+        %tmp.4 = getv function %tmp.3 :save;
+        invoke %tmp.3 %tmp.4();
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_36_71_40_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 42; @symbol_functiondef = [toggleReminder,42,13,27]; @symbol_param<0> = [enabled,42,28,35]; @symbol_param<0>_type<0> = [Boolean,42,39,46]; ]
+    function toggleReminder(enabled as Boolean) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_42_56_45_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 43 8 ]
+        %tmp.1 = lgetv %enabled;
+        symbol [ enabled %tmp.1 43 26 33 ];
+        symbol [ reminderEnabled ? 43 8 23 ];
+        putv self :reminderEnabled %tmp.1;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc" 44 8 ]
+        %tmp.2 = self;
+        symbol [ save %tmp.3 44 8 12 ];
+        %tmp.3 = getv function %tmp.2 :save;
+        invoke %tmp.2 %tmp.3();
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_SettingsManager_mc_42_56_45_4_stop:
+    }
+}
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/SettingsManager.mc"; @line = 1; ]
+<init> {
+}

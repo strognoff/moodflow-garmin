@@ -1,0 +1,285 @@
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [ActivityMonitor,2,14,29]; ]
+import Toybox.ActivityMonitor;
+//! Provides Garmin watch data (sleep, activity, etc.)
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc"; @line = 5; @symbol_moduledef = [GarminDataProvider,5,7,25]; ]
+module GarminDataProvider {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc"; @line = 7; @symbol_functiondef = [getSleepData,7,13,25]; @symbol_return<0> = [Dictionary,7,31,41]; ]
+    function getSleepData() as Dictionary {
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_7_42_24_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 8 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_7_42_24_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_7_42_24_4_stop" ]
+        %hours.1 = local;
+        symbol [ hours %hours.1 8 12 17 ];
+        %tmp.1 = 0.0f;
+        lputv %hours.1 %tmp.1;
+        symbol [ hours %hours.1 8 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 9 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_7_42_24_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_7_42_24_4_stop" ]
+        %available.2 = local;
+        symbol [ available %available.2 9 12 21 ];
+        %tmp.2 = false;
+        lputv %available.2 %tmp.2;
+        symbol [ available %available.2 9 12 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 11 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_11_8_17_8_if_stmt:
+        symbol [ Toybox %tmp.4 11 12 18 ];
+        %tmp.4 = getv ? :Toybox;
+        %tmp.6 = const :ActivityMonitor;
+        symbol [ ActivityMonitor %tmp.6 11 24 39 const ];
+        %tmp.7 = canhazplz %tmp.4 %tmp.6;
+        bf %tmp.7 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_11_8_17_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_11_8_17_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_11_41_17_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 12 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_11_41_17_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_11_41_17_8_stop" ]
+        %info.3 = local;
+        symbol [ info %info.3 12 16 20 ];
+        symbol [ Toybox %tmp.9 12 23 29 ];
+        %tmp.9 = getv ? :Toybox;
+        %tmp.10 = as %tmp.9 { (interface { var ActivityMonitor; }) };
+        symbol [ ActivityMonitor %tmp.11 12 30 45 ];
+        %tmp.11 = getv %tmp.10 :ActivityMonitor;
+        symbol [ getInfo %tmp.12 12 46 53 ];
+        %tmp.12 = getv function %tmp.11 :getInfo;
+        %tmp.13 = invoke %tmp.11 %tmp.12();
+        lputv %info.3 %tmp.13;
+        symbol [ info %info.3 12 16 20 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 13 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_12_16_12_if_stmt:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_16_13_73_begin:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_16_13_42_begin:
+        %tmp.14 = lgetv %info.3;
+        symbol [ info %tmp.14 13 16 20 ];
+        %tmp.15 = null;
+        %tmp.16 = ne %tmp.14 %tmp.15;
+        bf %tmp.16 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_12_16_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_32_13_42_true:
+        %tmp.17 = lgetv %info.3;
+        symbol [ info %tmp.17 13 32 36 ];
+        %tmp.18 = as %tmp.17 { (!Null) };
+        %tmp.20 = const :sleepTime;
+        symbol [ sleepTime %tmp.20 13 42 51 const ];
+        %tmp.21 = canhazplz %tmp.18 %tmp.20;
+        push %tmp.21;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_32_13_42_end:
+        %tmp.22 = phi [%tmp.16 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_16_13_42_begin] [%tmp.21 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_32_13_42_true] [%tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_32_13_42_end];
+        bf %tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_12_16_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_55_13_73_true:
+        %tmp.23 = lgetv %info.3;
+        symbol [ info %tmp.23 13 55 59 ];
+        %tmp.24 = as %tmp.23 { (interface { var sleepTime; }) && (!Null) };
+        symbol [ sleepTime %tmp.25 13 60 69 ];
+        %tmp.25 = getv %tmp.24 :sleepTime;
+        %tmp.26 = null;
+        %tmp.27 = ne %tmp.25 %tmp.26;
+        push %tmp.27;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_55_13_73_end:
+        %tmp.28 = phi [%tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_16_13_73_begin] [%tmp.27 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_55_13_73_true] [%tmp.28 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_55_13_73_end];
+        bf %tmp.28 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_12_16_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_12_16_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_79_16_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 14 16 ]
+        %tmp.29 = lgetv %info.3;
+        symbol [ info %tmp.29 14 24 28 ];
+        %tmp.30 = as %tmp.29 { (interface { var sleepTime; }) && (!Null) };
+        symbol [ sleepTime %tmp.31 14 29 38 ];
+        %tmp.31 = getv %tmp.30 :sleepTime;
+        %tmp.32 = 3600.0f;
+        %tmp.33 = div %tmp.31 %tmp.32;
+        lputv %hours.1 %tmp.33;
+        symbol [ hours %hours.1 14 16 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 15 16 ]
+        %tmp.34 = true;
+        lputv %available.2 %tmp.34;
+        symbol [ available %available.2 15 16 25 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_79_16_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_12_16_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_13_12_16_12_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_11_41_17_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_11_8_17_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_11_8_17_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 19 8 ]
+        %tmp.35 = newd 3;
+        %tmp.36 = "quality";
+        %tmp.37 = 0;
+        %tmp.38 = dup %tmp.35;
+        %tmp.39 = aputv %tmp.38 %tmp.36 %tmp.37;
+        %tmp.40 = "hours";
+        %tmp.41 = lgetv %hours.1;
+        symbol [ hours %tmp.41 21 23 28 ];
+        %tmp.42 = dup %tmp.39;
+        %tmp.43 = aputv %tmp.42 %tmp.40 %tmp.41;
+        %tmp.44 = "available";
+        %tmp.45 = lgetv %available.2;
+        symbol [ available %tmp.45 22 27 36 ];
+        %tmp.46 = dup %tmp.43;
+        %tmp.47 = aputv %tmp.46 %tmp.44 %tmp.45;
+        ret %tmp.47;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_7_42_24_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc"; @line = 26; @symbol_functiondef = [getActivityData,26,13,28]; @symbol_return<0> = [Dictionary,26,34,44]; ]
+    function getActivityData() as Dictionary {
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_26_45_49_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 27 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_26_45_49_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_26_45_49_4_stop" ]
+        %steps.1 = local;
+        symbol [ steps %steps.1 27 12 17 ];
+        %tmp.1 = 0;
+        lputv %steps.1 %tmp.1;
+        symbol [ steps %steps.1 27 12 17 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 28 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_26_45_49_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_26_45_49_4_stop" ]
+        %heartRate.2 = local;
+        symbol [ heartRate %heartRate.2 28 12 21 ];
+        %tmp.2 = 0;
+        lputv %heartRate.2 %tmp.2;
+        symbol [ heartRate %heartRate.2 28 12 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 29 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_26_45_49_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_26_45_49_4_stop" ]
+        %available.3 = local;
+        symbol [ available %available.3 29 12 21 ];
+        %tmp.3 = false;
+        lputv %available.3 %tmp.3;
+        symbol [ available %available.3 29 12 21 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 31 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_31_8_42_8_if_stmt:
+        symbol [ Toybox %tmp.5 31 12 18 ];
+        %tmp.5 = getv ? :Toybox;
+        %tmp.7 = const :ActivityMonitor;
+        symbol [ ActivityMonitor %tmp.7 31 24 39 const ];
+        %tmp.8 = canhazplz %tmp.5 %tmp.7;
+        bf %tmp.8 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_31_8_42_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_31_8_42_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_31_41_42_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 32 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_31_41_42_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_31_41_42_8_stop" ]
+        %info.4 = local;
+        symbol [ info %info.4 32 16 20 ];
+        symbol [ Toybox %tmp.10 32 23 29 ];
+        %tmp.10 = getv ? :Toybox;
+        %tmp.11 = as %tmp.10 { (interface { var ActivityMonitor; }) };
+        symbol [ ActivityMonitor %tmp.12 32 30 45 ];
+        %tmp.12 = getv %tmp.11 :ActivityMonitor;
+        symbol [ getInfo %tmp.13 32 46 53 ];
+        %tmp.13 = getv function %tmp.12 :getInfo;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        lputv %info.4 %tmp.14;
+        symbol [ info %info.4 32 16 20 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 33 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_33_12_41_12_if_stmt:
+        %tmp.15 = lgetv %info.4;
+        symbol [ info %tmp.15 33 16 20 ];
+        %tmp.16 = null;
+        %tmp.17 = ne %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_33_12_41_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_33_12_41_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_33_30_41_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 34 16 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_16_37_16_if_stmt:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_20_34_53_begin:
+        %tmp.18 = lgetv %info.4;
+        symbol [ info %tmp.18 34 20 24 ];
+        %tmp.19 = as %tmp.18 { (!Null) };
+        %tmp.21 = const :steps;
+        symbol [ steps %tmp.21 34 30 35 const ];
+        %tmp.22 = canhazplz %tmp.19 %tmp.21;
+        bf %tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_16_37_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_39_34_53_true:
+        %tmp.23 = lgetv %info.4;
+        symbol [ info %tmp.23 34 39 43 ];
+        %tmp.24 = as %tmp.23 { (interface { var steps; }) && (!Null) };
+        symbol [ steps %tmp.25 34 44 49 ];
+        %tmp.25 = getv %tmp.24 :steps;
+        %tmp.26 = null;
+        %tmp.27 = ne %tmp.25 %tmp.26;
+        push %tmp.27;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_39_34_53_end:
+        %tmp.28 = phi [%tmp.22 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_20_34_53_begin] [%tmp.27 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_39_34_53_true] [%tmp.28 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_39_34_53_end];
+        bf %tmp.28 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_16_37_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_16_37_16_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_59_37_16_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 35 20 ]
+        %tmp.29 = lgetv %info.4;
+        symbol [ info %tmp.29 35 28 32 ];
+        %tmp.30 = as %tmp.29 { (interface { var steps; }) && (!Null) };
+        symbol [ steps %tmp.31 35 33 38 ];
+        %tmp.31 = getv %tmp.30 :steps;
+        lputv %steps.1 %tmp.31;
+        symbol [ steps %steps.1 35 20 25 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 36 20 ]
+        %tmp.32 = true;
+        lputv %available.3 %tmp.32;
+        symbol [ available %available.3 36 20 29 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_59_37_16_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_16_37_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_34_16_37_16_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 38 16 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_16_40_16_if_stmt:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_20_38_61_begin:
+        %tmp.33 = lgetv %info.4;
+        symbol [ info %tmp.33 38 20 24 ];
+        %tmp.34 = as %tmp.33 { (!Null) };
+        %tmp.36 = const :heartRate;
+        symbol [ heartRate %tmp.36 38 30 39 const ];
+        %tmp.37 = canhazplz %tmp.34 %tmp.36;
+        bf %tmp.37 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_16_40_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_43_38_61_true:
+        %tmp.38 = lgetv %info.4;
+        symbol [ info %tmp.38 38 43 47 ];
+        %tmp.39 = as %tmp.38 { (interface { var heartRate; }) && (!Null) };
+        symbol [ heartRate %tmp.40 38 48 57 ];
+        %tmp.40 = getv %tmp.39 :heartRate;
+        %tmp.41 = null;
+        %tmp.42 = ne %tmp.40 %tmp.41;
+        push %tmp.42;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_43_38_61_end:
+        %tmp.43 = phi [%tmp.37 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_20_38_61_begin] [%tmp.42 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_43_38_61_true] [%tmp.43 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_43_38_61_end];
+        bf %tmp.43 @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_16_40_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_16_40_16_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_67_40_16_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 39 20 ]
+        %tmp.44 = lgetv %info.4;
+        symbol [ info %tmp.44 39 32 36 ];
+        %tmp.45 = as %tmp.44 { (interface { var heartRate; }) && (!Null) };
+        symbol [ heartRate %tmp.46 39 37 46 ];
+        %tmp.46 = getv %tmp.45 :heartRate;
+        lputv %heartRate.2 %tmp.46;
+        symbol [ heartRate %heartRate.2 39 20 29 ];
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_67_40_16_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_16_40_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_38_16_40_16_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_33_30_41_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_33_12_41_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_33_12_41_12_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_31_41_42_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_31_8_42_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_31_8_42_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc" 44 8 ]
+        %tmp.47 = newd 3;
+        %tmp.48 = "steps";
+        %tmp.49 = lgetv %steps.1;
+        symbol [ steps %tmp.49 45 23 28 ];
+        %tmp.50 = dup %tmp.47;
+        %tmp.51 = aputv %tmp.50 %tmp.48 %tmp.49;
+        %tmp.52 = "heartRate";
+        %tmp.53 = lgetv %heartRate.2;
+        symbol [ heartRate %tmp.53 46 27 36 ];
+        %tmp.54 = dup %tmp.51;
+        %tmp.55 = aputv %tmp.54 %tmp.52 %tmp.53;
+        %tmp.56 = "available";
+        %tmp.57 = lgetv %available.3;
+        symbol [ available %tmp.57 47 27 36 ];
+        %tmp.58 = dup %tmp.55;
+        %tmp.59 = aputv %tmp.58 %tmp.56 %tmp.57;
+        ret %tmp.59;
+_Users_jeffcechinel_Github_moodflow_garmin_source_providers_GarminDataProvider_mc_26_45_49_4_stop:
+    }
+}
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/providers/GarminDataProvider.mc"; @line = 1; ]
+<init> {
+}

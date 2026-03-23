@@ -1,0 +1,589 @@
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Attention,3,14,23]; ]
+import Toybox.Attention;
+//! Input delegate for MoodFlow
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 6; @symbol_classdef = [MoodFlowDelegate,6,6,22]; @symbol_extends<0> = [WatchUi,6,31,38]; @symbol_extends<1> = [BehaviorDelegate,6,39,55]; ]
+class MoodFlowDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 8; @position = 8; @symbol_vardef = [view,8,8,12]; @symbol_type<0> = [MoodFlowView,8,16,28]; ]
+    var view as MoodFlowView;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 10; @symbol_functiondef = [initialize,10,13,23]; @symbol_param<0> = [v,10,24,25]; @symbol_param<0>_type<0> = [MoodFlowView,10,29,41]; ]
+    function initialize(v as MoodFlowView) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_10_43_13_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 11 8 ]
+        symbol [ BehaviorDelegate %tmp.2 11 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 11 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 12 8 ]
+        %tmp.4 = lgetv %v;
+        symbol [ v %tmp.4 12 15 16 ];
+        symbol [ view ? 12 8 12 ];
+        putv self :view %tmp.4;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_10_43_13_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 15; @symbol_functiondef = [onBack,15,13,19]; @symbol_return<0> = [Boolean,15,25,32]; ]
+    function onBack() as Boolean {
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_15_33_21_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 16 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_16_8_19_8_if_stmt:
+        symbol [ view %tmp.2 16 12 16 ];
+        %tmp.2 = getv ? :view;
+        symbol [ currentScreen %tmp.3 16 17 30 ];
+        %tmp.3 = getv %tmp.2 :currentScreen;
+        symbol [ view %tmp.5 16 34 38 ];
+        %tmp.5 = getv ? :view;
+        symbol [ SCREEN_SETTINGS %tmp.6 16 39 54 ];
+        %tmp.6 = getv %tmp.5 :SCREEN_SETTINGS;
+        %tmp.7 = eq %tmp.3 %tmp.6;
+        bf %tmp.7 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_16_8_19_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_16_8_19_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_16_56_19_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 17 12 ]
+        symbol [ view %tmp.9 17 12 16 ];
+        %tmp.9 = getv ? :view;
+        symbol [ exitSettings %tmp.10 17 17 29 ];
+        %tmp.10 = getv function %tmp.9 :exitSettings;
+        invoke %tmp.9 %tmp.10();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 18 12 ]
+        %tmp.11 = true;
+        ret %tmp.11;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_16_56_19_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_16_8_19_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_16_8_19_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 20 8 ]
+        %tmp.12 = false;
+        ret %tmp.12;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_15_33_21_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 23; @symbol_functiondef = [onKeyPressed,23,13,25]; @symbol_param<0> = [key,23,26,29]; @symbol_param<0>_type<0> = [WatchUi,23,33,40]; @symbol_param<0>_type<1> = [KeyEvent,23,41,49]; @symbol_return<0> = [Boolean,23,54,61]; ]
+    function onKeyPressed(key as WatchUi.KeyEvent) as Boolean {
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_23_62_38_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 24 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_23_62_38_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_23_62_38_4_stop" ]
+        %keyCode.1 = local;
+        symbol [ keyCode %keyCode.1 24 12 19 ];
+        %tmp.1 = lgetv %key;
+        symbol [ key %tmp.1 24 22 25 ];
+        symbol [ getKey %tmp.2 24 26 32 ];
+        %tmp.2 = getv function %tmp.1 :getKey;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %keyCode.1 %tmp.3;
+        symbol [ keyCode %keyCode.1 24 12 19 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 25 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_23_62_38_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_23_62_38_4_stop" ]
+        %app.2 = local;
+        symbol [ app %app.2 25 12 15 ];
+        symbol [ view %tmp.5 25 18 22 ];
+        %tmp.5 = getv ? :view;
+        symbol [ moodFlowApp %tmp.6 25 23 34 ];
+        %tmp.6 = getv %tmp.5 :moodFlowApp;
+        lputv %app.2 %tmp.6;
+        symbol [ app %app.2 25 12 15 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 27 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_27_8_29_8_if_stmt:
+        symbol [ view %tmp.8 27 12 16 ];
+        %tmp.8 = getv ? :view;
+        symbol [ showingConfirmDialog %tmp.9 27 17 37 ];
+        %tmp.9 = getv %tmp.8 :showingConfirmDialog;
+        bf %tmp.9 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_27_8_29_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_27_8_29_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_27_39_29_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 28 12 ]
+        %tmp.10 = self;
+        symbol [ handleConfirmDialog %tmp.11 28 19 38 ];
+        %tmp.11 = getv function %tmp.10 :handleConfirmDialog;
+        %tmp.12 = lgetv %keyCode.1;
+        symbol [ keyCode %tmp.12 28 39 46 ];
+        %tmp.13 = invoke %tmp.10 %tmp.11(%tmp.12);
+        ret %tmp.13;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_27_39_29_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_27_8_29_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_27_8_29_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 31 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_31_8_35_8_if_stmt:
+        symbol [ view %tmp.15 31 12 16 ];
+        %tmp.15 = getv ? :view;
+        symbol [ currentScreen %tmp.16 31 17 30 ];
+        %tmp.16 = getv %tmp.15 :currentScreen;
+        symbol [ view %tmp.18 31 34 38 ];
+        %tmp.18 = getv ? :view;
+        symbol [ SCREEN_CHECKIN %tmp.19 31 39 53 ];
+        %tmp.19 = getv %tmp.18 :SCREEN_CHECKIN;
+        %tmp.20 = eq %tmp.16 %tmp.19;
+        bf %tmp.20 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_31_8_35_8_if_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_31_8_35_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_31_55_33_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 32 12 ]
+        %tmp.21 = self;
+        symbol [ handleCheckInInput %tmp.22 32 19 37 ];
+        %tmp.22 = getv function %tmp.21 :handleCheckInInput;
+        %tmp.23 = lgetv %keyCode.1;
+        symbol [ keyCode %tmp.23 32 38 45 ];
+        %tmp.24 = lgetv %app.2;
+        symbol [ app %tmp.24 32 47 50 ];
+        %tmp.25 = invoke %tmp.21 %tmp.22(%tmp.23, %tmp.24);
+        ret %tmp.25;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_31_55_33_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_31_8_35_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_31_8_35_8_if_false:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 33 15 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_33_15_35_8_if_stmt:
+        symbol [ view %tmp.27 33 19 23 ];
+        %tmp.27 = getv ? :view;
+        symbol [ currentScreen %tmp.28 33 24 37 ];
+        %tmp.28 = getv %tmp.27 :currentScreen;
+        symbol [ view %tmp.30 33 41 45 ];
+        %tmp.30 = getv ? :view;
+        symbol [ SCREEN_SETTINGS %tmp.31 33 46 61 ];
+        %tmp.31 = getv %tmp.30 :SCREEN_SETTINGS;
+        %tmp.32 = eq %tmp.28 %tmp.31;
+        bf %tmp.32 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_33_15_35_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_33_15_35_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_33_63_35_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 34 12 ]
+        %tmp.33 = self;
+        symbol [ handleSettingsInput %tmp.34 34 19 38 ];
+        %tmp.34 = getv function %tmp.33 :handleSettingsInput;
+        %tmp.35 = lgetv %keyCode.1;
+        symbol [ keyCode %tmp.35 34 39 46 ];
+        %tmp.36 = invoke %tmp.33 %tmp.34(%tmp.35);
+        ret %tmp.36;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_33_63_35_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_33_15_35_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_33_15_35_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_31_8_35_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 37 8 ]
+        %tmp.37 = false;
+        ret %tmp.37;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_23_62_38_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 40; @symbol_functiondef = [handleConfirmDialog,40,13,32]; @symbol_param<0> = [keyCode,40,33,40]; @symbol_param<0>_type<0> = [Number,40,44,50]; @symbol_return<0> = [Boolean,40,55,62]; ]
+    function handleConfirmDialog(keyCode as Number) as Boolean {
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_40_63_51_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 41 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_41_8_49_8_if_stmt:
+        %tmp.1 = lgetv %keyCode;
+        symbol [ keyCode %tmp.1 41 12 19 ];
+        symbol [ WatchUi %tmp.2 41 23 30 ];
+        %tmp.2 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.3 41 31 37 ];
+        %tmp.3 = getv %tmp.2 :KEY_UP;
+        %tmp.4 = eq %tmp.1 %tmp.3;
+        bf %tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_41_8_49_8_if_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_41_8_49_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_41_39_45_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 42 12 ]
+        symbol [ view %tmp.6 42 12 16 ];
+        %tmp.6 = getv ? :view;
+        symbol [ handleConfirmDialog %tmp.7 42 17 36 ];
+        %tmp.7 = getv function %tmp.6 :handleConfirmDialog;
+        %tmp.8 = false;
+        invoke %tmp.6 %tmp.7(%tmp.8);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 43 12 ]
+        symbol [ WatchUi %tmp.9 43 12 19 ];
+        %tmp.9 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.10 43 20 33 ];
+        %tmp.10 = getv function %tmp.9 :requestUpdate;
+        invoke %tmp.9 %tmp.10();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 44 12 ]
+        %tmp.11 = true;
+        ret %tmp.11;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_41_39_45_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_41_8_49_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_41_8_49_8_if_false:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 45 15 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_45_15_49_8_if_stmt:
+        %tmp.12 = lgetv %keyCode;
+        symbol [ keyCode %tmp.12 45 19 26 ];
+        symbol [ WatchUi %tmp.13 45 30 37 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.14 45 38 46 ];
+        %tmp.14 = getv %tmp.13 :KEY_DOWN;
+        %tmp.15 = eq %tmp.12 %tmp.14;
+        bf %tmp.15 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_45_15_49_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_45_15_49_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_45_48_49_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 46 12 ]
+        symbol [ view %tmp.17 46 12 16 ];
+        %tmp.17 = getv ? :view;
+        symbol [ handleConfirmDialog %tmp.18 46 17 36 ];
+        %tmp.18 = getv function %tmp.17 :handleConfirmDialog;
+        %tmp.19 = true;
+        invoke %tmp.17 %tmp.18(%tmp.19);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 47 12 ]
+        symbol [ WatchUi %tmp.20 47 12 19 ];
+        %tmp.20 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.21 47 20 33 ];
+        %tmp.21 = getv function %tmp.20 :requestUpdate;
+        invoke %tmp.20 %tmp.21();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 48 12 ]
+        %tmp.22 = true;
+        ret %tmp.22;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_45_48_49_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_45_15_49_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_45_15_49_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_41_8_49_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 50 8 ]
+        %tmp.23 = true;
+        ret %tmp.23;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_40_63_51_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 53; @symbol_functiondef = [handleCheckInInput,53,13,31]; @symbol_param<0> = [keyCode,53,32,39]; @symbol_param<0>_type<0> = [Number,53,43,49]; @symbol_param<1> = [app,53,51,54]; @symbol_param<1>_type<0> = [MoodFlowApp,53,58,69]; @symbol_return<0> = [Boolean,53,74,81]; ]
+    function handleCheckInInput(keyCode as Number, app as MoodFlowApp) as Boolean {
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_53_82_83_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 54 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_54_8_81_8_if_stmt:
+        %tmp.1 = lgetv %keyCode;
+        symbol [ keyCode %tmp.1 54 12 19 ];
+        symbol [ WatchUi %tmp.2 54 23 30 ];
+        %tmp.2 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.3 54 31 37 ];
+        %tmp.3 = getv %tmp.2 :KEY_UP;
+        %tmp.4 = eq %tmp.1 %tmp.3;
+        bf %tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_54_8_81_8_if_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_54_8_81_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_54_39_61_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 55 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_55_12_59_12_if_stmt:
+        symbol [ view %tmp.6 55 16 20 ];
+        %tmp.6 = getv ? :view;
+        symbol [ selectedMoodIndex %tmp.7 55 21 38 ];
+        %tmp.7 = getv %tmp.6 :selectedMoodIndex;
+        %tmp.8 = 4;
+        %tmp.9 = lt %tmp.7 %tmp.8;
+        bf %tmp.9 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_55_12_59_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_55_12_59_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_55_44_59_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 56 16 ]
+        symbol [ view %tmp.10 56 16 20 ];
+        %tmp.10 = getv self :view;
+        symbol [ view %tmp.12 56 41 45 ];
+        %tmp.12 = getv ? :view;
+        symbol [ selectedMoodIndex %tmp.13 56 46 63 ];
+        %tmp.13 = getv %tmp.12 :selectedMoodIndex;
+        %tmp.14 = 1;
+        %tmp.15 = add %tmp.13 %tmp.14;
+        symbol [ selectedMoodIndex ? 56 21 38 ];
+        putv %tmp.10 :selectedMoodIndex %tmp.15;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 57 16 ]
+        %tmp.16 = lgetv %app;
+        symbol [ app %tmp.16 57 16 19 ];
+        symbol [ view %tmp.18 57 34 38 ];
+        %tmp.18 = getv ? :view;
+        symbol [ selectedMoodIndex %tmp.19 57 39 56 ];
+        %tmp.19 = getv %tmp.18 :selectedMoodIndex;
+        %tmp.20 = 1;
+        %tmp.21 = add %tmp.19 %tmp.20;
+        symbol [ currentMood ? 57 20 31 ];
+        putv %tmp.16 :currentMood %tmp.21;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 58 16 ]
+        symbol [ WatchUi %tmp.22 58 16 23 ];
+        %tmp.22 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.23 58 24 37 ];
+        %tmp.23 = getv function %tmp.22 :requestUpdate;
+        invoke %tmp.22 %tmp.23();
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_55_44_59_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_55_12_59_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_55_12_59_12_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 60 12 ]
+        %tmp.24 = true;
+        ret %tmp.24;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_54_39_61_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_54_8_81_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_54_8_81_8_if_false:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 61 15 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_61_15_81_8_if_stmt:
+        %tmp.25 = lgetv %keyCode;
+        symbol [ keyCode %tmp.25 61 19 26 ];
+        symbol [ WatchUi %tmp.26 61 30 37 ];
+        %tmp.26 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.27 61 38 46 ];
+        %tmp.27 = getv %tmp.26 :KEY_DOWN;
+        %tmp.28 = eq %tmp.25 %tmp.27;
+        bf %tmp.28 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_61_15_81_8_if_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_61_15_81_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_61_48_68_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 62 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_62_12_66_12_if_stmt:
+        symbol [ view %tmp.30 62 16 20 ];
+        %tmp.30 = getv ? :view;
+        symbol [ selectedMoodIndex %tmp.31 62 21 38 ];
+        %tmp.31 = getv %tmp.30 :selectedMoodIndex;
+        %tmp.32 = 0;
+        %tmp.33 = gt %tmp.31 %tmp.32;
+        bf %tmp.33 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_62_12_66_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_62_12_66_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_62_44_66_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 63 16 ]
+        symbol [ view %tmp.34 63 16 20 ];
+        %tmp.34 = getv self :view;
+        symbol [ view %tmp.36 63 41 45 ];
+        %tmp.36 = getv ? :view;
+        symbol [ selectedMoodIndex %tmp.37 63 46 63 ];
+        %tmp.37 = getv %tmp.36 :selectedMoodIndex;
+        %tmp.38 = 1;
+        %tmp.39 = sub %tmp.37 %tmp.38;
+        symbol [ selectedMoodIndex ? 63 21 38 ];
+        putv %tmp.34 :selectedMoodIndex %tmp.39;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 64 16 ]
+        %tmp.40 = lgetv %app;
+        symbol [ app %tmp.40 64 16 19 ];
+        symbol [ view %tmp.42 64 34 38 ];
+        %tmp.42 = getv ? :view;
+        symbol [ selectedMoodIndex %tmp.43 64 39 56 ];
+        %tmp.43 = getv %tmp.42 :selectedMoodIndex;
+        %tmp.44 = 1;
+        %tmp.45 = add %tmp.43 %tmp.44;
+        symbol [ currentMood ? 64 20 31 ];
+        putv %tmp.40 :currentMood %tmp.45;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 65 16 ]
+        symbol [ WatchUi %tmp.46 65 16 23 ];
+        %tmp.46 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.47 65 24 37 ];
+        %tmp.47 = getv function %tmp.46 :requestUpdate;
+        invoke %tmp.46 %tmp.47();
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_62_44_66_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_62_12_66_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_62_12_66_12_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 67 12 ]
+        %tmp.48 = true;
+        ret %tmp.48;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_61_48_68_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_61_15_81_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_61_15_81_8_if_false:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 68 15 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_68_15_81_8_if_stmt:
+        %tmp.49 = lgetv %keyCode;
+        symbol [ keyCode %tmp.49 68 19 26 ];
+        symbol [ WatchUi %tmp.50 68 30 37 ];
+        %tmp.50 = getm $.Toybox.WatchUi;
+        symbol [ KEY_ENTER %tmp.51 68 38 47 ];
+        %tmp.51 = getv %tmp.50 :KEY_ENTER;
+        %tmp.52 = eq %tmp.49 %tmp.51;
+        bf %tmp.52 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_68_15_81_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_68_15_81_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_68_49_81_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 69 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_68_49_81_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_68_49_81_8_stop" ]
+        %mood.1 = local;
+        symbol [ mood %mood.1 69 16 20 ];
+        symbol [ view %tmp.54 69 23 27 ];
+        %tmp.54 = getv ? :view;
+        symbol [ selectedMoodIndex %tmp.55 69 28 45 ];
+        %tmp.55 = getv %tmp.54 :selectedMoodIndex;
+        %tmp.56 = 1;
+        %tmp.57 = add %tmp.55 %tmp.56;
+        lputv %mood.1 %tmp.57;
+        symbol [ mood %mood.1 69 16 20 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 70 12 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_70_12_78_12_if_stmt:
+        %tmp.58 = lgetv %app;
+        symbol [ app %tmp.58 70 16 19 ];
+        symbol [ hasTodayMood %tmp.59 70 20 32 ];
+        %tmp.59 = getv function %tmp.58 :hasTodayMood;
+        %tmp.60 = invoke %tmp.58 %tmp.59();
+        bf %tmp.60 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_70_12_78_12_if_else_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_70_12_78_12_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_70_36_73_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 71 16 ]
+        symbol [ view %tmp.61 71 16 20 ];
+        %tmp.61 = getv self :view;
+        %tmp.62 = true;
+        symbol [ showingConfirmDialog ? 71 21 41 ];
+        putv %tmp.61 :showingConfirmDialog %tmp.62;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 72 16 ]
+        symbol [ view %tmp.63 72 16 20 ];
+        %tmp.63 = getv self :view;
+        %tmp.64 = "mood";
+        symbol [ confirmDialogType ? 72 21 38 ];
+        putv %tmp.63 :confirmDialogType %tmp.64;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_70_36_73_12_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_70_12_78_12_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_70_12_78_12_if_else_false:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_73_19_78_12_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 74 16 ]
+        %tmp.65 = lgetv %app;
+        symbol [ app %tmp.65 74 16 19 ];
+        symbol [ addMoodEntry %tmp.66 74 20 32 ];
+        %tmp.66 = getv function %tmp.65 :addMoodEntry;
+        %tmp.67 = lgetv %mood.1;
+        symbol [ mood %tmp.67 74 33 37 ];
+        %tmp.68 = "";
+        invoke %tmp.65 %tmp.66(%tmp.67, %tmp.68);
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 75 16 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_75_16_77_16_if_stmt:
+        symbol [ Attention %tmp.69 75 20 29 ];
+        %tmp.69 = getm $.Toybox.Attention;
+        %tmp.71 = const :vibrate;
+        symbol [ vibrate %tmp.71 75 35 42 const ];
+        %tmp.72 = canhazplz %tmp.69 %tmp.71;
+        bf %tmp.72 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_75_16_77_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_75_16_77_16_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_75_44_77_16_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 76 20 ]
+        symbol [ Attention %tmp.73 76 20 29 ];
+        %tmp.73 = getm $.Toybox.Attention;
+        symbol [ vibrate %tmp.74 76 30 37 ];
+        %tmp.74 = getv function %tmp.73 :vibrate;
+        %tmp.75 = newa 1;
+        symbol [ Attention %tmp.78 76 43 52 ];
+        %tmp.78 = getm $.Toybox.Attention;
+        symbol [ VibeProfile %tmp.79 76 53 64 ];
+        %tmp.79 = getv function ? %tmp.78 :VibeProfile;
+        %tmp.80 = 50;
+        %tmp.81 = 100;
+        %tmp.76 = newc %tmp.79 (%tmp.80, %tmp.81);
+        %tmp.82 = dup %tmp.75;
+        %tmp.83 = aputv %tmp.82 0 %tmp.76;
+        invoke %tmp.73 %tmp.74(%tmp.83);
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_75_44_77_16_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_75_16_77_16_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_75_16_77_16_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_73_19_78_12_stop:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_70_12_78_12_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 79 12 ]
+        symbol [ WatchUi %tmp.84 79 12 19 ];
+        %tmp.84 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.85 79 20 33 ];
+        %tmp.85 = getv function %tmp.84 :requestUpdate;
+        invoke %tmp.84 %tmp.85();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 80 12 ]
+        %tmp.86 = true;
+        ret %tmp.86;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_68_49_81_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_68_15_81_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_68_15_81_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_61_15_81_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_54_8_81_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 82 8 ]
+        %tmp.87 = false;
+        ret %tmp.87;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_53_82_83_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 85; @symbol_functiondef = [handleSettingsInput,85,13,32]; @symbol_param<0> = [keyCode,85,33,40]; @symbol_param<0>_type<0> = [Number,85,44,50]; @symbol_return<0> = [Boolean,85,55,62]; ]
+    function handleSettingsInput(keyCode as Number) as Boolean {
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_85_63_93_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 86 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_86_8_91_8_if_stmt:
+        %tmp.1 = lgetv %keyCode;
+        symbol [ keyCode %tmp.1 86 12 19 ];
+        symbol [ WatchUi %tmp.2 86 23 30 ];
+        %tmp.2 = getm $.Toybox.WatchUi;
+        symbol [ KEY_ENTER %tmp.3 86 31 40 ];
+        %tmp.3 = getv %tmp.2 :KEY_ENTER;
+        %tmp.4 = eq %tmp.1 %tmp.3;
+        bf %tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_86_8_91_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_86_8_91_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_86_42_91_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 87 12 ]
+        symbol [ view %tmp.5 87 12 16 ];
+        %tmp.5 = getv self :view;
+        %tmp.6 = true;
+        symbol [ showingConfirmDialog ? 87 17 37 ];
+        putv %tmp.5 :showingConfirmDialog %tmp.6;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 88 12 ]
+        symbol [ view %tmp.7 88 12 16 ];
+        %tmp.7 = getv self :view;
+        %tmp.8 = "reset";
+        symbol [ confirmDialogType ? 88 17 34 ];
+        putv %tmp.7 :confirmDialogType %tmp.8;
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 89 12 ]
+        symbol [ WatchUi %tmp.9 89 12 19 ];
+        %tmp.9 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.10 89 20 33 ];
+        %tmp.10 = getv function %tmp.9 :requestUpdate;
+        invoke %tmp.9 %tmp.10();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 90 12 ]
+        %tmp.11 = true;
+        ret %tmp.11;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_86_42_91_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_86_8_91_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_86_8_91_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 92 8 ]
+        %tmp.12 = false;
+        ret %tmp.12;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_85_63_93_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 95; @symbol_functiondef = [onSwipe,95,13,20]; @symbol_param<0> = [e,95,21,22]; @symbol_param<0>_type<0> = [WatchUi,95,26,33]; @symbol_param<0>_type<1> = [SwipeEvent,95,34,44]; @symbol_return<0> = [Boolean,95,49,56]; ]
+    function onSwipe(e as WatchUi.SwipeEvent) as Boolean {
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_95_57_107_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 96 8 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_95_57_107_4_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_95_57_107_4_stop" ]
+        %dir.1 = local;
+        symbol [ dir %dir.1 96 12 15 ];
+        %tmp.1 = lgetv %e;
+        symbol [ e %tmp.1 96 18 19 ];
+        symbol [ getDirection %tmp.2 96 20 32 ];
+        %tmp.2 = getv function %tmp.1 :getDirection;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %dir.1 %tmp.3;
+        symbol [ dir %dir.1 96 12 15 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 98 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_98_8_104_8_if_stmt:
+        %tmp.4 = lgetv %dir.1;
+        symbol [ dir %tmp.4 98 12 15 ];
+        symbol [ WatchUi %tmp.5 98 19 26 ];
+        %tmp.5 = getm $.Toybox.WatchUi;
+        symbol [ SWIPE_LEFT %tmp.6 98 27 37 ];
+        %tmp.6 = getv %tmp.5 :SWIPE_LEFT;
+        %tmp.7 = eq %tmp.4 %tmp.6;
+        bf %tmp.7 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_98_8_104_8_if_false;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_98_8_104_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_98_39_101_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 99 12 ]
+        symbol [ view %tmp.9 99 12 16 ];
+        %tmp.9 = getv ? :view;
+        symbol [ navigateLeft %tmp.10 99 17 29 ];
+        %tmp.10 = getv function %tmp.9 :navigateLeft;
+        invoke %tmp.9 %tmp.10();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 100 12 ]
+        %tmp.11 = true;
+        ret %tmp.11;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_98_39_101_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_98_8_104_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_98_8_104_8_if_false:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 101 15 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_101_15_104_8_if_stmt:
+        %tmp.12 = lgetv %dir.1;
+        symbol [ dir %tmp.12 101 19 22 ];
+        symbol [ WatchUi %tmp.13 101 26 33 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ SWIPE_RIGHT %tmp.14 101 34 45 ];
+        %tmp.14 = getv %tmp.13 :SWIPE_RIGHT;
+        %tmp.15 = eq %tmp.12 %tmp.14;
+        bf %tmp.15 @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_101_15_104_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_101_15_104_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_101_47_104_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 102 12 ]
+        symbol [ view %tmp.17 102 12 16 ];
+        %tmp.17 = getv ? :view;
+        symbol [ navigateRight %tmp.18 102 17 30 ];
+        %tmp.18 = getv function %tmp.17 :navigateRight;
+        invoke %tmp.17 %tmp.18();
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 103 12 ]
+        %tmp.19 = true;
+        ret %tmp.19;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_101_47_104_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_101_15_104_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_101_15_104_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_98_8_104_8_if_end:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc" 106 8 ]
+        %tmp.20 = false;
+        ret %tmp.20;
+_Users_jeffcechinel_Github_moodflow_garmin_source_delegates_MoodFlowDelegate_mc_95_57_107_4_stop:
+    }
+}
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/delegates/MoodFlowDelegate.mc"; @line = 1; ]
+<init> {
+}

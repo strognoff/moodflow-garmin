@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB74D;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#FFE082;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A5D6A7;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#90CAF9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CE93D8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Heart path centered and scaled to fill the 128x128 canvas -->
+  <path d="M 64,110 C 64,110 15,78 15,45 C 15,25 25,15 40,15 C 50,15 58,20 64,30 C 70,20 78,15 88,15 C 103,15 113,25 113,45 C 113,78 64,110 64,110 Z" 
+        fill="url(#heartGradient)" 
+        stroke="#764BA2" 
+        stroke-width="3"
+        stroke-linejoin="round"/>
+  
+  <!-- Mood bars centered inside heart -->
+  <rect x="30" y="75" width="10" height="15" rx="2" fill="#CE93D8" stroke="#764BA2" stroke-width="0.5"/>
+  <rect x="43" y="65" width="10" height="25" rx="2" fill="#90CAF9" stroke="#667EEA" stroke-width="0.5"/>
+  <rect x="56" y="55" width="10" height="35" rx="2" fill="#A5D6A7" stroke="#66BB6A" stroke-width="0.5"/>
+  <rect x="69" y="45" width="10" height="45" rx="2" fill="#FFE082" stroke="#FDD835" stroke-width="0.5"/>
+  <rect x="82" y="35" width="10" height="55" rx="2" fill="#FFB74D" stroke="#FF9800" stroke-width="0.5"/>
+  
+  <!-- Sparkles -->
+  <circle cx="95" cy="25" r="3" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="102" cy="30" r="2.5" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="90" cy="30" r="2" fill="#FFFFFF" opacity="0.7"/>
+</svg>

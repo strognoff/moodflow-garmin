@@ -1,4 +1,4 @@
 project.manifest = manifest.xml
-base.sourcePath = ./source/*.mc
+base.sourcePath = ./source/*.mc;./source/models/*.mc;./source/managers/*.mc;./source/providers/*.mc;./source/screens/*.mc;./source/delegates/*.mc
 base.resourcePath = resources
 base.personality = resources

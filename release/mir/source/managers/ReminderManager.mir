@@ -1,0 +1,87 @@
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Attention,2,14,23]; ]
+import Toybox.Attention;
+//! Manages reminder notifications
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 5; @symbol_classdef = [ReminderManager,5,6,21]; ]
+class ReminderManager {
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 6; @position = 16; @symbol_vardef = [settingsManager,6,16,31]; @symbol_type<0> = [SettingsManager,6,35,50]; ]
+    private
+    var settingsManager as SettingsManager;
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 7; @position = 8; @symbol_vardef = [lastReminderDate,7,8,24]; @symbol_type<0> = [String,7,28,34]; ]
+    var lastReminderDate as String = "";
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; @symbol_param<0> = [settingsManager,9,24,39]; @symbol_param<0>_type<0> = [SettingsManager,9,43,58]; ]
+    function initialize(settingsManager as SettingsManager) as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_9_60_11_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc" 10 8 ]
+        symbol [ self %self 10 8 12 ];
+        %tmp.1 = lgetv %settingsManager;
+        symbol [ settingsManager %tmp.1 10 31 46 ];
+        symbol [ settingsManager ? 10 13 28 ];
+        putv self :settingsManager %tmp.1;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_9_60_11_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 13; @symbol_functiondef = [fireReminder,13,13,25]; ]
+    function fireReminder() as Void {
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_13_36_18_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc" 14 8 ]
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_14_8_17_8_if_stmt:
+        symbol [ Attention %tmp.1 14 12 21 ];
+        %tmp.1 = getm $.Toybox.Attention;
+        %tmp.3 = const :vibrate;
+        symbol [ vibrate %tmp.3 14 27 34 const ];
+        %tmp.4 = canhazplz %tmp.1 %tmp.3;
+        bf %tmp.4 @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_14_8_17_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_14_8_17_8_if_true:
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_14_36_17_8_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc" 15 12 ]
+        [ "_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_14_36_17_8_start" "_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_14_36_17_8_stop" ]
+        %vibeData.1 = local;
+        symbol [ vibeData %vibeData.1 15 16 24 ];
+        %tmp.5 = newa 1;
+        symbol [ Attention %tmp.8 15 32 41 ];
+        %tmp.8 = getm $.Toybox.Attention;
+        symbol [ VibeProfile %tmp.9 15 42 53 ];
+        %tmp.9 = getv function ? %tmp.8 :VibeProfile;
+        %tmp.10 = 100;
+        %tmp.11 = 500;
+        %tmp.6 = newc %tmp.9 (%tmp.10, %tmp.11);
+        %tmp.12 = dup %tmp.5;
+        %tmp.13 = aputv %tmp.12 0 %tmp.6;
+        lputv %vibeData.1 %tmp.13;
+        symbol [ vibeData %vibeData.1 15 16 24 ];
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc" 16 12 ]
+        symbol [ Attention %tmp.14 16 12 21 ];
+        %tmp.14 = getm $.Toybox.Attention;
+        symbol [ vibrate %tmp.15 16 22 29 ];
+        %tmp.15 = getv function %tmp.14 :vibrate;
+        %tmp.16 = lgetv %vibeData.1;
+        symbol [ vibeData %tmp.16 16 30 38 ];
+        invoke %tmp.14 %tmp.15(%tmp.16);
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_14_36_17_8_stop:
+        goto @_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_14_8_17_8_if_end;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_14_8_17_8_if_end:
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_13_36_18_4_stop:
+    }
+    [ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 20; @symbol_functiondef = [shouldFireReminder,20,13,31]; @symbol_return<0> = [Boolean,20,37,44]; ]
+    function shouldFireReminder() as Boolean {
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_20_45_22_4_start:
+[ "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc" 21 8 ]
+        symbol [ settingsManager %tmp.2 21 15 30 ];
+        %tmp.2 = getv ? :settingsManager;
+        symbol [ reminderEnabled %tmp.3 21 31 46 ];
+        %tmp.3 = getv %tmp.2 :reminderEnabled;
+        ret %tmp.3;
+_Users_jeffcechinel_Github_moodflow_garmin_source_managers_ReminderManager_mc_20_45_22_4_stop:
+    }
+}
+[ @file = "/Users/jeffcechinel/Github/moodflow-garmin/source/managers/ReminderManager.mc"; @line = 1; ]
+<init> {
+}
